@@ -1,0 +1,273 @@
+html {
+    background-color: rgb(39, 39, 39);
+}
+body {
+    margin: 0px;
+}
+#top_menu {
+    width: 100%;
+    border-bottom: 3px solid rgba(80, 80, 80, 0.6);
+    background-color: rgb(26, 26, 26);
+}
+.hero_portrait {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: black;
+    border: 1px solid black;
+    margin: 5px 12px;
+    display: inline-block;
+    background-size: 100%;
+}
+#main {
+    border: 10px;
+    border-spacing: 10px 10px;
+}
+#main_content {
+    height: 500px;
+    padding: 5px;
+    background-color: rgb(150, 150, 150);
+    /*overflow: auto;*/
+}
+#left_menu {
+    width: 250px;
+    margin-right: 15px;
+    height: 500px;
+    background-color: rgb(221, 221, 221);
+}
+#hero_portrait_left_menu {
+    width: 210px;
+    height: 210px;
+    border-radius: 20px;
+    margin: 5px auto 0px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    transition: transform .2s;
+}
+.hero_portrait:hover {
+    cursor: pointer;
+}
+#hero_portrait_left_menu:hover, #item_icon_left_menu:hover {
+    transform: scale(1.05) translateY(5px);
+    
+}
+.hero_skill {
+    width: 65px;
+    height: 65px;
+    border-radius: 15px;
+    background-color: black;
+    margin: 20px 6px 0px;
+    display: inline-block;
+    background-size: 100%;
+    transition: transform .2s;
+}
+.hero_skill:hover {
+    transform: scale(1.2);
+}
+h1 {
+    font-size: 26px;
+    text-align: center;
+    margin: 8px;
+}
+#attack_type {
+    font-size: 20px;
+    text-align: center;
+    margin: 8px;
+}
+#hero_attribute {
+    font-size: 20px;
+    border-spacing: 10px 3px;
+}
+#hero_attribute td {
+    padding: 0px;
+    padding-bottom: 10px;
+}
+#hero_attribute td:last-child {
+    min-width: 85px;
+}
+#table_damage, #table_attack_range, #table_status_resist, #table_wision {
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+#info_block, #info_ability {
+    position: absolute;
+    background-color: rgb(210, 210, 210);
+    border:5px solid rgb(30, 30, 30);
+    color: black;
+    font-size: 22px;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 5px;
+    visibility: hidden;
+    left: 100px;
+    top: 100px;
+}
+
+#info_block {
+    max-width: 400px;
+}
+
+#ability_name, #skill_tree_name {
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+}
+#ability_info td{
+    padding: 15px 15px 0px;
+    font-weight: bold;
+}
+#ability_tree_info td {
+    padding: 12px 10px 0px;
+    font-weight: bold;
+}
+
+#skill_tree {
+    min-width: 800px;
+    position: relative;
+    border-spacing: 35px;
+    height: 800px;
+    overflow:scroll;
+}
+#skill_tree td {
+    width: 60px;
+    height: 68.95px;
+    border-radius: 25%;
+    border: 2px solid black;
+    background-size: 104%;
+    visibility: hidden;
+    background-color: black;
+    transition: transform .3s;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: scale(1.05);
+}
+
+#skill_tree_cost {
+    vertical-align: 35%;
+    display: inline-block;
+}
+
+#skill_tree td:hover {
+    transform: scale(1.3);
+}
+
+#myCanvas {
+    position: absolute;
+}
+
+
+.character {
+    width: 100px;
+    border-radius: 8px;
+    margin: 8px;
+    float: left;
+    background-size: 100%;
+    transition: transform .2s;
+    border: 2px solid rgba(255, 255, 255, 0);
+}
+.character:hover, .item:hover {
+    transform: scale(1.15) translateY(1px);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.character_image {
+    background-color: black;
+    border: 2px solid black;
+    width: 70px;
+    height: 70px;
+    margin: 2px 14px;
+    border-radius: 8px;
+    background-size: 100%
+}
+.character_name, .item_name {
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    font-size: 17px;
+}
+
+a {
+    font-size: 26px;
+    margin: 10px 50px;
+    color: white;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+a:visited {
+    color: white;
+}
+
+.header {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    margin: 10px 5px 0px;
+}
+.item_icon {
+    width: 45px;
+    height: 30px;
+    margin: 0px 3px;
+    background: url(unknow_item.png) no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    border-radius: 10%;
+    border: 3px solid black;
+    transition: transform .25s;
+}
+.item_icon:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.gold_frame {
+    margin: 0px 20px;
+}
+
+.gold_image {
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+    background: url(Gold.png) no-repeat;
+    background-size: 100%;
+    display: inline-block;
+}
+#gold_sum {
+    display: inline-block;
+    font-size: 22px; 
+    vertical-align: 20%;
+}
+
+#item_icon_left_menu {
+    width: 135px;
+    height: 90px;
+    border-radius: 10px;
+    border: 3px solid black;
+    margin: 5px auto 0px;
+    background: url(items/unknow_item.png) no-repeat;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    transition: transform .2s;
+}
+
+.item {
+    width: 100px;
+    border-radius: 8px;
+    margin: 8px;
+    float: left;
+    background-size: 100%;
+    transition: transform .2s;
+    border: 2px solid rgba(255, 255, 255, 0);
+}
+.item_image {
+    background-color: black;
+    border: 2px solid black;
+    width: 90px;
+    height: 60px;
+    margin: 2px 3px;
+    border-radius: 8px;
+    background-size: 100%
+}

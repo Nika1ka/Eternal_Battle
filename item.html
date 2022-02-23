@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>"Eternal battle" - Предметы</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <table id = "main" style = "width: 100%; margin: 0px;">
+            <tr>
+                <!-- Базовые характеристики персонажа -->
+                <td id = "left_menu" valign = "top">
+                    <div id = "item_icon_left_menu"></div>
+                    <div align = "center">
+                        <div class = "hero_skill" onmouseover = "show_item_skill(1);" onmouseout = "hidden_skill()" style = "background-image: url(unknow_skill.png);"></div>
+                        <div class = "hero_skill" onmouseover = "show_item_skill(2);" onmouseout = "hidden_skill()" style = "background-image: url(unknow_skill.png);"></div>
+                        <div class = "hero_skill" onmouseover = "show_item_skill(3);" onmouseout = "hidden_skill()" style = "background-image: url(unknow_skill.png);"></div>
+                    </div>
+                    <h1></h1>
+                    <table id = "hero_attribute">
+
+                    </table>
+                    <div class = "header">
+                        Компоненты:
+                    </div>
+                    <div class = "header" id = "item_that_need">
+
+                    </div>
+                    <div class = "gold_frame">
+                        <div class = "gold_image"></div>
+                        <div id = "gold_sum"></div>
+                    </div>
+                    <div class = "header" id = "item_that_use_text">
+                        Используется в:
+                    </div>
+                    <div class = "header" id = "item_that_use">
+
+                    </div>
+                </td>
+                <!-- Все возможные предметы -->
+                <td id = "main_content" valign = "top">
+                </td>
+            </tr>
+        </table>
+        <!-- Блок в котором будет отображаться описание способности предмета, на которую навелись -->
+        <div id = "info_ability">
+            <div id = "ability_name"></div>
+            <div id = "ability_about"></div>
+            <div></div>
+            <table id = "ability_info">
+                <tr>
+                    <td id = "ability_type" colspan="2"></td>
+                </tr>
+                <tr id = "hidden1">
+                    <td id = "ability_damage"></td>
+                    <td id = "ability_damage_type"></td>
+                </tr>
+                <tr id = "hidden2">
+                    <td id = "skills_duration" colspan="2"></td>
+                </tr>
+                <tr id = "hidden3">
+                    <td id = "skills_range" colspan="2"></td>
+                </tr>
+                <tr id = "hidden4">
+                    <td id = "ability_cd"></td>
+                    <td id = "ability_mana"></td>
+                </tr>
+            </table>
+        </div>
+        <a href = "hero.html">Герои</a>
+        <a href = "character.html">Противники</a>
+        <a href = "item.html">Предметы</a>
+    </body>
+    <script type="text/javascript "src="item_JS/info.js"></script>
+    <script type="text/javascript "src="item_JS/script.js"></script>
+    <script>create_item_list(); show_item_info();</script>
+</html>
