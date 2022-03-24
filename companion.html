@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>"Eternal battle" - Герои</title>
+        <title>"Eternal battle" - Компаньоны</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="style.css" type="text/css">
         <style>
@@ -40,14 +40,6 @@
                         <p id = "attack_type">Дальний бой</p>
                         <table id = "hero_attribute">
                             <tr>
-                                <td>Здоровье:</td>
-                                <td id = "table_hp"></td>
-                            </tr>
-                            <tr>
-                                <td>Мана:</td>
-                                <td id = "table_mana"></td>
-                            </tr>
-                            <tr>
                                 <td>Урон:</td>
                                 <td id = "table_damage"></td>
                             </tr>
@@ -60,28 +52,12 @@
                                 <td id = "table_attack_range"></td>
                             </tr>
                             <tr>
-                                <td>Защита:</td>
-                                <td id = "table_phis_resist"></td>
-                            </tr>
-                            <tr>
-                                <td>Сопротивление магии:</td>
-                                <td id = "table_magic_resist"></td>
-                            </tr>
-                            <tr>
-                                <td>Сопротивление эффектам:</td>
-                                <td id = "table_status_resist"></td>
-                            </tr>
-                            <tr>
                                 <td>Скорость передвижения:</td>
                                 <td id = "table_speed"></td>
                             </tr>
                             <tr>
                                 <td>Дальность обзора (день/ночь):</td>
                                 <td id = "table_wision"></td>
-                            </tr>
-                            <tr>
-                                <td>Уворот:</td>
-                                <td id = "table_dodge"></td>
                             </tr>
                             <tr>
                                 <td>Крит урон:</td>
@@ -240,14 +216,14 @@
         <a href = "hero.html">Герои</a>
         <a href = "companion.html">Компаньоны</a>
         <a href = "character.html">Противники</a>
-        <a href = "item.html">Предметы</a>  
+        <a href = "item.html">Предметы</a>     
     </body>
-    <script type="text/javascript "src="hero_JS/skill_tree_about.js"></script>
-    <script type="text/javascript "src="hero_JS/skill_tree_bonus.js"></script>
-    <script type="text/javascript "src="hero_JS/skill_tree_bonus_about.js"></script>
-    <script type="text/javascript "src="hero_JS/skill_tree_cost.js"></script>
-    <script type="text/javascript "src="hero_JS/skill_tree_image.js"></script>
-    <script type="text/javascript "src="hero_JS/skill_tree_name.js"></script>
-    <script type="text/javascript "src="hero_JS/script.js"></script>
+    <script type="text/javascript "src="comp_JS/skill_tree_about.js"></script>
+    <script type="text/javascript "src="comp_JS/skill_tree_bonus.js"></script>
+    <script type="text/javascript "src="comp_JS/skill_tree_bonus_about.js"></script>
+    <script type="text/javascript "src="comp_JS/skill_tree_cost.js"></script>
+    <script type="text/javascript "src="comp_JS/skill_tree_image.js"></script>
+    <script type="text/javascript "src="comp_JS/skill_tree_name.js"></script>
+    <script type="text/javascript "src="comp_JS/script.js"></script>
     <script>change_hero(); draw(); open_skill_tree(); change_tree(0); hidden_tree_skill();</script>
 </html>

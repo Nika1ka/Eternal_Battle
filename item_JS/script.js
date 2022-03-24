@@ -79,6 +79,7 @@ function create_item_list() {
             function () {
                 show_item_info(this);
         });
+
         switch(item_rarity[i]) {
             case 1:
                 container.style.backgroundColor = "rgba(25, 65, 245, 0.5)";
@@ -110,15 +111,21 @@ function create_item_list() {
         }
         Item_image.style.backgroundImage = "url(items/" + item_eng_name[i] + ")";
 
-
     
         let Item_name = document.createElement("div");
         Item_name.className = "item_name";
         Item_name.innerHTML = item_name[i];
     
+
+
         container.appendChild(Item_image);
         container.appendChild(Item_name);
 
         element.append(container);
+        if((i + 1) % 15 == 0 && i != 89) {
+            let Item_br = document.createElement("div");
+            Item_br.className = "br_element";
+            element.append(Item_br);
+        }
     }
 }
