@@ -16,27 +16,23 @@
     <body>
         <!-- Блок выбора персонажа -->
         <div id = "top_menu">
-            <div class = "hero_portrait" id = "hero_1" title="Берсерк" style = "background-image: url(hero_images/berserk.jpg);" onclick="change_hero(0); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_2" title="Воин" style = "background-image: url(hero_images/warrior.jpg);" onclick="change_hero(1); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_3" title="Некромант" style = "background-image: url(hero_images/necromancer.jpg);" onclick="change_hero(2); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_4" title="Убийца" style = "background-image: url(hero_images/assasin.jpg);" onclick="change_hero(3); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_5" title="Маг" style = "background-image: url(hero_images/mage.jpg);" onclick="change_hero(4); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_6" title="Друид" style = "background-image: url(hero_images/druid.jpg);" onclick="change_hero(5); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_7" title="Охотник" style = "background-image: url(hero_images/hunter.jpg);" onclick="change_hero(6); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_8" title="Демон" style = "background-image: url(hero_images/demon.jpg);" onclick="change_hero(7); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_9" title="Лекарь" style = "background-image: url(hero_images/healer.jpg);" onclick="change_hero(8); change_tree(0)"></div>
+            <div class = "hero_portrait" id = "hero_1" title="Элементаль" style = "background-image: url(companion_images/elemental.jpg);" onclick="change_hero(0); change_tree(0)"></div>
+            <div class = "hero_portrait" id = "hero_2" title="Дракон" style = "background-image: url(companion_images/dragon.jpg);" onclick="change_hero(1); change_tree(0)"></div>
+            <div class = "hero_portrait" id = "hero_3" title="Фея" style = "background-image: url(companion_images/fairy.jpg);" onclick="change_hero(2); change_tree(0)"></div>
+            <div class = "hero_portrait" id = "hero_4" title="Дух воды" style = "background-image: url(companion_images/water_spirit.jpg);" onclick="change_hero(3); change_tree(0)"></div>
+            <div class = "hero_portrait" id = "hero_5" title="Ворон" style = "background-image: url(companion_images/crow.jpg);" onclick="change_hero(4); change_tree(0)"></div>
         </div>
         <table id = "main" style = "width: 100%;">
             <tr>
                 <!-- Базовые характеристики персонажа -->
                 <td id = "left_menu" valign = "top">
-                        <div id = "hero_portrait_left_menu" style = "background-image: url(hero_images/hunter.jpg) no-repeat;" onclick="change_tree(0)"></div>
+                        <div id = "hero_portrait_left_menu" style = "background-image: url(companion_images/hunter.jpg) no-repeat;" onclick="change_tree(0)"></div>
                         <div align = "center">
                             <div class = "hero_skill" onmouseover = "show_skill(1);" onmouseout = "hidden_skill()" onclick="change_tree(1)"></div>
                             <div class = "hero_skill" onmouseover = "show_skill(2);" onmouseout = "hidden_skill()" onclick="change_tree(2)"></div>
                             <div class = "hero_skill" onmouseover = "show_skill(3);" onmouseout = "hidden_skill()" onclick="change_tree(3)"></div>
                         </div>
-                        <h1>Охотник</h1>
+                        <h1></h1>
                         <p id = "attack_type">Дальний бой</p>
                         <table id = "hero_attribute">
                             <tr>
@@ -218,12 +214,12 @@
         <a href = "character.html">Противники</a>
         <a href = "item.html">Предметы</a>     
     </body>
-    <script type="text/javascript "src="comp_JS/skill_tree_about.js"></script>
-    <script type="text/javascript "src="comp_JS/skill_tree_bonus.js"></script>
-    <script type="text/javascript "src="comp_JS/skill_tree_bonus_about.js"></script>
-    <script type="text/javascript "src="comp_JS/skill_tree_cost.js"></script>
-    <script type="text/javascript "src="comp_JS/skill_tree_image.js"></script>
-    <script type="text/javascript "src="comp_JS/skill_tree_name.js"></script>
-    <script type="text/javascript "src="comp_JS/script.js"></script>
+    <script type="text/javascript "src="companion_JS/skill_tree_about.js"></script>
+    <script type="text/javascript "src="companion_JS/skill_tree_bonus.js"></script>
+    <script type="text/javascript "src="companion_JS/skill_tree_bonus_about.js"></script>
+    <script type="text/javascript "src="companion_JS/skill_tree_cost.js"></script>
+    <script type="text/javascript "src="companion_JS/skill_tree_image.js"></script>
+    <script type="text/javascript "src="companion_JS/skill_tree_name.js"></script>
+    <script type="text/javascript "src="companion_JS/script.js"></script>
     <script>change_hero(); draw(); open_skill_tree(); change_tree(0); hidden_tree_skill();</script>
 </html>
