@@ -4,14 +4,6 @@
         <title>"Eternal battle" - Компаньоны</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="style.css" type="text/css">
-        <style>
-            .hero_skill:hover {
-                cursor: pointer;
-            }
-            #hero_portrait_left_menu:hover {
-                cursor: pointer;
-            }
-        </style>
     </head>
     <body>
         <!-- Блок выбора персонажа -->
@@ -30,11 +22,14 @@
                         <div align = "center">
                             <div class = "hero_skill" onmouseover = "show_skill(1);" onmouseout = "hidden_skill()" onclick="change_tree(1)"></div>
                             <div class = "hero_skill" onmouseover = "show_skill(2);" onmouseout = "hidden_skill()" onclick="change_tree(2)"></div>
-                            <div class = "hero_skill" onmouseover = "show_skill(3);" onmouseout = "hidden_skill()" onclick="change_tree(3)"></div>
                         </div>
                         <h1></h1>
                         <p id = "attack_type">Дальний бой</p>
                         <table id = "hero_attribute">
+                            <tr>
+                                <td>Мана:</td>
+                                <td id = "table_mana"></td>
+                            </tr>
                             <tr>
                                 <td>Урон:</td>
                                 <td id = "table_damage"></td>
@@ -46,6 +41,10 @@
                             <tr>
                                 <td>Дальность атаки:</td>
                                 <td id = "table_attack_range"></td>
+                            </tr>
+                            <tr>
+                                <td>Сопротивление эффектам:</td>
+                                <td id = "table_status_resist"></td>
                             </tr>
                             <tr>
                                 <td>Скорость передвижения:</td>
@@ -67,7 +66,7 @@
                 </td>
                 <!-- Сетка навыков выбранного персонажа -->
                 <td id = "main_content" valign = "top">
-                    <canvas id = "myCanvas" width="800px" height="1200px"></canvas>
+                    <canvas id = "myCanvas" width="800px" height="800px"></canvas>
                     <table id = "skill_tree">
                         <tr>
                             <td></td>
@@ -83,93 +82,56 @@
                             <td></td>
                             <td onmouseover = "show_tree_skill(1);" onmouseout = "hidden_tree_skill()"></td>
                             <td onmouseover = "show_tree_skill(2);" onmouseout = "hidden_tree_skill()"></td>
-                            <td></td>
+                            <td onmouseover = "show_tree_skill(3);" onmouseout = "hidden_tree_skill()"></td>
                             <td></td>
                             <td></td>
                         </tr>
                         <tr>
                             <td></td>
                             <td></td>
-                            <td onmouseover = "show_tree_skill(3);" onmouseout = "hidden_tree_skill()"></td>
                             <td onmouseover = "show_tree_skill(4);" onmouseout = "hidden_tree_skill()"></td>
                             <td onmouseover = "show_tree_skill(5);" onmouseout = "hidden_tree_skill()"></td>
                             <td onmouseover = "show_tree_skill(6);" onmouseout = "hidden_tree_skill()"></td>
                             <td></td>
+                            <td></td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td></td>
                             <td></td>
                             <td onmouseover = "show_tree_skill(7);" onmouseout = "hidden_tree_skill()"></td>
                             <td></td>
                             <td onmouseover = "show_tree_skill(8);" onmouseout = "hidden_tree_skill()"></td>
                             <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
                             <td onmouseover = "show_tree_skill(9);" onmouseout = "hidden_tree_skill()"></td>
                             <td></td>
+                        </tr>
+                        <tr>
                             <td onmouseover = "show_tree_skill(10);" onmouseout = "hidden_tree_skill()"></td>
                             <td onmouseover = "show_tree_skill(11);" onmouseout = "hidden_tree_skill()"></td>
                             <td onmouseover = "show_tree_skill(12);" onmouseout = "hidden_tree_skill()"></td>
-                        </tr>
-                        <tr>
-                            <td></td>
                             <td onmouseover = "show_tree_skill(13);" onmouseout = "hidden_tree_skill()"></td>
                             <td onmouseover = "show_tree_skill(14);" onmouseout = "hidden_tree_skill()"></td>
                             <td onmouseover = "show_tree_skill(15);" onmouseout = "hidden_tree_skill()"></td>
-                            <td></td>
                             <td onmouseover = "show_tree_skill(16);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(17);" onmouseout = "hidden_tree_skill()"></td>
                         </tr>
                         <tr>
-                            <td></td>
-                            <td></td>
+                            <td onmouseover = "show_tree_skill(17);" onmouseout = "hidden_tree_skill()"></td>
                             <td onmouseover = "show_tree_skill(18);" onmouseout = "hidden_tree_skill()"></td>
                             <td onmouseover = "show_tree_skill(19);" onmouseout = "hidden_tree_skill()"></td>
+                            <td></td>
                             <td onmouseover = "show_tree_skill(20);" onmouseout = "hidden_tree_skill()"></td>
-                            <td></td>
-                            <td></td>
+                            <td onmouseover = "show_tree_skill(21);" onmouseout = "hidden_tree_skill()"></td>
+                            <td onmouseover = "show_tree_skill(22);" onmouseout = "hidden_tree_skill()"></td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td onmouseover = "show_tree_skill(21);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(22);" onmouseout = "hidden_tree_skill()"></td>
                             <td onmouseover = "show_tree_skill(23);" onmouseout = "hidden_tree_skill()"></td>
+                            <td></td>
                             <td onmouseover = "show_tree_skill(24);" onmouseout = "hidden_tree_skill()"></td>
+                            <td></td>
                             <td onmouseover = "show_tree_skill(25);" onmouseout = "hidden_tree_skill()"></td>
                             <td></td>
                         </tr>
-                        <tr>
-                            <td onmouseover = "show_tree_skill(26);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(27);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(28);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(29);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(30);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(31);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(32);" onmouseout = "hidden_tree_skill()"></td>
-                        </tr>
-                        <tr>
-                            <td onmouseover = "show_tree_skill(33);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(34);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(35);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(36);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(37);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(38);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(39);" onmouseout = "hidden_tree_skill()"></td>
-                        </tr>
-                        <tr>
-                            <td onmouseover = "show_tree_skill(40);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(41);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(42);" onmouseout = "hidden_tree_skill()"></td>
-                            <td></td>
-                            <td onmouseover = "show_tree_skill(43);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(44);" onmouseout = "hidden_tree_skill()"></td>
-                            <td onmouseover = "show_tree_skill(45);" onmouseout = "hidden_tree_skill()"></td>
-                        </tr>
                     </table>
-                
                 </td>
             </tr>
         </table>
@@ -214,12 +176,7 @@
         <a href = "character.html">Противники</a>
         <a href = "item.html">Предметы</a>     
     </body>
-    <script type="text/javascript "src="companion_JS/skill_tree_about.js"></script>
-    <script type="text/javascript "src="companion_JS/skill_tree_bonus.js"></script>
-    <script type="text/javascript "src="companion_JS/skill_tree_bonus_about.js"></script>
-    <script type="text/javascript "src="companion_JS/skill_tree_cost.js"></script>
-    <script type="text/javascript "src="companion_JS/skill_tree_image.js"></script>
-    <script type="text/javascript "src="companion_JS/skill_tree_name.js"></script>
+    <script type="text/javascript "src="companion_JS/info.js"></script>
     <script type="text/javascript "src="companion_JS/script.js"></script>
-    <script>change_hero(); draw(); open_skill_tree(); change_tree(0); hidden_tree_skill();</script>
+    <script>change_hero(); draw(); open_skill_tree(); change_tree(); hidden_tree_skill();</script>
 </html>
