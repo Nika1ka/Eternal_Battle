@@ -356,7 +356,7 @@ function show_tree_skill(skill_number) {
     document.getElementById("skill_tree_name").innerHTML = skill_tree_name[select_hero][select_tree][skill_number];
     document.getElementById("skill_tree_about").innerHTML = skill_tree_about[select_hero][select_tree][skill_number];
     if(skill_number == 15) {
-        document.getElementById("skill_tree_about").innerHTML += "<br><br>Примечание: можно выбрать только одну ветвь развития. Вторая будет заблокирована.<br>Сменить ветку можно за 2000 осколков. После смены способности весь накопленный прогресс будет утерян.";
+        document.getElementById("skill_tree_about").innerHTML += "<br><br>Примечание: можно выбрать только одну ветвь развития. Вторая будет заблокирована.<br>Сменить ветку можно за 4000 осколков. После смены способности весь накопленный прогресс будет переброшен на новую ветвь развития.";
     }
     document.getElementById("skill_tree_bonus").innerHTML = skill_tree_bonus[select_hero][select_tree][skill_number];
     document.getElementById("skill_tree_bonus_about").innerHTML = skill_tree_bonus_about[select_hero][select_tree][skill_number];
