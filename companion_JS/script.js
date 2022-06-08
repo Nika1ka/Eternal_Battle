@@ -11,8 +11,8 @@ var hero_attack_range = [600, 700, 650, 650, 450];
 var hero_status_resist = [0, -5, 2.4, 0, 0];
 
 var hero_speed = [300, 290, 320, 315, 360];
-var hero_wision_day = [300, 350, 300, 300, 450];
-var hero_wision_night = [300, 350, 300, 300, 450];
+var hero_wision_day = [350, 400, 350, 350, 500];
+var hero_wision_night = [250, 300, 250, 250, 400];
 
 var hero_critical_damage = [25, 0, 0, 0, 0];
 var hero_critical_chance = [0, 0, 0, 0, 4];

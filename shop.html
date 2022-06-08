@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>"Eternal battle" - Магазин</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <table id = "main" style = "width: 100%; margin: 0px;">
+            <tr>
+                <!-- Базовые характеристики персонажа -->
+                <td id = "left_menu" valign = "top">
+                    <div id = "item_icon_left_menu"></div>
+                    <h1></h1>
+                    <table id = "hero_attribute">
+
+                    </table>
+                    <div class = "header" id = "item_that_use_text">
+                        Стоимость:
+                    </div>
+                    <div class = "gold_frame">
+                        <div class = "gold_image"></div>
+                        <div id = "gold_sum" style="white-space: pre-wrap;"></div>
+                    </div>
+                </td>
+                <!-- Все возможные предметы -->
+                <td id = "main_content" valign = "top">
+                </td>
+            </tr>
+        </table>
+        <a href = "hero.html">Герои</a>
+        <a href = "companion.html">Компаньоны</a>
+        <a href = "character.html">Противники</a>
+        <a href = "item.html">Предметы</a>
+        <a href = "shop.html">Магазин</a>
+    </body>
+    <script type="text/javascript "src="shop_JS/script.js"></script>
+    <script>create_shop_list(); show_shop_item_info();</script>
+</html>

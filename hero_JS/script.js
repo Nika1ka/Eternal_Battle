@@ -356,7 +356,7 @@ function show_tree_skill(skill_number) {
     document.getElementById("skill_tree_name").innerHTML = skill_tree_name[select_hero][select_tree][skill_number];
     document.getElementById("skill_tree_about").innerHTML = skill_tree_about[select_hero][select_tree][skill_number];
     if(skill_number == 15) {
-        document.getElementById("skill_tree_about").innerHTML += "<br><br>Примечание: можно выбрать только одну ветвь развития. После выбора вторая ветка будет заблокирована.<br>Смена ветви развития бесплатна и переносит весь накопленный прогресс на новую ветвь способности";
+        document.getElementById("skill_tree_about").innerHTML += "<br><br>Примечание: можно выбрать только одну ветвь развития. После выбора вторая ветка будет заблокирована.<br>Смена ветви развития стоит 800 золота и переносит весь накопленный прогресс на новую ветвь способности";
     }
     document.getElementById("skill_tree_bonus").innerHTML = skill_tree_bonus[select_hero][select_tree][skill_number];
     document.getElementById("skill_tree_bonus_about").innerHTML = skill_tree_bonus_about[select_hero][select_tree][skill_number];
