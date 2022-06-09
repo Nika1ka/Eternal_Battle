@@ -1,6 +1,6 @@
 var hero_name_eng = ["berserk", "warrior", "necromancer", "assasin", "mage", "druid", "hunter", "demon", "healer"];
 var companion_name_eng = ["elemental", "dragon", "fairy", "water_spirit", "crow"];
-var craft_name_eng = ["amethyst", "emerald", "ruby", "sapphire", "diamond"];
+var craft_name_eng = ["amethyst", "ruby", "sapphire", "diamond"];
 
 var shop_name = [
     "Сундук необычного сокровища", "Сундук редкого сокровища", "Сундук эпического сокровища",
@@ -20,34 +20,34 @@ var rarity = [ // 0-обычный  1-необычный  2-редкий  3-эп
     4, 4, 4, 5, 5, 5,
     1, 0, 3, 1, 4
 ];
-var shop_item_type = [ //0-кристаллы, 1-золото, 2-предмет, 3-случайный самоцвет, 4-8-компаньон, 10-18-герой
-    [2], [2], [2],
-    [7], [6], [5], [7], [6], [5],
-    [12, 13, 17, 3, 1, 1, 1, 0, 0, 0], [11, 15, 18, 3, 1, 1, 1, 0, 0, 0], [14, 10, 16, 3, 1, 1, 1, 0, 0, 0], [13, 17, 3, 1, 1, 1, 0, 0, 0], [15, 18, 3, 1, 1, 1, 0, 0, 0], [10, 16, 3, 1, 1, 1, 0, 0, 0],
-    [], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [], []
+var shop_item_type = [ //0-кристаллы, 1-золото, 2-изумруды, 3-случайный самоцвет, 4-8-компаньон, 10-18-герой, 20-25 - предмет
+    [22, 21, 20, 3, 3, 3], [23, 22, 21, 3, 3, 3], [24, 23, 22, 3, 3, 3],
+    [7, 0, 0, 0, 0, 0, 0], [6, 0, 0, 0, 0, 0, 0], [5, 0, 0, 0, 0, 0, 0], [7, 0, 0, 0], [6, 0, 0, 0, 0], [5, 0, 0, 0, 0],
+    [12, 13, 17, 3, 1, 1, 0, 0, 0], [11, 15, 18, 3, 1, 1, 0, 0, 0], [14, 10, 16, 3, 1, 1, 0, 0, 0], [13, 17, 3, 1, 1, 0, 0], [15, 18, 3, 1, 1, 0, 0], [10, 16, 3, 1, 1, 0, 0],
+    [3, 3, 3, 1, 1, 1, 0, 0, 0, 2], [0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [3, 3, 3, 3, 2], [3, 3, 3, 3, 3, 2, 2]
 ];
 var shop_item_num = [ // количество
-    [1], [1], [1],
-    [1], [1], [1], [1], [1], [1],
-    [1, 1, 1, 8, 2000, 700, 300, 3000, 2000, 1000], [1, 1, 1, 8, 2000, 700, 300, 3000, 2000, 1000], [1, 1, 1, 8, 2000, 700, 300, 3000, 2000, 1000], [1, 1, 8, 2000, 700, 300, 3000, 2000, 1000], [1, 1, 8, 2000, 700, 300, 3000, 2000, 1000], [1, 1, 8, 2000, 700, 300, 3000, 2000, 1000],
-    [], [20, 50, 100, 200, 500, 1000, 2000], [200, 500, 1000, 1500, 3000, 5000, 10000, 20000], [], []
+    [1, 1, 1, 3, 2, 1], [1, 1, 1, 6, 4, 2], [1, 1, 1, 8, 6, 4],
+    [1, 2500, 1500, 1200, 1000, 600, 200], [1, 4000, 2500, 2000, 1500, 1200, 400], [1, 4000, 2500, 2000, 1500, 1200, 400], [1, 1500, 1000, 500], [1, 3000, 2500, 2000, 1000], [1, 3000, 2500, 2000, 1000],
+    [1, 1, 1, 8, 2000, 750, 3000, 2000, 1000], [1, 1, 1, 8, 2000, 750, 3000, 2000, 1000], [1, 1, 1, 8, 2000, 750, 3000, 2000, 1000], [1, 1, 10, 2500, 1500, 4000, 2500], [1, 1, 10, 2500, 1500, 4000, 2500], [1, 1, 10, 2500, 1500, 4000, 2500],
+    [3, 2, 1, 500, 300, 50, 800, 500, 200, 1], [20, 50, 100, 200, 500, 1000, 2000], [200, 500, 1000, 1500, 3000, 5000, 10000, 20000], [4, 3, 2, 1, 1], [15, 12, 9, 6, 3, 5, 2]
 ];
 var chance = [
-    [30], [30], [30],
-    [20], [20], [20], [20], [20], [20],
-    [8, 6, 6, 25, 5, 10, 10, 15, 5, 10], [8, 6, 6, 25, 5, 10, 10, 15, 5, 10], [8, 6, 6, 25, 5, 10, 10, 15, 5, 10], [10, 10, 25, 5, 10, 10, 15, 5, 10], [10, 10, 25, 5, 10, 10, 15, 5, 10], [10, 10, 25, 5, 10, 10, 15, 5, 10],
-    [], [5, 10, 25, 40, 15, 4, 1], [4, 8, 20, 40, 20, 5, 2, 1], [], []
+    [1, 40, 30, 7, 15, 7], [1, 40, 30, 7, 15, 7], [1, 40, 30, 7, 15, 7],
+    [25, 5, 10, 15, 25, 15, 5], [20, 5, 15, 20, 25, 10, 5], [20, 5, 15, 20, 25, 10, 5], [40, 20, 20, 20], [30, 10, 25, 25, 10], [30, 10, 25, 25, 10],
+    [8, 6, 6, 25, 5, 10, 10, 15, 15], [8, 6, 6, 25, 5, 10, 10, 15, 15], [8, 6, 6, 25, 5, 10, 10, 15, 15], [15, 15, 15, 15, 10, 20, 10], [15, 15, 15, 15, 10, 20, 10], [15, 15, 15, 15, 10, 20, 10],
+    [11, 11, 11, 11, 11, 11, 11, 11, 11, 1], [5, 10, 25, 40, 15, 4, 1], [4, 8, 20, 40, 20, 5, 2, 1], [18, 25, 30, 25, 2], [10, 20, 27, 25, 15, 1, 2]
 ];
 var cost_gold = [
-    300, 700, 1200,
+    350, 800, 1400,
     800, 1500, 1500, 0, 0, 0,
-    1000, 1000, 1000, 0, 0, 0,
-    250, 150, 1000, 400, 1200
+    1200, 1200, 1200, 0, 0, 0,
+    300, 150, 1000, 450, 1300
 ];
 var cost_emerald = [
     0, 0, 0,
-    0, 0, 0, 10, 20, 20,
-    0, 0, 0, 30, 30, 30,
+    0, 0, 0, 6, 12, 12,
+    0, 0, 0, 20, 20, 20,
     0, 0, 0, 0, 0
 ];
 var garant_id_in_type = [ // Номер в списке shop_item_type, отвечающий за гарантированный приз
@@ -80,7 +80,7 @@ function show_shop_item_info(element = document.getElementsByClassName("item")[0
         document.getElementById("emerald_sum").style.display = "none";
     }
 
-        //  Отображения списка бонусов предмета
+        //  Отображения содержимого сундука
     elements_for_remove = document.getElementsByClassName("item_tr");
     for(var i = 0; i < elements_for_remove.length;) {
         elements_for_remove[i].remove();
@@ -98,30 +98,43 @@ function show_shop_item_info(element = document.getElementsByClassName("item")[0
         else if (shop_item_type[select][i] == 1){
             shop_image.style.backgroundImage = "url(Gold.png)";
         }
-        else if (shop_item_type[select][i] == 2) {
-            shop_image.style.height = "23px";
-            shop_image.style.border = "4px solid";
-            shop_image.style.borderRadius = "10%";
-            if(select == 0) {
-                shop_image.style.borderColor = "rgba(25, 65, 245, 0.8)";
-            }
-            else if(select == 1) {
-                shop_image.style.borderColor = "rgba(25, 245, 80, 0.8)";
-            }
-            else if(select == 2) {
-                shop_image.style.borderColor = "rgba(193, 40, 255, 0.8)";
-            }
-
-            shop_image.style.backgroundImage = "url(items/unknow_item.png)";
+        else if (shop_item_type[select][i] == 2){
+            shop_image.style.backgroundImage = "url(emerald.png)";
         }
         else if (shop_item_type[select][i] == 3){
-            shop_image.style.backgroundImage = "url(craft_images/sapphire.png)";
+            shop_image.style.backgroundImage = "url(craft_gem_images/sapphire.png)";
         }
         else if(shop_item_type[select][i] < 10) {
             shop_image.style.backgroundImage = "url(companion_images/" + companion_name_eng[shop_item_type[select][i]-4] + ".jpg)";
         }
         else if(shop_item_type[select][i] < 20) {
             shop_image.style.backgroundImage = "url(hero_images/" + hero_name_eng[shop_item_type[select][i]-10] + ".jpg)";
+        }
+        else if (shop_item_type[select][i] < 26) {
+            shop_image.style.height = "23px";
+            shop_image.style.border = "4px solid";
+            shop_image.style.borderRadius = "10%";
+            switch(shop_item_type[select][i]) {
+                case 21:
+                    shop_image.style.borderColor = "rgba(25, 65, 245, 0.8)";
+                    break;
+                case 22:
+                    shop_image.style.borderColor = "rgba(25, 245, 80, 0.8)";
+                    break;
+                case 23:
+                    shop_image.style.borderColor = "rgba(193, 40, 255, 0.8)";
+                    break;
+                case 24:
+                    shop_image.style.borderColor = "rgba(255, 170, 15, 0.8)";
+                    break;
+                case 25:
+                    shop_image.style.borderColor = "rgba(255, 0, 0, 0.8)";
+                    break;
+                default:
+                    shop_image.style.borderColor = "rgba(100, 100, 100, 0.8)";
+                    break;
+            }
+            shop_image.style.backgroundImage = "url(items/unknow_item.png)";
         }
 
         shop_image.style.backgroundSize = "100%";
