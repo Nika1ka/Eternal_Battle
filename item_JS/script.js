@@ -122,7 +122,7 @@ function create_item_list() {
         container.appendChild(Item_name);
 
         element.append(container);
-        if((i + 1) % 15 == 0 && i != 89) {
+        if((i + 1) % 16 == 0) {
             let Item_br = document.createElement("div");
             Item_br.className = "br_element";
             element.append(Item_br);
