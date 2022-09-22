@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>"Eternal battle" - Предметы</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <table id = "main" style = "width: 100%; margin: 0px;">
+            <tr>
+                <!-- Базовые характеристики персонажа -->
+                <td id = "left_menu" valign = "top">
+                    <div id = "item_icon_left_menu" style = "background-image: url('stars.png');"></div>
+                    <h1></h1>
+                    <table id = "hero_attribute">
+                        
+                    </table>
+                    <table id = "hero_attribute">
+                        <tr>
+                            <td colspan="2"><input type="range" min="0" max="20" value="0" class="slider" id="myRange"></td>
+                            <td id = "slider_lvl">lvl 0</td>
+                        </tr>
+                        <tr>
+                            <td id = "image_1"><div class = "gold_image" style = "background-image: url(crystal.png)"/></td>
+                            <td id = "text_1">100</td>
+                        </tr>
+                        <tr>
+                            <td id = "image_2"><div class = "gold_image" style = "background-image: url(craft_gem_images/universe_crystal_1.png)"/></td>
+                            <td id = "text_2">3</td>
+                        </tr>
+                        <tr>
+                            <td id = "image_3"><div class = "gold_image" style = "background-image: url(craft_gem_images/universe_crystal_2.png)"/></td>
+                            <td id = "text_3">1</td>
+                        </tr>
+                    </table>
+                </td>
+                <!-- Все возможные предметы -->
+                <td id = "main_content" valign = "top">
+                </td>
+            </tr>
+        </table>
+
+        <a href = "hero.html">Герои</a>
+        <a href = "stars.html">Созвездия</a>
+        <a href = "companion.html">Компаньоны</a>
+        <a href = "character.html">Противники</a>
+        <a href = "item.html">Предметы</a>
+        <a href = "shop.html">Магазин</a>
+    </body>
+    <script type="text/javascript "src="star_JS/info.js"></script>
+    <script type="text/javascript "src="star_JS/script.js"></scrip  t>
+    <script>create_item_list(); show_item_info();</script>
+</html>

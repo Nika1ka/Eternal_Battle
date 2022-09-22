@@ -28,7 +28,7 @@ var item_bonus = [
 var item_bonus_num = [
     [45, 0.6], [20, 0.5], [7], [3], [1.2], [30, 0.8], [6], [], [-50, -1.5, 25], [0.9], [], [], [2.4], [30, -4], [], [],
     [90, 1.5, 25, 0.8], [], [12, 4], [10], [], [-12], [-70, -1.1, 30, 5], [5], [-120, 1.1, 8, 8, 10], [100, 2.4], [50, 0.7, 1.5, 7], [12, 4], [-3.8, 12], [30], [35], [30, 14, 0.9],
-    [180, 2.4, 40, 1.2, 15], [8, -10, -5], [280, 3.8, -20], [85, 2.9, 6], [60, 0.8, 3.2, -20, 8], [], [40], [40], [-5, 17], [25, 35, 6], [4.5], [-140, -0.8, 60, 10, -40], [60, 10, 40], [10], [15, 15], [50, 15, 1.9],
+    [180, 2.4, 40, 1.2, 15], [8, -10, -5], [275, 3.8, -20], [85, 2.9, 6], [60, 0.8, 3.2, -20, 8], [], [40], [40], [-5, 17], [25, 35, 6], [4.5], [-140, -0.8, 60, 10, -40], [60, 10, 40], [10], [15, 15], [50, 15, 1.9],
     [1.2], [300, 180], [20], [12, -15, -7], [65, 1.5, 1.5], [100, 3.2, 5, 8, 8], [25, 35, 7], [-150, 1.8, 20, 10, 15, 15], [75, 1, 150, 8, -30, 3.8, 15], [70, 15], [-2, 7], [3, 50], [35], [80, 2.9, 15], [220, 2.5, 40, 2.7, 2.7, 20], [40, -3.8, 7, -15, -15],
     [25, 500, 300], [-90, 55], [50, 7, 15, -15, -8], [200, 1.7, 3.8, 8, 10, 8], [80, 25], [150, -3.8, 20], [40, 40, 12], [30, 45, 10], [750, 15], [350, -40, 13.8, -25], [40, 3.8, 35], [140, 25, 45], [115], [-50, 1.8, 3.2, 18, 25, 10, 15, 20], [], [100, 60, -3.8, 8.9, 10, -15, -15],
     [85, 3, 2.4, 20], [100, 30], [80, 1.5, 350, 9.5, -40, 5, 20], [1200, 25, -40, 20, -35], [-60, 180], [400, 30, 8.9, -20, 30], [560, 4, 60, 7, 3.2, 25], [4, 25, 8], [300, 50, 2.4, 5, 5, 10, 40, 15, 10], [50, 10, 40, -15, -10, 500, 300], [55, 45, 20, 15, 30], [180, 4, 30, 110], [160, 45, -3.8, 20, 60, 12], [-2.5, 15, 20, 5, -25], [-170, 2.9, 3.2, 30, 30, 12, 18, 25], [130, 65, -2.4, 11, 15, -15, -15]
@@ -177,8 +177,8 @@ function show_item_info(element = document.getElementsByClassName("item")[0]) { 
         document.getElementById("gold_sum").innerHTML = cost[select_item] + "   (" + get_total_sum(select_item) + ")";
     }
     document.getElementById("item_icon_left_menu").style.backgroundImage = "url(items/" + item_eng_name[select_item] + ")";
-    document.getElementById("item_icon_left_menu").style.borderColor = get_bolder_color(item_rarity[select_item]);
-    document.getElementById("item_icon_left_menu").style.backgroundColor = get_bolder_color(item_rarity[select_item]);
+    document.getElementById("item_icon_left_menu").style.borderColor = get_border_color(item_rarity[select_item]);
+    document.getElementById("item_icon_left_menu").style.backgroundColor = get_border_color(item_rarity[select_item]);
 
         //  Удаление компонентов крафта
     elements_for_remove = document.getElementById("item_that_need").getElementsByClassName("item_icon");
@@ -197,8 +197,8 @@ function show_item_info(element = document.getElementsByClassName("item")[0]) { 
         new_item.id = "k"+components[select_item][i];
         new_item.style.backgroundImage = "url(items/" + item_eng_name[components[select_item][i]] + ")";
         new_item.title = item_name[components[select_item][i]];
-        new_item.style.borderColor = get_bolder_color(item_rarity[components[select_item][i]]);
-        new_item.style.backgroundColor = get_bolder_color(item_rarity[components[select_item][i]]);
+        new_item.style.borderColor = get_border_color(item_rarity[components[select_item][i]]);
+        new_item.style.backgroundColor = get_border_color(item_rarity[components[select_item][i]]);
         new_item.addEventListener('click',
             function () {
                 show_item_info_for_image(this);
@@ -216,8 +216,8 @@ function show_item_info(element = document.getElementsByClassName("item")[0]) { 
                 new_item.id = "n"+i;
                 new_item.style.backgroundImage = "url(items/" + item_eng_name[i] + ")";
                 new_item.title = item_name[i];
-                new_item.style.borderColor = get_bolder_color(item_rarity[i]);
-                new_item.style.backgroundColor = get_bolder_color(item_rarity[i]);
+                new_item.style.borderColor = get_border_color(item_rarity[i]);
+                new_item.style.backgroundColor = get_border_color(item_rarity[i]);
                 new_item.addEventListener('click',
                     function () {
                         show_item_info_for_image(this);
@@ -239,38 +239,52 @@ function show_item_info(element = document.getElementsByClassName("item")[0]) { 
         elements_for_remove[i].remove();
     }
     for(var i = 0; i < item_bonus[select_item].length; i++) {
-        let container = document.createElement("tr");
-        container.className = "item_tr";
-        let new_item_attribute = document.createElement("td");
-        new_item_attribute.innerHTML = item_bonus[select_item][i] + ":";
-        container.appendChild(new_item_attribute);
+        create_stat_list(item_bonus[select_item][i], item_bonus_num[select_item][i])
+    }
+    document.getElementById("myRange").setAttribute("max", item_rarity[select_item] * 10 + 10);
+    document.getElementById("myRange").value = 0;
+    document.getElementById("slider_lvl").innerHTML = "lvl 0";
+}
 
-        let new_item_number = document.createElement("td");
+function create_stat_list(name, stat) {
+    let container = document.createElement("tr");
+    container.className = "item_tr";
+    let new_item_attribute = document.createElement("td");
+    new_item_attribute.innerHTML = name + ":";
+    new_item_attribute.className = "item_attribute_td";
+    container.appendChild(new_item_attribute);
 
-        if(item_bonus_num[select_item][i] > 0) {
-            new_item_number.innerHTML = "+";
-        }
-        else {
-            new_item_number.innerHTML = "";
-        }
-        if(item_bonus[select_item][i] == "Защита" || item_bonus[select_item][i] == "Сопротивление магии" ||item_bonus[select_item][i] == "Сопротивление эффектам") {
-            new_item_number.innerHTML += item_bonus_num[select_item][i] + " (" + Math.trunc((0.05*item_bonus_num[select_item][i])/(1+0.05*Math.abs(item_bonus_num[select_item][i]))*100) + "%)";
-        }
-        else {
-            new_item_number.innerHTML += item_bonus_num[select_item][i];
-        }
-        if(item_bonus[select_item][i] == "Уворот" || item_bonus[select_item][i] == "Крит урон" || item_bonus[select_item][i] == "Шанс крита" ||
-        item_bonus[select_item][i] == "Урон заклинаний" || item_bonus[select_item][i] == "Вампиризм" ||  item_bonus[select_item][i] == "Магический вампиризм" ||
-        item_bonus[select_item][i] == "Эффективность лечения" || item_bonus[select_item][i] == "Манакост способностей" || item_bonus[select_item][i] == "Перезарядка способностей"
-        || item_bonus[select_item][i] == "Эффективность восстановления маны" || item_bonus[select_item][i] == "Урон по постройкам") {
-            new_item_number.innerHTML += "%"
-        }
-        container.appendChild(new_item_number);
-        document.getElementById("hero_attribute").appendChild(container);
+    let new_item_number = document.createElement("td");
+    new_item_number.className = "item_number_td";
+
+    edit_and_set_text_numbers(name, stat, new_item_number);
+
+    container.appendChild(new_item_number);
+    document.getElementById("hero_attribute").appendChild(container);
+}
+
+function edit_and_set_text_numbers(name, stat, item_number) {
+    if(stat > 0) {
+        item_number.innerHTML = "+";
+    }
+    else {
+        item_number.innerHTML = "";
+    }
+    if(name == "Защита" || name == "Сопротивление магии" ||name == "Сопротивление эффектам") {
+        item_number.innerHTML += Math.round((stat)*100)/100 + " (" + Math.trunc((0.05*stat)/(1+0.05*Math.abs(stat))*100) + "%)";
+    }
+    else {
+        item_number.innerHTML += Math.round((stat)*100)/100;
+    }
+    if(name == "Уворот" || name == "Крит урон" || name == "Шанс крита" ||
+    name == "Урон заклинаний" || name == "Вампиризм" ||  name == "Магический вампиризм" ||
+    name == "Эффективность лечения" || name == "Манакост способностей" || name == "Перезарядка способностей"
+    || name == "Эффективность восстановления маны" || name == "Урон по постройкам") {
+        item_number.innerHTML += "%"
     }
 }
 
-function get_bolder_color(rarity) {
+function get_border_color(rarity) {
     switch(rarity) {
         case 1:
             return "rgba(25, 65, 245, 0.8)";
@@ -284,5 +298,73 @@ function get_bolder_color(rarity) {
             return "rgba(255, 0, 0, 0.8)";
         default:
             return "rgba(110, 110, 110, 0.8)";
+    }
+}
+
+
+var slider = document.getElementById("myRange");
+
+var item_bonus_additional = [ // Дополнительный параметр прокачки
+    ["Здоровье", "Регенерация здоровья"], ["Мана", "Сопротивление магии"], ["Урон"], ["Шанс крита"], ["Защита"], ["Здоровье", "Защита"], ["Мана"], ["Урон"], ["Регенерация здоровья", "Урон"], ["Регенерация маны"], ["Защита"], ["Регенерация здоровья"], ["Сопротивление эффектам"], ["Крит урон"], ["Эффективность лечения"], ["Урон"],
+    ["Здоровье", "Регенерация здоровья", "Сопротивление магии"], ["Регенерация здоровья", "Регенерация маны"], ["Урон", "Шанс крита"], ["Урон"], ["Защита"], ["Скорость атаки"], ["Регенерация здоровья", "Урон", "Вампиризм"], ["Вампиризм"], ["Здоровье", "Урон заклинаний", "Вампиризм", "Магический вампиризм"], ["Здоровье", "Защита"], ["Регенерация маны", "Урон заклинаний"], ["Уворот"], ["Сопротивление магии", "Уворот"], ["Скорость атаки"], ["Скорость"], ["Мана", "Урон"],
+    ["Здоровье", "Регенерация здоровья", "Сопротивление магии"], ["Урон заклинаний", "Перезарядка способностей"], ["Здоровье", "Защита", "Скорость"], ["Мана", "Сопротивление магии"], ["Регенерация здоровья", "Регенерация маны", "Скорость атаки", "Урон заклинаний"], ["Скорость атаки"], ["Урон"], ["Крит урон"], ["Уворот"], ["Урон", "Скорость атаки", "Шанс крита"], ["Мана", "Регенерация маны"], ["Здоровье", "Регенерация здоровья", "Урон", "Вампиризм"], ["Здоровье", "Скорость"], ["Скорость атаки", "Скорость"], ["Урон по постройкам"], ["Мана", "Урон", "Сопротивление магии"],
+    ["Регенерация здоровья", "Регенерация маны", "Эффективность лечения"], ["Дальность обзора (день)", "Дальность обзора (ночь)"], ["Урон заклинаний"], ["Урон заклинаний", "Манакост способностей", "Перезарядка способностей"], ["Мана", "Регенерация маны", "Сопротивление магии"], ["Мана", "Сопротивление магии", "Уворот", "Шанс крита"], ["Урон", "Крит урон", "Шанс крита"], ["Здоровье", "Крит урон", "Вампиризм", "Магический вампиризм"], ["Здоровье", "Мана", "Регенерация маны", "Урон заклинаний"], ["Урон", "Вампиризм"], ["Регенерация маны", "Сопротивление магии"], ["Регенерация здоровья", "Скорость"], ["Скорость"], ["Здоровье", "Защита", "Скорость атаки"], ["Регенерация здоровья", "Защита", "Сопротивление магии", "Эффективность лечения"], ["Урон", "Сопротивление магии", "Эффективность лечения", "Эффективность восстановления маны"],
+    ["Урон заклинаний", "Дальность обзора (день)", "Дальность обзора (ночь)"], ["Мана", "Скорость атаки", "Шанс крита"], ["Крит урон", "Шанс крита", "Урон заклинаний"], ["Мана", "Защита", "Сопротивление магии", "Уворот", "Шанс крита"], ["Урон", "Вампиризм"], ["Здоровье", "Сопротивление магии", "Уворот"], ["Урон", "Скорость атаки", "Шанс крита"], ["Урон", "Крит урон", "Шанс крита"], ["Здоровье", "Регенерация здоровья"], ["Здоровье", "Защита", "Скорость"], ["Сопротивление эффектам", "Крит урон"], ["Здоровье", "Урон", "Скорость"], ["Регенерация здоровья", "Скорость атаки"], ["Здоровье", "Крит урон", "Вампиризм", "Магический вампиризм"], ["Здоровье", "Защита", "Сопротивление эффектам"], ["Мана", "Урон", "Сопротивление магии", "Эффективность лечения"],
+    ["Регенерация маны", "Регенерация здоровья", "Сопротивление магии", "Эффективность восстановления маны"], ["Здоровье", "Урон", "Вампиризм"], ["Здоровье", "Мана", "Регенерация маны", "Сопротивление магии", "Урон заклинаний"], ["Здоровье", "Регенерация здоровья", "Урон", "Защита", "Скорость"], ["Регенерация здоровья", "Мана", "Скорость атаки", "Шанс крита"], ["Здоровье", "Урон", "Защита", "Скорость", "Крит урон"], ["Здоровье", "Регенерация здоровья", "Защита", "Сопротивление магии", "Эффективность лечения"], ["Регенерация здоровья", "Скорость", "Уворот", "Сопротивление эффектам"], ["Мана", "Защита", "Сопротивление магии", "Сопротивление эффектам", "Уворот", "Крит урон", "Шанс крита"], ["Крит урон", "Шанс крита", "Урон заклинаний", "Дальность обзора (день)", "Дальность обзора (ночь)"], ["Урон", "Скорость атаки", "Шанс крита", "Урон по постройкам"], ["Здоровье", "Регенерация здоровья", "Урон", "Скорость"], ["Здоровье", "Урон", "Сопротивление магии", "Уворот", "Крит урон", "Шанс крита"], ["Регенерация маны", "Сопротивление магии", "Сопротивление эффектам", "Эффективность восстановления маны"], ["Здоровье", "Регенерация маны", "Крит урон", "Урон заклинаний", "Вампиризм", "Магический вампиризм"], ["Мана", "Урон", "Сопротивление магии", "Вампиризм", "Эффективность лечения"],
+];
+var item_bonus_num_additional = [ // Дополнительная сумма параметра при прокачке на 1 уровень
+    [3, 0.05], [3, 0.05], [0.5], [0.4], [0.1], [3, 0.05], [5], [0.5], [-0.05, 1], [0.05], [0.1], [0.1], [0.2], [1], [0.5], [0.5],
+    [5, 0.05, 0.05], [0.05, 0.05], [0.5, 0.3], [1], [0.2], [1.5], [-0.05, 1, 0.3], [0.4], [-5, 0.5, 0.5, 0.5], [10, 0.1], [0.05, 0.5], [0.2], [ -0.1, 0.5], [1.5], [0.4], [5, 1],
+    [10, 0.1, 0.05], [0.5, -0.1], [25, 0.1, -1], [10, 0.1], [0.05, 0.1, -0.5, 0.3], [2], [1.2], [2], [0.3], [0.5, 1, 0.2], [5, 0.1], [-3, -0.1, 1.5, 1], [5, 0.6], [1, 0.5], [0.5], [5, 1, 0.1],
+    [0.1, 0.05, 0.4], [10, 5], [0.8], [0.5, -0.1, -0.1], [5, 0.1, 0.1], [5, 0.05, 0.3, 0.3], [1, 2, 0.2], [-5, 1, 0.5, 1], [2, 15, 0.2, 0.5], [1, 0.5], [-0.1, 0.4], [0.15, 0.5], [1], [10, 0.1, 1], [0.2, 0.05, 0.05, 0.2], [3, 0.2, -0.5, -0.5],
+    [0.4, 10, 5], [-10, 3, 0.3], [2, 0.3, 0.4], [5, 0.05, 0.05, 0.3, 0.4], [1.5, 0.5], [15, 0.15, 0.2], [1, 1, 0.4], [1, 2, 0.5], [30, 0.4], [20, 0.7, -2], [0.4, 3], [5, 0.5, 1], [-0.3, 5], [10, 1, 0.5, 1], [10, 0.2, 0.2], [15, 3, 0.1, -0.5],
+    [0.1, 0.2, 0.15, 0.5], [-10, 3, 0.5], [2, 20, 0.3, 0.05, 0.8], [30, 0.4, -1, 0.5, -2], [-0.2, -5, 4, 0.5], [15, 1.5, 0.4, -1, 3], [15, 0.2, 0.1, 0.1, 0.5], [0.2, 0.5, 0.3, 0.1], [10, 0.1, 0.1, 0.2, 0.2, 1, 0.2], [2, 0.2, 1, 5, 5], [1, 1, 0.3, 0.5], [5, 0.1, 1, 1], [10, 1, -0.1, 0.1, 5, 0.5], [-0.2, 1, 0.1, -0.5], [-5, 0.05, 2, 0.5, 0.5, 0.8], [10, 4, 0.05, 0.3, -0.5],
+];
+
+slider.oninput = function() {
+    document.getElementById("slider_lvl").innerHTML = "lvl " + this.value;
+    item_bonus[0][0];
+    if(this.value > 0) {
+        // Создание текста, которого не было изначально
+        for(var i = 0; i < item_bonus_additional[select_item].length; i++) {
+            var flag = true;
+            elements = document.getElementsByClassName("item_attribute_td");
+            for(var j = 0; j < elements.length; j++) {
+                if(elements[j].innerHTML == item_bonus_additional[select_item][i] + ":")
+                    flag = false;
+            }
+            if(flag)
+                create_stat_list(item_bonus_additional[select_item][i], item_bonus_num_additional[select_item][i])
+        }
+        
+        // Изменение параметров во всём тексте
+        for(var i = 0; i < item_bonus_additional[select_item].length; i++) {
+            var flag = true;
+            element_names = document.getElementsByClassName("item_attribute_td");
+            element_nums = document.getElementsByClassName("item_number_td");
+            for(var j = 0; j < element_names.length; j++) {
+                console.log(element_names[j].innerHTML.substr(0, element_names[j].length - 1));
+                if(element_names[j].innerHTML.slice(0, -1) == item_bonus_additional[select_item][i]) {
+
+                    if(j < item_bonus_num[select_item].length)
+                        edit_and_set_text_numbers(element_names[j].innerHTML.slice(0, -1), item_bonus_num[select_item][j] + item_bonus_num_additional[select_item][i] * document.getElementById("myRange").value, element_nums[j]);
+                    else
+                        edit_and_set_text_numbers(element_names[j].innerHTML.slice(0, -1), item_bonus_num_additional[select_item][i] * document.getElementById("myRange").value, element_nums[j]);
+                }
+            }
+        }
+    }
+    else {
+        //  Удаление лишнего крафта
+        elements_for_remove = document.getElementsByClassName("item_tr");
+        element_names = document.getElementsByClassName("item_attribute_td");
+        element_nums = document.getElementsByClassName("item_number_td");
+        for(var i = item_bonus[select_item].length; i < elements_for_remove.length;) {
+            elements_for_remove[i].remove();
+        }
+        // Установка данных по умолчанию (без улучшений)
+        for(var i = 0; i < item_bonus[select_item].length; i++) {
+            edit_and_set_text_numbers(element_names[i].innerHTML.slice(0, -1), item_bonus_num[select_item][i], element_nums[i]);
+        }
     }
 }
