@@ -11,21 +11,51 @@
             #hero_portrait_left_menu:hover {
                 cursor: pointer;
             }
+            select {
+                font-size: 16px;
+                max-width: 180px;
+            }
+            .slider {
+                width: 150px;
+            }
+            .slider_lvl {
+                font-size: 18px;
+            }
+            #hero_items {
+                border-spacing: 0 5px;
+            }
+            .itemImage {
+                border-radius: 2px;
+            }
+            #additional {
+                font-size: 22px;
+                text-align: center;
+                font-weight: bold;
+                display: none;
+            }
+            .additionalParametrs {
+                display: none;
+            }
         </style>
     </head>
     <body>
         <!-- Блок выбора персонажа -->
         <div id = "top_menu">
-            <div class = "hero_portrait" id = "hero_1" title="Берсерк" style = "background-image: url(hero_images/berserk.jpg);" onclick="change_hero(0); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_2" title="Воин" style = "background-image: url(hero_images/warrior.jpg);" onclick="change_hero(1); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_3" title="Некромант" style = "background-image: url(hero_images/necromancer.jpg);" onclick="change_hero(2); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_4" title="Убийца" style = "background-image: url(hero_images/assasin.jpg);" onclick="change_hero(3); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_5" title="Маг" style = "background-image: url(hero_images/mage.jpg);" onclick="change_hero(4); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_6" title="Друид" style = "background-image: url(hero_images/druid.jpg);" onclick="change_hero(5); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_7" title="Охотник" style = "background-image: url(hero_images/hunter.jpg);" onclick="change_hero(6); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_8" title="Демон" style = "background-image: url(hero_images/demon.jpg);" onclick="change_hero(7); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_9" title="Лекарь" style = "background-image: url(hero_images/healer.jpg);" onclick="change_hero(8); change_tree(0)"></div>
-            <div class = "hero_portrait" id = "hero_10" title="Призрак" style = "background-image: url(hero_images/ghost.jpg);" onclick="change_hero(9); change_tree(0)"></div>
+            <div class = "hero_portrait" id = "hero_1" title="Берсерк" style = "background-image: url(hero_images/berserk.jpg);" onclick="change_hero(0); change_tree(0); refreshStatValuesBySelectItemLevel(0)"></div>
+            <div class = "hero_portrait" id = "hero_2" title="Воин" style = "background-image: url(hero_images/warrior.jpg);" onclick="change_hero(1); change_tree(0); refreshStatValuesBySelectItemLevel(0)"></div>
+            <div class = "hero_portrait" id = "hero_3" title="Некромант" style = "background-image: url(hero_images/necromancer.jpg);" onclick="change_hero(2); change_tree(0); refreshStatValuesBySelectItemLevel(0)"></div>
+            <div class = "hero_portrait" id = "hero_4" title="Убийца" style = "background-image: url(hero_images/assasin.jpg);" onclick="change_hero(3); change_tree(0); refreshStatValuesBySelectItemLevel(0)"></div>
+            <div class = "hero_portrait" id = "hero_5" title="Маг" style = "background-image: url(hero_images/mage.jpg);" onclick="change_hero(4); change_tree(0); refreshStatValuesBySelectItemLevel(0)"></div>
+            <div class = "hero_portrait" id = "hero_6" title="Друид" style = "background-image: url(hero_images/druid.jpg);" onclick="change_hero(5); change_tree(0); refreshStatValuesBySelectItemLevel(0)"></div>
+            <div class = "hero_portrait" id = "hero_7" title="Охотник" style = "background-image: url(hero_images/hunter.jpg);" onclick="change_hero(6); change_tree(0); refreshStatValuesBySelectItemLevel(0)"></div>
+            <div class = "hero_portrait" id = "hero_8" title="Демон" style = "background-image: url(hero_images/demon.jpg);" onclick="change_hero(7); change_tree(0); refreshStatValuesBySelectItemLevel(0)"></div>
+            <div class = "hero_portrait" id = "hero_9" title="Лекарь" style = "background-image: url(hero_images/healer.jpg);" onclick="change_hero(8); change_tree(0); refreshStatValuesBySelectItemLevel(0)"></div>
+            <div class = "hero_portrait" id = "hero_10" title="Призрак" style = "background-image: url(hero_images/ghost.jpg);" onclick="change_hero(9); change_tree(0); refreshStatValuesBySelectItemLevel(0)"></div>
+            <div class = "hero_portrait" id = "hero_11" title="Страж" style = "background-image: url(hero_images/elemental.jpg);" onclick="change_hero(10); change_tree(0); refreshStatValuesBySelectItemLevel(0)"></div>
+            <div class = "hero_portrait" id = "hero_12" title="Хранительница пламени" style = "background-image: url(hero_images/flame_keeper.jpg);" onclick="change_hero(11); change_tree(0); refreshStatValuesBySelectItemLevel(0)"></div>
+            <div class = "hero_portrait" id = "hero_13" title="Фея" style = "background-image: url(hero_images/fairy.jpg);" onclick="change_hero(12); change_tree(0); refreshStatValuesBySelectItemLevel(0)"></div>
+            <div class = "hero_portrait" id = "hero_14" title="Водный дух" style = "background-image: url(hero_images/water_spirit.jpg);" onclick="change_hero(13); change_tree(0); refreshStatValuesBySelectItemLevel(0)"></div>
+            <div class = "hero_portrait" id = "hero_15" title="Призыватель" style = "background-image: url(hero_images/summoner.jpg);" onclick="change_hero(14); change_tree(0); refreshStatValuesBySelectItemLevel(0)"></div>
         </div>
         <table id = "main" style = "width: 100%;">
             <tr>
@@ -91,6 +121,101 @@
                             <tr>
                                 <td>Шанс крита:</td>
                                 <td id = "table_critical_chance"></td>
+                            </tr>
+
+                            <tr><td colspan="2" id = "additional">Дополнительные</td></tr>
+                            <tr class = "additionalParametrs">
+                                <td>Урон заклинаний:</td>
+                                <td id = "speel_damage"></td>
+                            </tr>
+                            <tr class = "additionalParametrs">
+                                <td>Вампиризм:</td>
+                                <td id = "vampirism"></td>
+                            </tr>
+                            <tr class = "additionalParametrs">
+                                <td>Магический вампиризм:</td>
+                                <td id = "magic_vampirism"></td>
+                            </tr>
+                            <tr class = "additionalParametrs">
+                                <td>Эффективность лечения:</td>
+                                <td id = "heal_effectiveness"></td>
+                            </tr>
+                            <tr class = "additionalParametrs">
+                                <td>Эффективность восстановления маны:</td>
+                                <td id = "mana_effectiveness"></td>
+                            </tr>
+                            <tr class = "additionalParametrs">
+                                <td>Манакост способностей:</td>
+                                <td id = "spell_manacost"></td>
+                            </tr>
+                            <tr class = "additionalParametrs">
+                                <td>Перезарядка способностей:</td>
+                                <td id = "spell_cd"></td>
+                            </tr>
+                            <tr class = "additionalParametrs">
+                                <td>Урон по постройкам:</td>
+                                <td id = "building_damage"></td>
+                            </tr>
+                        </table>
+                        <table id = "hero_items">
+                            <tr>
+                                <td>
+                                    <select onchange = "refreshDataBySelectIteminItemlist(0)">
+                                    </select>
+                                </td>
+                                <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(0)" disabled></td>
+                                <td class = "slider_lvl">lvl 0</td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select onchange = "refreshDataBySelectIteminItemlist(1)">
+                                    </select>
+                                </td>
+                                <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(1)" disabled></td>
+                                <td class = "slider_lvl">lvl 0</td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select onchange = "refreshDataBySelectIteminItemlist(2)">
+                                    </select>
+                                </td>
+                                <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(2)" disabled></td>
+                                <td class = "slider_lvl">lvl 0</td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select onchange = "refreshDataBySelectIteminItemlist(3)">
+                                    </select>
+                                </td>
+                                <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(3)" disabled></td>
+                                <td class = "slider_lvl">lvl 0</td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select onchange = "refreshDataBySelectIteminItemlist(4)">
+                                    </select>
+                                </td>
+                                <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(4)" disabled></td>
+                                <td class = "slider_lvl">lvl 0</td>
                             </tr>
                         </table>
                 </td>
@@ -252,5 +377,138 @@
     <script type="text/javascript "src="hero_JS/skill_tree_image.js"></script>
     <script type="text/javascript "src="hero_JS/skill_tree_name.js"></script>
     <script type="text/javascript "src="hero_JS/script.js"></script>
-    <script>change_hero(); draw(); open_skill_tree(); change_tree(0); hidden_tree_skill();</script>
+    <script type="text/javascript "src="item_JS/info.js"></script>
+    <script>change_hero(); draw(); open_skill_tree(); change_tree(0); hidden_tree_skill(); createItemListMenu();
+    
+    function refreshStatValuesBySelectItemLevel(id) { // После ввода слайдера
+        document.getElementsByClassName("slider_lvl")[id].innerHTML = "lvl " + document.getElementsByClassName("slider")[id].value;
+
+        // Установка спика параметров героя с учётом экипировки
+        var heal_effectiveness =  getSumOfStat("Эффективность лечения", 100, 1);
+        var mana_effectiveness =  getSumOfStat("Эффективность восстановления маны", 100, 1);
+
+        var helper = getSumOfStat("Регенерация здоровья", hero_hp_regen[select_hero], 2);
+        if(helper < 0)
+            helper = 0;
+        var helper2 = getSumOfStat("Здоровье", hero_hp[select_hero], 1);
+        if(helper2 < 100)
+            helper2 = 100;
+        document.getElementById("table_hp").innerHTML = helper2 + " +" + (helper *(heal_effectiveness/100)).toFixed(2);
+
+        helper =  getSumOfStat("Регенерация маны", hero_mana_regen[select_hero], 2);
+        if(helper < 0)
+            helper = 0;
+        var helper2 = getSumOfStat("Мана", hero_mana[select_hero], 1);
+        if(helper2 < 0)
+            helper2 = 0;
+        document.getElementById("table_mana").innerHTML = helper2 + " +" + (helper *(mana_effectiveness/100)).toFixed(2);
+
+        helper = getSumOfStat("Урон", hero_damage[select_hero], 1);
+        if(helper < 0)
+            helper = 0;
+        document.getElementById("table_damage").innerHTML =  helper + "-" + (Number(helper)+hero_damage_spread[select_hero]).toFixed(1);
+
+        helper = getSumOfStat("Скорость атаки", hero_attack_spead[select_hero], 1);
+        if(helper < 20)
+            helper = 20;
+        else if(helper > 1000)
+            helper = 1000;
+        document.getElementById("table_attack_spead").innerHTML = helper + " (" + (1 / (helper * 0.006)).toFixed(3) + " s.)";
+        document.getElementById("table_attack_range").innerHTML = hero_attack_range[select_hero];
+
+        helper =  getSumOfStat("Защита", hero_phis_resist[select_hero], 2);
+        document.getElementById("table_phis_resist").innerHTML = helper + " (" + Math.trunc((0.05*helper)/(1+0.05*Math.abs(helper))*100) + "%)";
+
+        helper = getSumOfStat("Сопротивление магии", hero_magic_resist[select_hero], 2);
+        document.getElementById("table_magic_resist").innerHTML = helper + " (" + Math.trunc((0.05*helper)/(1+0.05*Math.abs(helper))*100) + "%)";
+        
+        helper = getSumOfStat("Сопротивление эффектам", hero_status_resist[select_hero], 2);
+        document.getElementById("table_status_resist").innerHTML = helper + " (" + Math.trunc((0.05*helper)/(1+0.05*Math.abs(helper))*100) + "%)";
+
+        document.getElementById("table_speed").innerHTML = getSumOfStat("Скорость", hero_speed[select_hero], 1);
+        document.getElementById("table_wision").innerHTML = getSumOfStat("Дальность обзора (день)", hero_wision_day[select_hero], 0) + "/" + getSumOfStat("Дальность обзора (ночь)", hero_wision_night[select_hero], 0);
+        
+        helper = getSumOfStat("Уворот", hero_dodge[select_hero], 1);
+        if(helper > 95)
+            helper = 95;
+        document.getElementById("table_dodge").innerHTML = helper + "%";
+        document.getElementById("table_critical_damage").innerHTML = getSumOfStat("Крит урон", hero_critical_damage[select_hero] + 120, 0) + "%";
+        document.getElementById("table_critical_chance").innerHTML = getSumOfStat("Шанс крита", hero_critical_chance[select_hero] + 5, 1) + "%";
+
+        // Дополнительные параметры
+        document.getElementById("additional").style.display = "none";
+
+        helper = getSumOfStat("Урон заклинаний", 0, 2);
+        if(helper > 0) {
+            document.getElementsByClassName("additionalParametrs")[0].style.display = "table-row";
+            document.getElementById("speel_damage").innerHTML = "+" + helper + "%";
+            document.getElementById("additional").style.display = "table-cell";
+        }
+        else
+            document.getElementsByClassName("additionalParametrs")[0].style.display = "none";
+
+        helper = getSumOfStat("Вампиризм", 0, 1);
+        if(helper > 0) {
+            document.getElementsByClassName("additionalParametrs")[1].style.display = "table-row";
+            document.getElementById("vampirism").innerHTML = "+" + (helper *(heal_effectiveness/100)).toFixed(2) + "%";
+            document.getElementById("additional").style.display = "table-cell";
+        }
+        else
+            document.getElementsByClassName("additionalParametrs")[1].style.display = "none";
+
+        helper = getSumOfStat("Магический вампиризм", 0, 1);
+        if(helper > 0) {
+            document.getElementsByClassName("additionalParametrs")[2].style.display = "table-row";
+            document.getElementById("magic_vampirism").innerHTML = "+" + (helper *(heal_effectiveness/100)).toFixed(2) + "%";
+            document.getElementById("additional").style.display = "table-cell";
+        }
+        else
+            document.getElementsByClassName("additionalParametrs")[2].style.display = "none";
+
+        helper = getSumOfStat("Эффективность лечения", 0, 1);
+        if(helper != 0) {
+            document.getElementsByClassName("additionalParametrs")[3].style.display = "table-row";
+            document.getElementById("heal_effectiveness").innerHTML = "" + (100+Number(helper)) + "%";
+            document.getElementById("additional").style.display = "table-cell";
+        }
+        else
+            document.getElementsByClassName("additionalParametrs")[3].style.display = "none";
+
+        helper = getSumOfStat("Эффективность восстановления маны", 0, 1);
+        if(helper != 0) {
+            document.getElementsByClassName("additionalParametrs")[4].style.display = "table-row";
+            document.getElementById("mana_effectiveness").innerHTML = "" + (100+Number(helper)) + "%";
+            document.getElementById("additional").style.display = "table-cell";
+        }
+        else
+            document.getElementsByClassName("additionalParametrs")[4].style.display = "none";
+
+        helper = getSumOfStat("Манакост способностей", 0, 2);
+        if(helper != 0) {
+            document.getElementsByClassName("additionalParametrs")[5].style.display = "table-row";
+            document.getElementById("spell_manacost").innerHTML = "" + (100+Number(helper)).toFixed(2) + "%";
+            document.getElementById("additional").style.display = "table-cell";
+        }
+        else
+            document.getElementsByClassName("additionalParametrs")[5].style.display = "none";
+
+        helper = getSumOfStat("Перезарядка способностей", 0, 1);
+        if(helper != 0) {
+            document.getElementsByClassName("additionalParametrs")[6].style.display = "table-row";
+            document.getElementById("spell_cd").innerHTML = "" + (100+Number(helper)) + "%";
+            document.getElementById("additional").style.display = "table-cell";
+        }
+        else
+            document.getElementsByClassName("additionalParametrs")[6].style.display = "none";
+
+        helper = getSumOfStat("Урон по постройкам", 0, 1);
+        if(helper != 0) {
+            document.getElementsByClassName("additionalParametrs")[7].style.display = "table-row";
+            document.getElementById("building_damage").innerHTML = "+" + helper + "%";
+            document.getElementById("additional").style.display = "table-cell";
+        }
+        else
+            document.getElementsByClassName("additionalParametrs")[7].style.display = "none";
+    }
+    </script>
 </html>

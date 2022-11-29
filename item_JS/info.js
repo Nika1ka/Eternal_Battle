@@ -305,8 +305,8 @@ function get_border_color(rarity) {
 var slider = document.getElementById("myRange");
 
 var bonus_names = ["Здоровье", "Регенерация здоровья", "Мана", "Регенерация маны", "Урон", "Скорость атаки", "Защита", "Сопротивление магии", "Сопротивление эффектам", 
-"Скорость", "Дальность обзора (день)", "Дальность обзора (ночь)", "Уворот", "Крит урон", "Шанс крита", "Урон заклинаний", "Вампиризм", "Магический вампиризм",
- "Эффективность лечения", "Эффективность восстановления маны", "Манакост способностей", "Перезарядка способностей", "Урон по постройкам"];
+    "Скорость", "Дальность обзора (день)", "Дальность обзора (ночь)", "Уворот", "Крит урон", "Шанс крита", "Урон заклинаний", "Вампиризм", "Магический вампиризм",
+    "Эффективность лечения", "Эффективность восстановления маны", "Манакост способностей", "Перезарядка способностей", "Урон по постройкам"];
 var bonus_nums_per_coef = [16, 0.12, 10, 0.08, 0.6, 1.5, 0.1, 0.1, 0.2, 1, 10, 5, 0.2, 2, 0.5, 0.5, 0.4, 0.5, 0.5, 0.3, -0.3, -0.2, 0.3]
 
 var item_bonus_additional = [ // Дополнительный параметр прокачки
@@ -325,14 +325,6 @@ var item_bonus_num_additional = [ // Дополнительная сумма п�
     [2, 0.6, 0.4], [-1.5, 3, 1], [0.5, 1, 1.5], [0.5, 0.5, 0.5, 1, 0.5], [2, 1], [1, 0.5, 1.5], [1, 1, 1], [1, 1, 1], [1, 2], [1.5, 2, -0.5], [2, 1], [0.5, 0.5, 2], [-1, 4], [0.5, 1, 0.5, 1], [1, 1, 1], [0.5, 2, 0.9, -0.4],
     [1, 0.5, 1, 1], [-1, 3, 1.5], [0.5, 0.5, 1.5, 0.5, 0.5], [2, 2.5, -1, 1, -1], [-1, -1, 4, 1.5], [1, 2, 1, -1.5, 1], [0.5, 1, 0.5, 0.5, 1], [0.5, 0.5, 1.5, 1], [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5], [0.5, 1, 1.5, 0.3, 0.2], [1, 1, 1, 0.5], [0.5, 0.5, 0.5, 2], [1, 1.5, -1, 1.5, 0.5, 1], [-0.5, 3, 2, -1], [-0.5, 0.5, 1, 0.5, 1, 1], [0.5, 2, 0.9, 0.5, -0.4],
 ];
-/*var item_bonus_num_additional = [ // Дополнительная сумма параметра при прокачке на 1 уровень
-    [3, 0.05], [3, 0.05], [0.5], [0.4], [0.1], [3, 0.05], [5], [0.5], [-0.05, 1], [0.05], [0.1], [0.1], [0.2], [1], [0.5], [0.5],
-    [5, 0.05, 0.05], [0.05, 0.05], [0.5, 0.3], [1], [0.2], [1.5], [-0.05, 1, 0.3], [0.4], [-5, 0.5, 0.5, 0.5], [10, 0.1], [0.05, 0.5], [0.2], [ -0.1, 0.5], [1.5], [0.4], [5, 1],
-    [10, 0.1, 0.05], [0.5, -0.1], [25, 0.1, -1], [10, 0.1], [0.05, 0.1, -0.5, 0.3], [2], [1.2], [2], [0.3], [0.5, 1, 0.2], [5, 0.1], [-3, -0.1, 1.5, 1], [5, 0.6], [1, 0.5], [0.5], [5, 1, 0.1],
-    [0.1, 0.05, 0.4], [10, 5], [0.8], [0.5, -0.1, -0.1], [5, 0.1, 0.1], [5, 0.05, 0.3, 0.3], [1, 2, 0.2], [-5, 1, 0.5, 1], [2, 15, 0.2, 0.5], [1, 0.5], [-0.1, 0.4], [0.15, 0.5], [1], [10, 0.1, 1], [0.2, 0.05, 0.05, 0.2], [3, 0.2, -0.5, -0.5],
-    [0.4, 10, 5], [-10, 3, 0.3], [2, 0.3, 0.4], [5, 0.05, 0.05, 0.3, 0.4], [1.5, 0.5], [15, 0.15, 0.2], [1, 1, 0.4], [1, 2, 0.5], [30, 0.4], [20, 0.7, -2], [0.4, 3], [5, 0.5, 1], [-0.3, 5], [10, 1, 0.5, 1], [10, 0.2, 0.2], [15, 3, 0.1, -0.5],
-    [0.1, 0.2, 0.15, 0.5], [-10, 3, 0.5], [2, 20, 0.3, 0.05, 0.8], [30, 0.4, -1, 0.5, -2], [-0.2, -5, 4, 0.5], [15, 1.5, 0.4, -1, 3], [15, 0.2, 0.1, 0.1, 0.5], [0.2, 0.5, 0.3, 0.1], [10, 0.1, 0.1, 0.2, 0.2, 1, 0.2], [2, 0.2, 1, 5, 5], [1, 1, 0.3, 0.5], [5, 0.1, 1, 1], [10, 1, -0.1, 0.1, 5, 0.5], [-0.2, 1, 0.1, -0.5], [-5, 0.05, 2, 0.5, 0.5, 0.8], [10, 4, 0.05, 0.3, -0.5],
-];*/
 
 slider.oninput = function() {
     document.getElementById("slider_lvl").innerHTML = "lvl " + this.value;
@@ -374,7 +366,7 @@ slider.oninput = function() {
         }
     }
     else {
-        //  Удаление лишнего крафта
+        // Удаление лишнего крафта
         elements_for_remove = document.getElementsByClassName("item_tr");
         element_names = document.getElementsByClassName("item_attribute_td");
         element_nums = document.getElementsByClassName("item_number_td");
@@ -386,4 +378,60 @@ slider.oninput = function() {
             edit_and_set_text_numbers(element_names[i].innerHTML.slice(0, -1), item_bonus_num[select_item][i], element_nums[i]);
         }
     }
+}
+
+function createItemListMenu() {
+    for(var i = 0; i < document.getElementsByTagName("select").length; i++) {
+        let new_empty_option = document.createElement("option");
+        new_empty_option.innerHTML = "(Без предмета)";
+        document.getElementsByTagName("select")[i].appendChild(new_empty_option);
+        for(var j = 0; j < item_name.length; j++) {
+            let new_option = document.createElement("option");
+            new_option.style.backgroundColor = get_border_color(item_rarity[j]);
+            new_option.innerHTML = item_name[j];
+            document.getElementsByTagName("select")[i].appendChild(new_option);
+        }
+    }
+}
+
+function getSumOfStat(statName, baseStat, roundNumber = 0) { // Даёт сумму базовой характеристики (получаемое значение) и таких же у предметов
+    var additionalStat = 0;
+    for(var i = 0; i < 5; i++) { // Проход по всем предметам
+        if(document.getElementsByTagName("select")[i].selectedIndex != 0) {
+            var currentItemID = document.getElementsByTagName("select")[i].selectedIndex - 1; // ID предмета (одного из 5-ти экипированных)
+            for(var j = 0; j < item_bonus_additional[currentItemID].length; j++) { // Улучшения предмета
+                if(item_bonus_additional[currentItemID][j] == statName) {
+                    var helper = 0;
+                    bonus_names.find(function(element, index) {
+                        if(item_bonus_additional[currentItemID][j] == element)
+                            helper = index;
+                    });
+                    additionalStat += item_bonus_num_additional[currentItemID][j] * document.getElementsByClassName("slider")[i].value * bonus_nums_per_coef[helper];
+                }
+            }
+            for(var j = 0; j < item_bonus[currentItemID].length; j++) { // Базовые параметры предмета
+                if(item_bonus[currentItemID][j] == statName)
+                    additionalStat += item_bonus_num[currentItemID][j];
+            }
+        }
+    }
+    return (baseStat + additionalStat).toFixed(roundNumber);
+}
+
+function refreshDataBySelectIteminItemlist(id) { // После выбора из выпадающего списка
+    if(document.getElementsByTagName("select")[id].selectedIndex == 0) {
+        document.getElementsByClassName("slider")[id].disabled = true;
+        document.getElementsByClassName("itemImage")[id].src = "items/unknow_item.png";
+        document.getElementsByClassName("slider")[id].setAttribute("max", 0);
+        document.getElementsByClassName("slider")[id].value = 0;
+        document.getElementsByClassName("slider_lvl")[id].innerHTML = "lvl 0";
+    }
+    else{
+        document.getElementsByClassName("slider")[id].disabled = false;
+        document.getElementsByClassName("slider")[id].setAttribute("max", item_rarity[document.getElementsByTagName("select")[id].selectedIndex-1] * 5 + 15);
+        document.getElementsByClassName("itemImage")[id].src = "items/" + item_eng_name[document.getElementsByTagName("select")[id].selectedIndex-1];
+        if(document.getElementsByClassName("slider")[id].value > document.getElementsByClassName("slider")[id].getAttribute("max"))
+            document.getElementsByClassName("slider")[id].value = document.getElementsByClassName("slider")[id].getAttribute("max");
+    }
+    refreshStatValuesBySelectItemLevel(id);
 }

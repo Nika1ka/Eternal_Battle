@@ -1,28 +1,29 @@
 // 0-обычный  1-необычный  2-редкий  3-эпический  4-легендарный  5-божественный
-var hero_name = ["Берсерк", "Воин", "Некромант", "Убийца", "Маг", "Друид", "Охотник", "Демон", "Лекарь", "Призрак"];
-var hero_name_eng = ["berserk", "warrior", "necromancer", "assasin", "mage", "druid", "hunter", "demon", "healer", "ghost"];
-var attack_type = [false, false, true, false, true, true, true, false, true, true];
+var hero_name = ["Берсерк", "Воин", "Некромант", "Убийца", "Маг", "Друид", "Охотник", "Демон", "Лекарь", "Призрак", "Элементаль", "Хранительница пламени", "Фея", "Водный дух", "Призыватель"];
+var hero_name_eng = ["berserk", "warrior", "necromancer", "assasin", "mage", "druid", "hunter", "demon", "healer", "ghost", "elemental", "flame_keeper", "fairy", "water_spirit", "summoner"];
+var hero_rarity = [1, 1, 4, 4, 1, 4, 4, 4, 4, 5, 0, 0, 0, 0, 0];
+var attack_type = [false, false, true, false, true, true, true, false, true, true, false, true, true, true, true];
 
-var hero_hp = [550, 470, 280, 420, 345, 480, 300, 600, 330, 360];
-var hero_hp_regen = [4.6, 3.2, 1.7, 3.2, 2, 2.3, 1.9, 1.1, 1.3, 2.6];
-var hero_mana = [190, 275, 430, 245, 480, 380, 250, 130, 360, 560];
-var hero_mana_regen = [1.3, 1.6, 4.2, 2.3, 5.2, 3, 3.1, 0.8, 2.7, 5.4];
-var hero_damage = [52, 44, 25, 45, 32, 33, 44, 65, 36, 41];
-var hero_damage_spread = [8, 5, 5, 3, 4, 5, 11, 14, 6, 5];
+var hero_hp = [550, 470, 280, 420, 345, 480, 300, 600, 330, 360, 700, 320, 200, 400, 360];
+var hero_hp_regen = [4.6, 3.2, 1.7, 3.2, 2, 2.3, 1.9, 1.1, 1.3, 2.6, 0.8, 1.4, 0.2, 2.8, 2.1];
+var hero_mana = [190, 275, 430, 245, 480, 380, 250, 130, 360, 560, 60, 600, 300, 180, 470];
+var hero_mana_regen = [1.3, 1.6, 4.2, 2.3, 5.2, 3, 3.1, 0.8, 2.7, 5.4, 0.9, 6, 3.1, 4.3, 4.9];
+var hero_damage = [52, 44, 25, 45, 32, 33, 44, 65, 36, 41, 50, 20, 12, 28, 31];
+var hero_damage_spread = [8, 5, 5, 3, 4, 5, 11, 14, 6, 5, 9, 3, 2, 5, 2];
 
-var hero_attack_spead = [140, 125, 105, 140, 120, 110, 125, 115, 120, 110];
-var hero_attack_range = [130, 130, 430, 115, 365, 290, 400, 130, 320, 400];
-var hero_phis_resist = [1.3, 4.5, 0.8, 1.4, 1, 0.9, 0.5, 2.3, 0.2, 3];
-var hero_magic_resist = [3.4, 3.8, 4.7, 2.9, 2, 1.4, 0.5, -5, 1.2, -8.6];
-var hero_status_resist = [0, 0, 0, 0, 0, 0, 0, 0, 1.2, 2.4];
+var hero_attack_spead = [140, 125, 105, 140, 120, 110, 125, 115, 120, 110, 85, 150, 90, 170, 110];
+var hero_attack_range = [130, 130, 430, 115, 365, 290, 400, 130, 320, 400, 130, 400, 420, 380, 360];
+var hero_phis_resist = [1.3, 4.5, 0.8, 1.4, 1, 0.9, 0.5, 2.3, 0.2, 3, 5.2, 0.9, 1.2, 0.2, 1.2];
+var hero_magic_resist = [3.4, 3.8, 4.7, 2.9, 2, 1.4, 0.5, -5, 1.2, -8.6, 0, 3.8, 1.4, 3, 1.2];
+var hero_status_resist = [0, 0, 0, 0, 0, 0, 0, 0, 1.2, 2.4, 0, 0, 0, 0, 0];
 
-var hero_speed = [300, 285, 295, 330, 300, 305, 330, 280, 300, 340];
-var hero_wision_day = [2000, 2000, 1800, 2000, 2000, 2000, 2200, 1500, 1800, 1600];
-var hero_wision_night = [1000, 1000, 1200, 1200, 1000, 1000, 1100, 1800, 900, 1400];
+var hero_speed = [300, 285, 295, 330, 300, 305, 330, 280, 300, 340, 280, 340, 400, 315, 300];
+var hero_wision_day = [2000, 2000, 1800, 2000, 2000, 2000, 2200, 1500, 1800, 1600, 1700, 1800, 1800, 2200, 1700];
+var hero_wision_night = [1000, 1000, 1200, 1200, 1000, 1000, 1100, 1800, 900, 1400, 850, 900, 900, 1000, 1300];
 
-var hero_dodge = [0, 0, 0, 2, 0, 0, 5, 0, 0, 10];
-var hero_critical_damage = [0, 0, 0, 10, 0, 0, 0, 10, 0, -10];
-var hero_critical_chance = [0, 0, 0, 2, 0, 0, 1, 0, 0, -2];
+var hero_dodge = [0, 0, 0, 2, 0, 0, 5, 0, 0, 10, 0, 0, 50, 1, 0];
+var hero_critical_damage = [0, 0, 0, 10, 0, 0, 0, 10, 0, -10, 0, 0, -20, 0, 0];
+var hero_critical_chance = [0, 0, 0, 2, 0, 0, 1, 0, 0, -2, 0, 0, -5, 0, 0];
 
 var select_hero = 0;
 
@@ -36,7 +37,12 @@ var skills_name = [ // Название способности
     ["Ловушка", "Мощный выстрел", "Метка охотника"],
     ["Клинки демона", "Астрал", "Предвестник ночи"],
     ["Рука Бога", "Божественный щит", "Зеркало души"],
-    ["Раскол жизни", "Вытягивание", "Вселение"]
+    ["Раскол жизни", "Вытягивание", "Вселение"],
+    ["Пронзание", "Кристаллизация"],
+    ["Огненное дыхание", "Пламя"],
+    ["Целебный свет", "Благословение фей"],
+    ["Холодное касание", "Ледяные воды"],
+    ["Потустороння волна", "Аура мести"]
 ];
 var skills_info = [ // Описание способности
     ["Увеличивает наносимый и получаемый урон на 20%. На время действия эффекта герой получает 15% вампиризма.", "Бросается в указанную область, нанося урон всем в радисе 75 ед.", "Увеличивает вампиризм и урон на 40%. Каждый побеждённый под действием эффекта враг увеличивает урон на 10% на 15 секунд."],
@@ -48,7 +54,12 @@ var skills_info = [ // Описание способности
     ["Запускает сеть в указанную точку, оглушая всех противников в радиусе 120 на 2.4 секунды.", "После небольшой подготовки запускает стрелу в указанном направлении, нанося урон всем противникам по траектории выстрела. Ширина выстрела: 70 ед.", "Отмечает ближайшего к герою врага в радиусе 500, после чего герой не сможет сменить цель для атаки, но получит +30% урона по этой цели. Если цель погибнет под действием способности - герой получит 2% уклонения и 5% дополнительного урона на 20 секунд.<br>Получение нового эффекта обновляет длительность предыдущих.<br>Эффекты складываются до 9-ти раз.<br>Повторное использование способности отменяет фиксацию цели."],
     ["Пассивно увеличивают урон на 2 ед. и вампиризм на 1%. за каждого убитого противника (не более 15-ти). Активация увеличивает эффекты бонусов втрое, но требует 1% текущего здоровья за каждый эффект. После смерти герой теряет 50% накопленных эффектов способности.", "Изгоняет ближайшего противника в радиусе 230 на 3 секунды. После его возвращения герой получает лечение в размере 50% от полученного целью в астрале урона. Если противников рядом нет - герой восстанавливает 3% здоровья в секунду. Длительность регенерации равна длительности навыка", "Ночью герой получает дополнительные 40% критического урона и 4% шанса крита. Активировав способность герой временно обратит мир во тьму."],
     ["Замедляет скорость передвижения и атаки всех противников в радиусе 250 на 20%. Герой и союзники получают +5 ед. скорости передвижения и атаки за каждого задетого противника.", "Накладывает на себя и союзников в радиусе 300 божественный щит, восстанавливающий 10 ед. здоровья в секунду. Если здоровье полное - восстанавливается мана.", "Наносит урон случайному противнику в радиусе 500 ед. и создаёт его копию. Копия имеет 80% здоровья оригинала и 40% прочих атрибутов.<br>Копия сильного существа или босса на 50% слабее.<br>После окончания действия способности копия исчезает."],
-    ["Увеличивает магическое сопротивление героя на 20% (5 ед.) и наносит всем противникам в радиусе 500 ед. урон в размере 5 ед. + 5% от текущей маны героя. Герой также получает этот урон, но не может от него погибнуть.", "Применяется на выбранного противника. После применения герой замедляется на 120 ед., но будет вытягивать из противника 50 ед. здоровья в секунду и лечится на равное количество здоровья.", "Герой вслеляется в выбранного противника, получая над ним полный контроль. Подконтрольный противник получает 5 ед. дополнительной регенерации здоровья. Если цель способности погибнет раньше окончания еффект - герой получит оглушение на 2 секунды.<br>Вселиться можно во врагов уровня до редкого. Если уровень цели выше - ей будет нанесён урон в размере 400 едениц.<br>На время действия способности герой неуязвим и исчезает с карты.<br>Герой может применять все способности подконтрольной цели."]
+    ["Увеличивает магическое сопротивление героя на 20% (5 ед.) и каждую секунду наносит всем противникам в радиусе 500 ед. урон в размере 5 ед. + 5% от текущей маны героя. Герой также получает этот урон, но не может от него погибнуть.", "Применяется на выбранного противника. После применения герой замедляется на 120 ед., но будет вытягивать из противника 50 ед. здоровья в секунду и лечится на равное количество здоровья.", "Герой вслеляется в выбранного противника, получая над ним полный контроль. Подконтрольный противник получает 5 ед. дополнительной регенерации здоровья. Если цель способности погибнет раньше окончания еффект - герой получит оглушение на 2 секунды.<br>Вселиться можно во врагов уровня до редкого. Если уровень цели выше - ей будет нанесён урон в размере 400 едениц.<br>На время действия способности герой неуязвим и исчезает с карты.<br>Герой может применять все способности подконтрольной цели."],
+    ["Усиливает 3 следующие атаки героя. Каждая атака с шансом 50% ненадолго оглушит цель и нанесёт дополнительный урон.", "Сжигает 10 ед. маны цели и временно снижают её регенерацию на 20%"],
+    ["Поджигает противника, нанося периодический урон, замедляя его на 30 ед. и уменьшая скорость атаки на 70 ед.", "Поджигает область радиусом 200 ед. вокруг героя. Противники в области горения получают переодический урон."],
+    ["Мгновенно исцеляет героя и всех союзников в радиусе 700 ед. на 40 ед.", "Увеличивает скорость атаки героя и всех союзников в радиусе 1000 ед. на 30 ед., а уворот на 8%."],
+    ["Герой накладывает на себя ледяные чары, что позволяет атакам снижать скорость противников на 0.3 секунды на 90 ед.", "Замораживает цель, применяя к ней и всем противникам в радисе 50 ед. оцепинение. Цели способности получают переодический урон."],
+    ["Направляет в точку призрачную волну, которая создаёт иллюзии всех задетых противников. Иллюзии имеют 10% характеристик оригинала и существуют не более 5 секунд.", "Присутсвие героя увеличивает урон союзников в радиусе 500 ед. на 15 ед. Применение способности удваивает бонус на некоторое время."]
 ];
 var skills_damage = [ // Урон
     [0, 110, 0],
@@ -60,7 +71,12 @@ var skills_damage = [ // Урон
     [50, 80, 0],
     [0, 30, 0],
     [0, 0, 160],
-    [5, 50, 400]
+    [5, 50, 400],
+    [13, 0],
+    [4, 15],
+    [0, 0],
+    [0, 30],
+    [5, 0]
 ];
 var skills_damage_type = [ // Тип урона (0 - чистый, 1 - магический, 2 - физический)
     [0, 2, 0],
@@ -72,7 +88,12 @@ var skills_damage_type = [ // Тип урона (0 - чистый, 1 - маги�
     [1, 2, 0],
     [0, 0, 0],
     [0, 0, 0],
-    [1, 1, 0]
+    [1, 1, 0],
+    [0, 0],
+    [1, 1],
+    [0, 0],
+    [0, 1],
+    [1, 0]
 ]
 var skills_duration = [ // Длительность
     [8, 0, 15],
@@ -84,7 +105,12 @@ var skills_duration = [ // Длительность
     [2.4, 0.9, 20],
     [8, 3, 20],
     [3.5, 7, 45],
-    [5, 4, 20]
+    [5, 4, 20],
+    [0.3, 2],
+    [7, 15],
+    [0, 6],
+    [5, 1],
+    [5, 8]
 ];
 var skills_range = [ // Дальность примнения
     [0, 220, 0],
@@ -96,7 +122,12 @@ var skills_range = [ // Дальность примнения
     [280, 350, 0],
     [0, 0, 0],
     [0, 0, 0],
-    [0, 500, 300]
+    [0, 500, 300],
+    [0, 400],
+    [600, 0],
+    [0, 0],
+    [0, 350],
+    [380, 0]
 ];
 var skills_cd = [ // Перезарядка
     [22, 5.5, 55],
@@ -108,7 +139,12 @@ var skills_cd = [ // Перезарядка
     [11, 7.5, 5],
     [22, 14, 150],
     [8, 12, 40],
-    [9, 5, 50]
+    [9, 5, 50],
+    [12, 5],
+    [20, 20],
+    [12, 15],
+    [11, 14],
+    [15, 30]
 ];
 var skills_mana = [ // Манакост
     [20, 25, 65],
@@ -120,12 +156,25 @@ var skills_mana = [ // Манакост
     [40, 55, 25],
     [12, 25, 45],
     [60, 45, 155],
-    [35, 50, 180]
+    [35, 50, 180],
+    [8, 3],
+    [55, 70],
+    [25, 30],
+    [16, 40],
+    [70, 45]
 ];
 
 function change_hero (hero_id = 0) {
+    for(var i = 0; i < document.getElementsByClassName("hero_portrait").length; i++)
+        document.getElementsByClassName("hero_portrait")[i].style.borderColor = get_rarity_for_hero(hero_rarity[i]);
     select_hero = hero_id;
     document.querySelector("h1").innerHTML = hero_name[hero_id];
+
+    for(var i = 0; i < 3; i++)
+        document.getElementsByClassName("hero_skill")[i].style.display = "none";
+    for(var i = 0; i < skills_name[select_hero].length; i++)
+        document.getElementsByClassName("hero_skill")[i].style.display = "inline-block";
+        
     if(attack_type[hero_id]) {
         document.getElementById("attack_type").innerHTML = "Дальний бой";
     }
@@ -151,6 +200,8 @@ function change_hero (hero_id = 0) {
     document.getElementById("table_dodge").innerHTML = hero_dodge[hero_id] + "%";
     document.getElementById("table_critical_damage").innerHTML = (hero_critical_damage[hero_id] + 120) + "%";
     document.getElementById("table_critical_chance").innerHTML = (hero_critical_chance[hero_id] + 5) + "%";
+    open_skill_tree();
+    draw();
 }
 
 function show_skill(skill = 1) {
@@ -215,15 +266,31 @@ var skill_tree = [
     [1, 1, 1, 2, 1, 1, 1],
     [1, 1, 1, 0, 1, 1, 1]
 ];
+var skill_tree2 = [
+    [0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 1, 1, 0, 0, 0],
+    [0, 0, 1, 1, 1, 1, 0],
+    [0, 0, 0, 1, 0, 1, 0],
+    [0, 0, 1, 0, 1, 1, 1],
+    [0, 1, 1, 2, 0, 1, 1],
+    [0, 0, 1, 1, 1, 0, 0],
+    [0, 1, 1, 1, 1, 1, 0],
+    [0, 0, 0, 1, 0, 0, 0],
+    [0, 0, 0, 2, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0]
+];
 
 function open_skill_tree () {
     var table = document.getElementById("skill_tree");
+    select_tree_helper = skill_tree;
+    if(hero_rarity[select_hero] == 0)
+        select_tree_helper = skill_tree2;
     for(i = 0; i < 11; i++) {
         for(j = 0; j < 7; j++) {
-            if(skill_tree[i][j] == 1) {
+            if(select_tree_helper[i][j] == 1) {
                 table.rows[i].cells[j].style.visibility = "visible";
             }
-            else if(skill_tree[i][j] == 2) {
+            else if(select_tree_helper[i][j] == 2) {
                 table.rows[i].cells[j].style.visibility = "visible";
                 table.rows[i].cells[j].style.borderRadius = "50%";
                 table.rows[i].cells[j].style.border = "2px solid rgba(255, 0, 0, 0.8)";
@@ -246,6 +313,7 @@ function draw() {
     context = canvas.getContext("2d");
     context.lineWidth = 2;
     context.strokeStyle = 'black';
+    context.clearRect(0, 0, 1000, 1500);
     
     context.beginPath();
 
@@ -282,43 +350,52 @@ function draw() {
     context.moveTo(const_width*2.5 + padding_width/2, const_height*4.5 + padding_height/2);
     context.lineTo(const_width*2.5 + padding_width/2, const_height*5.5 + padding_height/2);
 
+    context.moveTo(const_width*3.5 + padding_width/2, const_height*5.5 + padding_height/2);
+    context.lineTo(const_width*1.5 + padding_width/2, const_height*7.5 + padding_height/2);
 
     context.moveTo(const_width*3.5 + padding_width/2, const_height*5.5 + padding_height/2);
-    context.lineTo(const_width*0.5 + padding_width/2, const_height*8.5 + padding_height/2);
-
-    context.moveTo(const_width*3.5 + padding_width/2, const_height*5.5 + padding_height/2);
-    context.lineTo(const_width*6.5 + padding_width/2, const_height*8.5 + padding_height/2);
+    context.lineTo(const_width*5.5 + padding_width/2, const_height*7.5 + padding_height/2);
 
     context.moveTo(const_width*2.5 + padding_width/2, const_height*6.5 + padding_height/2);
     context.lineTo(const_width*2.5 + padding_width/2, const_height*7.5 + padding_height/2);
 
     context.moveTo(const_width*4.5 + padding_width/2, const_height*6.5 + padding_height/2);
     context.lineTo(const_width*4.5 + padding_width/2, const_height*7.5 + padding_height/2);
+    
+        // Для редких героев
+    if(hero_rarity[select_hero] != 0) {
 
-    context.moveTo(const_width*0.5 + padding_width/2, const_height*9.5 + padding_height/2);
-    context.lineTo(const_width*0.5 + padding_width/2, const_height*10.5 + padding_height/2);
-    context.moveTo(const_width*6.5 + padding_width/2, const_height*9.5 + padding_height/2);
-    context.lineTo(const_width*6.5 + padding_width/2, const_height*10.5 + padding_height/2);
+        context.moveTo(const_width*1.5 + padding_width/2, const_height*7.5 + padding_height/2);
+        context.lineTo(const_width*0.5 + padding_width/2, const_height*8.5 + padding_height/2);
 
-    context.moveTo(const_width*1.5 + padding_width/2, const_height*8.5 + padding_height/2);
-    context.lineTo(const_width*0.5 + padding_width/2, const_height*9.5 + padding_height/2);
-    context.moveTo(const_width*5.5 + padding_width/2, const_height*8.5 + padding_height/2);
-    context.lineTo(const_width*6.5 + padding_width/2, const_height*9.5 + padding_height/2);
+        context.moveTo(const_width*5.5 + padding_width/2, const_height*7.5 + padding_height/2);
+        context.lineTo(const_width*6.5 + padding_width/2, const_height*8.5 + padding_height/2);
 
-    context.moveTo(const_width*1.5 + padding_width/2, const_height*7.5 + padding_height/2);
-    context.lineTo(const_width*1.5 + padding_width/2, const_height*10.5 + padding_height/2);
-    context.moveTo(const_width*5.5 + padding_width/2, const_height*7.5 + padding_height/2);
-    context.lineTo(const_width*5.5 + padding_width/2, const_height*10.5 + padding_height/2);
+        context.moveTo(const_width*0.5 + padding_width/2, const_height*9.5 + padding_height/2);
+        context.lineTo(const_width*0.5 + padding_width/2, const_height*10.5 + padding_height/2);
+        context.moveTo(const_width*6.5 + padding_width/2, const_height*9.5 + padding_height/2);
+        context.lineTo(const_width*6.5 + padding_width/2, const_height*10.5 + padding_height/2);
 
-    context.moveTo(const_width*1.5 + padding_width/2, const_height*7.5 + padding_height/2);
-    context.lineTo(const_width*2.5 + padding_width/2, const_height*8.5 + padding_height/2);
-    context.moveTo(const_width*5.5 + padding_width/2, const_height*7.5 + padding_height/2);
-    context.lineTo(const_width*4.5 + padding_width/2, const_height*8.5 + padding_height/2);
+        context.moveTo(const_width*1.5 + padding_width/2, const_height*8.5 + padding_height/2);
+        context.lineTo(const_width*0.5 + padding_width/2, const_height*9.5 + padding_height/2);
+        context.moveTo(const_width*5.5 + padding_width/2, const_height*8.5 + padding_height/2);
+        context.lineTo(const_width*6.5 + padding_width/2, const_height*9.5 + padding_height/2);
 
-    context.moveTo(const_width*2.5 + padding_width/2, const_height*8.5 + padding_height/2);
-    context.lineTo(const_width*2.5 + padding_width/2, const_height*10.5 + padding_height/2);
-    context.moveTo(const_width*4.5 + padding_width/2, const_height*8.5 + padding_height/2);
-    context.lineTo(const_width*4.5 + padding_width/2, const_height*10.5 + padding_height/2);
+        context.moveTo(const_width*1.5 + padding_width/2, const_height*7.5 + padding_height/2);
+        context.lineTo(const_width*1.5 + padding_width/2, const_height*10.5 + padding_height/2);
+        context.moveTo(const_width*5.5 + padding_width/2, const_height*7.5 + padding_height/2);
+        context.lineTo(const_width*5.5 + padding_width/2, const_height*10.5 + padding_height/2);
+
+        context.moveTo(const_width*1.5 + padding_width/2, const_height*7.5 + padding_height/2);
+        context.lineTo(const_width*2.5 + padding_width/2, const_height*8.5 + padding_height/2);
+        context.moveTo(const_width*5.5 + padding_width/2, const_height*7.5 + padding_height/2);
+        context.lineTo(const_width*4.5 + padding_width/2, const_height*8.5 + padding_height/2);
+
+        context.moveTo(const_width*2.5 + padding_width/2, const_height*8.5 + padding_height/2);
+        context.lineTo(const_width*2.5 + padding_width/2, const_height*10.5 + padding_height/2);
+        context.moveTo(const_width*4.5 + padding_width/2, const_height*8.5 + padding_height/2);
+        context.lineTo(const_width*4.5 + padding_width/2, const_height*10.5 + padding_height/2);
+    }
 
     context.closePath();
     context.stroke();
@@ -359,26 +436,49 @@ var position_x = [
 ];
 
 function show_tree_skill(skill_number) {
+    var skill_helper = skill_number;
+    if(hero_rarity[select_hero] == 0 && skill_number > 25) {
+        if(skill_helper == 29)
+            skill_helper = 26;
+        else if(skill_helper == 36)
+            skill_helper = 27;
+        else
+            return;
+    }
     document.getElementById("info_block").style.visibility = "visible";
     document.getElementById("info_block").style.top = const_height*(position_y[skill_number]+0.5) + padding_height/2 -40 + "px";
     document.getElementById("info_block").style.left = const_width*(position_x[skill_number]+0.5) + padding_width/2 + 215 + "px";
-    document.getElementById("skill_tree_name").innerHTML = skill_tree_name[select_hero][select_tree][skill_number];
-    document.getElementById("skill_tree_about").innerHTML = skill_tree_about[select_hero][select_tree][skill_number];
-    if(skill_number == 15) {
-        document.getElementById("skill_tree_about").innerHTML += "<br><br>Примечание: можно выбрать только одну ветвь развития. После выбора вторая ветка будет заблокирована.<br>Смена ветви развития стоит 800 золота и переносит весь накопленный прогресс на новую ветвь способности";
-    }
-    document.getElementById("skill_tree_bonus").innerHTML = skill_tree_bonus[select_hero][select_tree][skill_number];
-    document.getElementById("skill_tree_bonus_about").innerHTML = skill_tree_bonus_about[select_hero][select_tree][skill_number];
     document.getElementById("skill_tree_cost").innerHTML = "Стоимость изучения: " + skill_tree_cost[skill_number];
+
+    if(skill_number == 36 && select_tree == 0) {
+        document.getElementById("skill_tree_name").innerHTML = "Широкие карманы";
+        document.getElementById("skill_tree_about").innerHTML = "Добавляет герою ещё один слот для предметов";
+        document.getElementById("skill_tree_bonus").innerHTML = "";
+        document.getElementById("skill_tree_bonus_about").innerHTML = "";
+        return;
+    }
+
+    document.getElementById("skill_tree_name").innerHTML = skill_tree_name[select_hero][select_tree][skill_helper];
+    document.getElementById("skill_tree_about").innerHTML = skill_tree_about[select_hero][select_tree][skill_helper];
+    if(skill_number == 15 && hero_rarity[select_hero] != 0) {
+        document.getElementById("skill_tree_about").innerHTML += "<br><br>Примечание: можно выбрать только одну ветвь развития. После выбора вторая ветка будет заблокирована.<br>Смена ветви развития сбросит весь прогресс и вернёт 80% потраченных осколков";
+    }
+    document.getElementById("skill_tree_bonus").innerHTML = skill_tree_bonus[select_hero][select_tree][skill_helper];
+    document.getElementById("skill_tree_bonus_about").innerHTML = skill_tree_bonus_about[select_hero][select_tree][skill_helper];
 }
 
 function change_tree(tree_number) {
     var table = document.getElementById("skill_tree");
     var counter = 0;
     select_tree = tree_number;
+
+    select_tree_helper = skill_tree;
+    if(hero_rarity[select_hero] == 0)
+        select_tree_helper = skill_tree2;
+
     for(i = 0; i < 11; i++) {
         for(j = 0; j < 7; j++) {
-            if(skill_tree[i][j] == 1) {
+            if(select_tree_helper[i][j] == 1) {
                 if(skill_tree_about[select_hero][tree_number][counter] != "" && skill_tree_image[select_hero][tree_number][counter] == "") {
                     table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/temp.png)";
                 }
@@ -387,7 +487,7 @@ function change_tree(tree_number) {
                 }
                 counter++;
             }
-            else if(skill_tree[i][j] == 2) {
+            else if(select_tree_helper[i][j] == 2) {
                 if(tree_number) {
                     table.rows[i].cells[j].style.backgroundImage = "url(hero_skills/" + hero_name_eng[select_hero] + "_" + tree_number + ".png)";
                 }
@@ -397,5 +497,22 @@ function change_tree(tree_number) {
                 counter++;
             }
         }
+    }
+}
+
+function get_rarity_for_hero(rarity) {
+    switch(rarity) {
+        case 1:
+            return "rgb(25, 65, 245, 0.8)";
+        case 2:
+            return "rgba(25, 245, 80, 0.8)";
+        case 3:
+            return "rgba(193, 40, 255, 0.8)";
+        case 4:
+            return "rgba(255, 170, 15, 0.8)";
+        case 5:
+            return "rgba(255, 0, 0, 0.8)";
+        default:
+            return "rgba(110, 110, 110, 0.8)";
     }
 }
