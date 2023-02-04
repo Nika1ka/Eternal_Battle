@@ -439,9 +439,12 @@
         document.getElementById("additional").style.display = "none";
 
         helper = getSumOfStat("Урон заклинаний", 0, 2);
-        if(helper > 0) {
+        if(helper != 0) {
             document.getElementsByClassName("additionalParametrs")[0].style.display = "table-row";
-            document.getElementById("speel_damage").innerHTML = "+" + helper + "%";
+            if(helper > 0)
+                document.getElementById("speel_damage").innerHTML = "+" + helper + "%";
+            else
+                document.getElementById("speel_damage").innerHTML = helper + "%";
             document.getElementById("additional").style.display = "table-cell";
         }
         else
