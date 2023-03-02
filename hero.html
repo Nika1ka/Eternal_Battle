@@ -378,7 +378,7 @@
     <script type="text/javascript "src="hero_JS/skill_tree_name.js"></script>
     <script type="text/javascript "src="hero_JS/script.js"></script>
     <script type="text/javascript "src="item_JS/info.js"></script>
-    <script>change_hero(); draw(); open_skill_tree(); change_tree(0); hidden_tree_skill(); createItemListMenu();
+    <script>change_hero(); draw(); open_skill_tree(); change_tree(0); hidden_tree_skill(); createItemListMenu(); refreshStatValuesBySelectItemLevel(0);
     
     function refreshStatValuesBySelectItemLevel(id) { // После ввода слайдера
         document.getElementsByClassName("slider_lvl")[id].innerHTML = "lvl " + document.getElementsByClassName("slider")[id].value;
@@ -425,7 +425,10 @@
         helper = getSumOfStat("Сопротивление эффектам", hero_status_resist[select_hero], 2);
         document.getElementById("table_status_resist").innerHTML = helper + " (" + Math.trunc((0.05*helper)/(1+0.05*Math.abs(helper))*100) + "%)";
 
-        document.getElementById("table_speed").innerHTML = getSumOfStat("Скорость", hero_speed[select_hero], 1);
+        helper = getSumOfStat("Скорость", hero_speed[select_hero], 1);
+        if(helper < 50)
+            helper = 50;
+        document.getElementById("table_speed").innerHTML = helper;
         document.getElementById("table_wision").innerHTML = getSumOfStat("Дальность обзора (день)", hero_wision_day[select_hero], 0) + "/" + getSumOfStat("Дальность обзора (ночь)", hero_wision_night[select_hero], 0);
         
         helper = getSumOfStat("Уворот", hero_dodge[select_hero], 1);
