@@ -205,18 +205,27 @@ function change_hero (hero_id = 0) {
 }
 
 function show_skill(skill = 1) {
+    --skill;
     document.getElementById("info_ability").style.visibility = "visible";
-    document.getElementById("ability_name").innerHTML = skills_name[select_hero][skill-1];
+    document.getElementById("ability_name").innerHTML = skills_name[select_hero][skill];
     document.getElementById("info_ability").style.top = 330 + "px";
-    document.getElementById("info_ability").style.left = document.getElementsByClassName("hero_skill")[skill - 1].getBoundingClientRect().left + document.getElementsByClassName("hero_skill")[skill - 1].getBoundingClientRect().width + 10 + "px";
-    document.getElementById("ability_about").innerHTML = skills_info[select_hero][skill-1];
-    if(skills_damage[select_hero][skill-1]) {
+    document.getElementById("info_ability").style.left = document.getElementsByClassName("hero_skill")[skill].getBoundingClientRect().left + document.getElementsByClassName("hero_skill")[skill].getBoundingClientRect().width + 10 + "px";
+    document.getElementById("ability_about").innerHTML = skills_info[select_hero][skill];
+
+    var spell_total_cd = get_spell_total_value("spell_cd", "Перезарядка способности", skills_cd[select_hero][skill], skill);
+        spell_total_mana = get_spell_total_value("spell_manacost", "Манакост способности", skills_mana[select_hero][skill], skill);
+        spell_total_damage = get_spell_total_value("speel_damage", "Урон способности", skills_damage[select_hero][skill], skill);
+        spell_total_duration = get_spell_total_value("-", "Длительность действия", skills_duration[select_hero][skill], skill);
+        spell_total_range = get_spell_total_value("-", "Дальность применения", skills_range[select_hero][skill], skill);
+        //stat_attribute_name, tree_attribute_name, base_value
+
+    if(skills_damage[select_hero][skill]) {
         document.getElementById("hidden1").style.display = "table-row";
-        document.getElementById("ability_damage").innerHTML = "Урон: " + skills_damage[select_hero][skill-1];
-        if(skills_damage_type[select_hero][skill-1] == 1) {
+        document.getElementById("ability_damage").innerHTML = "Урон: " + spell_total_damage;
+        if(skills_damage_type[select_hero][skill] == 1) {
             document.getElementById("ability_damage_type").innerHTML = "Тип: магический";
         }
-        else if(skills_damage_type[select_hero][skill-1] == 2) {
+        else if(skills_damage_type[select_hero][skill] == 2) {
             document.getElementById("ability_damage_type").innerHTML = "Тип: физический";
         }
         else {
@@ -228,25 +237,25 @@ function show_skill(skill = 1) {
         document.getElementById("ability_damage").innerHTML = ""
     }
 
-    if(skills_duration[select_hero][skill-1]) {
+    if(skills_duration[select_hero][skill]) {
         document.getElementById("hidden2").style.display = "table-row";
-        document.getElementById("skills_duration").innerHTML = "Длительность: " + skills_duration[select_hero][skill-1] + " cек.";
+        document.getElementById("skills_duration").innerHTML = "Длительность: " + spell_total_duration + " cек.";
     }
     else {
         document.getElementById("hidden2").style.display = "none";
         document.getElementById("skills_duration").innerHTML = ""
     }
 
-    if(skills_range[select_hero][skill-1]) {
+    if(skills_range[select_hero][skill]) {
         document.getElementById("hidden3").style.display = "table-row";
-        document.getElementById("skills_range").innerHTML = "Дальность примнения: " + skills_range[select_hero][skill-1] + " ед.";
+        document.getElementById("skills_range").innerHTML = "Дальность примнения: " + spell_total_range + " ед.";
     }
     else {
         document.getElementById("hidden3").style.display = "none";
         document.getElementById("skills_range").innerHTML = ""
     }
-    document.getElementById("ability_cd").innerHTML = "Перезарядка: " + skills_cd[select_hero][skill-1] + " cек.";
-    document.getElementById("ability_mana").innerHTML = "Мана: " + skills_mana[select_hero][skill-1];
+    document.getElementById("ability_cd").innerHTML = "Перезарядка: " + spell_total_cd + " cек.";
+    document.getElementById("ability_mana").innerHTML = "Мана: " + spell_total_mana;
 }
 
 function hidden_skill() {
@@ -293,7 +302,7 @@ function open_skill_tree () {
             else if(select_tree_helper[i][j] == 2) {
                 table.rows[i].cells[j].style.visibility = "visible";
                 table.rows[i].cells[j].style.borderRadius = "50%";
-                table.rows[i].cells[j].style.border = "2px solid rgba(255, 0, 0, 0.8)";
+                //table.rows[i].cells[j].style.border = "2px solid rgba(255, 0, 0, 0.8)";
                 table.rows[i].cells[j].style.backgroundColor = "rgba(255, 0, 0, 0.8)";
                 table.rows[i].cells[j].style.margin = "1px";
             }
@@ -458,8 +467,33 @@ function show_tree_skill(skill_number) {
         return;
     }
 
+
+    for(var i = 0; i < skill_tree_attribute_bonus.length; i++) {
+        if(skill_tree_bonus_about[select_hero][select_tree][skill_helper] == skill_tree_attribute_bonus[i]) {
+            document.getElementById("skill_tree_name").innerHTML = skill_tree_attribute_name[i];
+            document.getElementById("skill_tree_about").innerHTML = "";
+
+            var help_symbol1 = "", help_symbol2 = " ед.";
+            if(skill_tree_attribute_base_value[i] > 0)
+                help_symbol1 = "+"
+            
+            if(skill_tree_attribute_bonus[i] == "Защита" || skill_tree_attribute_bonus[i] == "Сопротивление магии" || skill_tree_attribute_bonus[i] == "Сопротивление эффектам" || skill_tree_attribute_bonus[i] == "Уворот" || skill_tree_attribute_bonus[i] == "Крит урон" || 
+                skill_tree_attribute_bonus[i] == "Шанс крита" || skill_tree_attribute_bonus[i] == "Урон заклинаний" || skill_tree_attribute_bonus[i] == "Вампиризм" || skill_tree_attribute_bonus[i] == "Магический вампиризм" || skill_tree_attribute_bonus[i] == "Эффективность лечения" || 
+                skill_tree_attribute_bonus[i] == "Эффективность восстановления маны" || skill_tree_attribute_bonus[i] == "Урон по постройкам" || skill_tree_attribute_bonus[i] == "Манакост способности" || skill_tree_attribute_bonus[i] == "Урон способности" || skill_tree_attribute_bonus[i] == "Дальность применения" ||
+                skill_tree_attribute_bonus[i] == "Перезарядка способности" || skill_tree_attribute_bonus[i] == "Длительность действия")
+                help_symbol2 = "%";
+
+
+            document.getElementById("skill_tree_bonus").innerHTML = help_symbol1 + skill_tree_attribute_base_value[i] * (position_y[skill_number] + 1) + help_symbol2;
+            document.getElementById("skill_tree_bonus_about").innerHTML = skill_tree_attribute_bonus[i];
+            return;
+        }
+    }
+
+
     document.getElementById("skill_tree_name").innerHTML = skill_tree_name[select_hero][select_tree][skill_helper];
     document.getElementById("skill_tree_about").innerHTML = skill_tree_about[select_hero][select_tree][skill_helper];
+
     if(skill_number == 15 && hero_rarity[select_hero] != 0) {
         document.getElementById("skill_tree_about").innerHTML += "<br><br>Примечание: можно выбрать только одну ветвь развития. После выбора вторая ветка будет заблокирована.<br>Смена ветви развития сбросит весь прогресс и вернёт 80% потраченных осколков";
     }
@@ -467,6 +501,7 @@ function show_tree_skill(skill_number) {
     document.getElementById("skill_tree_bonus_about").innerHTML = skill_tree_bonus_about[select_hero][select_tree][skill_helper];
 }
 
+    // Здесь нужно поменять метод установки картинки на фон способности
 function change_tree(tree_number) {
     var table = document.getElementById("skill_tree");
     var counter = 0;
@@ -478,12 +513,26 @@ function change_tree(tree_number) {
 
     for(i = 0; i < 11; i++) {
         for(j = 0; j < 7; j++) {
+            table.rows[i].cells[j].style.borderColor = "black";
+            is_all_tree_upgrade_selected = false;
+            document.getElementById("select_all_tree_upgrade").innerHTML = "Выбрать все";
             if(select_tree_helper[i][j] == 1) {
                 if(skill_tree_about[select_hero][tree_number][counter] != "" && skill_tree_image[select_hero][tree_number][counter] == "") {
                     table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/temp.png)";
                 }
                 else {
-                    table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/" + skill_tree_image[select_hero][tree_number][counter] + ")";
+                    var flag_image = true;
+                    for(var k = 0; k < skill_tree_attribute_bonus.length; k++) {
+                        if(skill_tree_bonus_about[select_hero][select_tree][counter] == skill_tree_attribute_bonus[k]) {
+                            if(skill_tree_attribute_images[k] != "")
+                                table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/" + skill_tree_attribute_images[k] + ".png)";
+                            else
+                                table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/temp.png)";
+                            flag_image = false;
+                        }
+                    }
+                    if(flag_image)
+                        table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/" + skill_tree_image[select_hero][tree_number][counter] + ")";
                 }
                 counter++;
             }
@@ -515,4 +564,76 @@ function get_rarity_for_hero(rarity) {
         default:
             return "rgba(110, 110, 110, 0.8)";
     }
+}
+
+function set_active_skill(skill_id) {
+    var table = document.getElementById("skill_tree");
+    var counter = 0;
+    for(i = 0; i < 11; i++) {
+        for(j = 0; j < 7; j++) {
+            if(table.rows[i].cells[j].style.visibility == "visible")
+                ++counter;
+            if(counter == skill_id+1) {
+                if(table.rows[i].cells[j].style.borderColor == "red") {
+                    table.rows[i].cells[j].style.borderColor = "black";
+                    return;
+                }
+                table.rows[i].cells[j].style.borderColor = "red";
+                return;
+            }
+        }
+    }
+}
+
+var is_all_tree_upgrade_selected = false;
+function select_all_tree_skill() {
+    var table = document.getElementById("skill_tree");
+    for(i = 0; i < 11; i++) {
+        for(j = 0; j < 7; j++) {
+            if(table.rows[i].cells[j].style.visibility == "visible") {
+                if(is_all_tree_upgrade_selected)
+                    table.rows[i].cells[j].style.borderColor = "black";
+                else
+                    table.rows[i].cells[j].style.borderColor = "red";
+            }
+        }
+    }
+    if(is_all_tree_upgrade_selected) {
+        is_all_tree_upgrade_selected = false;
+        document.getElementById("select_all_tree_upgrade").innerHTML = "Выбрать все";
+        return;
+    }
+    is_all_tree_upgrade_selected = true;
+    document.getElementById("select_all_tree_upgrade").innerHTML = "Убрать все";
+    return;
+}
+
+function get_spell_total_value(stat_attribute_id, tree_attribute_name, base_value, selected_skill_tree_id) {
+    var table = document.getElementById("skill_tree");
+    counter = 0;
+    help_value1 = 0;
+    if(select_tree == selected_skill_tree_id+1) {
+        select_tree_helper = skill_tree;
+        tree_attribute_id = skill_tree_attribute_bonus.indexOf(tree_attribute_name);
+        if(hero_rarity[select_hero] == 0)
+            select_tree_helper = skill_tree2;
+        for(i = 0; i < 11; i++) {
+            for(j = 0; j < 7; j++) {
+                if(table.rows[i].cells[j].style.visibility == "visible") {
+                    if(skill_tree_bonus_about[select_hero][select_tree][counter] == tree_attribute_name) {
+                        if(table.rows[i].cells[j].style.borderColor == "red")
+                            help_value1 += skill_tree_attribute_base_value[tree_attribute_id] * (position_y[counter] + 1);
+                    }
+                }
+                if(select_tree_helper[i][j])
+                    ++counter;
+            }
+        }
+    }
+    help_value2 = 100;
+    if(stat_attribute_id != "-") {
+        if(document.getElementById(stat_attribute_id).innerHTML != "")
+            help_value2 = Number((document.getElementById(stat_attribute_id).innerHTML).slice(0, -1));
+    }
+    return (base_value * (1+help_value1 / 100) * (help_value2 / 100)).toFixed(1);
 }
