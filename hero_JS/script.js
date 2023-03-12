@@ -484,7 +484,7 @@ function show_tree_skill(skill_number) {
                 help_symbol2 = "%";
 
 
-            document.getElementById("skill_tree_bonus").innerHTML = help_symbol1 + skill_tree_attribute_base_value[i] * (position_y[skill_number] + 1) + help_symbol2;
+            document.getElementById("skill_tree_bonus").innerHTML = help_symbol1 + (skill_tree_attribute_base_value[i] * (position_y[skill_number] + 1)).toFixed(2) + help_symbol2;
             document.getElementById("skill_tree_bonus_about").innerHTML = skill_tree_attribute_bonus[i];
             return;
         }
@@ -598,6 +598,7 @@ function select_all_tree_skill() {
             }
         }
     }
+    refreshStatValuesBySelectItemLevel();
     if(is_all_tree_upgrade_selected) {
         is_all_tree_upgrade_selected = false;
         document.getElementById("select_all_tree_upgrade").innerHTML = "Выбрать все";
@@ -636,4 +637,27 @@ function get_spell_total_value(stat_attribute_id, tree_attribute_name, base_valu
             help_value2 = Number((document.getElementById(stat_attribute_id).innerHTML).slice(0, -1));
     }
     return (base_value * (1+help_value1 / 100) * (help_value2 / 100)).toFixed(1);
+}
+
+function get_base_attribute_total_value(tree_attribute_name, base_value) {
+    var additionalStat = 0;
+    var table = document.getElementById("skill_tree");
+    counter = 0;
+    select_tree_helper = skill_tree;
+    tree_attribute_id = skill_tree_attribute_bonus.indexOf(tree_attribute_name);
+    if(hero_rarity[select_hero] == 0)
+        select_tree_helper = skill_tree2;
+    for(i = 0; i < 11; i++) {
+        for(j = 0; j < 7; j++) {
+            if(table.rows[i].cells[j].style.visibility == "visible") {
+                if(skill_tree_bonus_about[select_hero][select_tree][counter] == tree_attribute_name) {
+                    if(table.rows[i].cells[j].style.borderColor == "red") 
+                        additionalStat += skill_tree_attribute_base_value[tree_attribute_id] * (position_y[counter] + 1);
+                }
+            }
+            if(select_tree_helper[i][j])
+                ++counter;
+        }
+    }
+    return base_value + additionalStat;
 }
