@@ -313,7 +313,7 @@ function open_skill_tree () {
     }
 }
 
-var padding_width = 35, padding_height = 35,
+var padding_width = 34.4, padding_height = 37.6,
 const_width = 74.91+padding_width, const_height = 74.91+padding_height;
 
 
@@ -455,8 +455,8 @@ function show_tree_skill(skill_number) {
             return;
     }
     document.getElementById("info_block").style.visibility = "visible";
-    document.getElementById("info_block").style.top = const_height*(position_y[skill_number]+0.5) + padding_height/2 -40 + "px";
-    document.getElementById("info_block").style.left = const_width*(position_x[skill_number]+0.5) + padding_width/2 + 215 + "px";
+    document.getElementById("info_block").style.top = const_height*(position_y[skill_number]+0.5) + padding_height/2 - padding_height + "px";
+    document.getElementById("info_block").style.left = const_width*(position_x[skill_number]+0.5) + padding_width/2 + 220 + "px";
     document.getElementById("skill_tree_cost").innerHTML = "Стоимость изучения: " + skill_tree_cost[skill_number];
 
     if(skill_number == 36 && select_tree == 0) {
