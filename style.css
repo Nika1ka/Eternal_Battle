@@ -298,3 +298,17 @@ td #text_1, td #text_2 {
 #select_all_tree_upgrade:hover {
     cursor: pointer;
 }
+
+#ability_type_block {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+}
+.ability_type {
+    display: flex;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 25px;
+    margin: 0px 8px 8px;
+}
