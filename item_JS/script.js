@@ -70,9 +70,16 @@ function hidden_skill() {
     document.getElementById("info_ability").style.visibility = "hidden";
 }
 
+var item_tier = ["Обычные", "Необычные", "Редкие", "Эпические", "Легендарные", "Божественные", "Квестовые"] //0-обычный  1-необычный  2-редкий  3-эпический  4-легендарный  5-божественный
 function create_item_list() {
     let element = document.getElementById("main_content");
     for(var i = 0; i < item_name.length; i++) {
+        if(i % 18 == 0) {
+            let Item_br = document.createElement("div");
+            Item_br.className = "br_element";
+            Item_br.innerHTML = "" + item_tier[(i / 18)] +  " предметы";
+            element.append(Item_br);
+        }
         let container = document.createElement("div");
         container.className = "item";
         container.addEventListener('click',
@@ -122,10 +129,6 @@ function create_item_list() {
         container.appendChild(Item_name);
 
         element.append(container);
-        if((i + 1) % 18 == 0) {
-            let Item_br = document.createElement("div");
-            Item_br.className = "br_element";
-            element.append(Item_br);
-        }
+
     }
 }
