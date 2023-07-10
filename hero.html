@@ -444,6 +444,8 @@
         document.getElementById("table_wision").innerHTML = getSumOfStat("Дальность обзора (день)", get_base_attribute_total_value("Дальность обзора (день)", hero_wision_day[select_hero]), 0) + "/" + getSumOfStat("Дальность обзора (ночь)", get_base_attribute_total_value("Дальность обзора (ночь)", hero_wision_night[select_hero]), 0);
         
         helper = getSumOfStat("Уворот", get_base_attribute_total_value("Уворот", hero_dodge[select_hero]), 1);
+        if(helper < 0)
+            helper = 0;
         document.getElementById("table_dodge").innerHTML = helper.toFixed(1) + "%";
 
 
