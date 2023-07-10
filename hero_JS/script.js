@@ -65,7 +65,7 @@ var skills_info = [ // Описание способности
 var skill_types = [
     ["Бафф", "Урон", "Бафф"],
     ["Бафф", "Урон", "Бафф"],
-    ["Призыв", "Урон Контроль", "Бафф"],
+    ["Призыв", "Призыв Урон Контроль", "Бафф"],
     ["Бафф", "Урон", "Бафф Дебафф"],
     ["Урон Дебафф", "Урон Бафф", "Урон"],
     ["Призыв", "Урон Контроль", "Бафф Призыв"],
@@ -332,8 +332,6 @@ function open_skill_tree () {
             else if(select_tree_helper[i][j] == 2) {
                 table.rows[i].cells[j].style.visibility = "visible";
                 table.rows[i].cells[j].style.borderRadius = "50%";
-                //table.rows[i].cells[j].style.border = "2px solid rgba(255, 0, 0, 0.8)";
-                table.rows[i].cells[j].style.backgroundColor = "rgba(255, 0, 0, 0.8)";
                 table.rows[i].cells[j].style.margin = "1px";
             }
             else {
