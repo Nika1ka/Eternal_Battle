@@ -70,7 +70,7 @@ function hidden_skill() {
     document.getElementById("info_ability").style.visibility = "hidden";
 }
 
-var item_tier = ["Обычные", "Необычные", "Редкие", "Эпические", "Легендарные", "Божественные", "Квестовые"] //0-обычный  1-необычный  2-редкий  3-эпический  4-легендарный  5-божественный
+var item_tier = ["Обычные", "Необычные", "Редкие", "Эпические", "Легендарные", "Божественные", "Уникальные"];
 function create_item_list() {
     let element = document.getElementById("main_content");
     for(var i = 0; i < item_name.length; i++) {
