@@ -161,61 +161,96 @@
                         <table id = "hero_items">
                             <tr>
                                 <td>
-                                    <select onchange = "refreshDataBySelectIteminItemlist(0)">
+                                    <select class = "hero_item_select" onchange = "refreshDataBySelectIteminItemlist(0)">
                                     </select>
                                 </td>
                                 <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
                             </tr>
                             <tr>
-                                <td><input type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(0)" disabled></td>
-                                <td class = "slider_lvl">lvl 0</td>
+                                <td>
+                                    <select class = "hero_item_gem" onchange = "refreshDataBySelectGeminItemlist(0)">
+                                    </select>
+                                </td>
+                                <td><img class = "gemImage" src="items/unknow_item.png" width="40px"></td>
+                            </tr>
+                            <tr>
+                                <td><input style = "margin-bottom: 30px;" type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(0)" disabled></td>
+                                <td class = "slider_lvl" style="vertical-align: top;">lvl 0</td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <select onchange = "refreshDataBySelectIteminItemlist(1)">
+                                    <select class = "hero_item_select" onchange = "refreshDataBySelectIteminItemlist(1)">
                                     </select>
                                 </td>
                                 <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
                             </tr>
                             <tr>
-                                <td><input type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(1)" disabled></td>
-                                <td class = "slider_lvl">lvl 0</td>
+                                <td>
+                                    <select class = "hero_item_gem" onchange = "refreshDataBySelectGeminItemlist(1)">
+                                    </select>
+                                </td>
+                                <td><img class = "gemImage" src="items/unknow_item.png" width="40px"></td>
+                            </tr>
+                            <tr>
+                                <td><input style = "margin-bottom: 30px;" type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(1)" disabled></td>
+                                <td class = "slider_lvl" style="vertical-align: top;">lvl 0</td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <select onchange = "refreshDataBySelectIteminItemlist(2)">
+                                    <select class = "hero_item_select" onchange = "refreshDataBySelectIteminItemlist(2)">
                                     </select>
                                 </td>
                                 <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
                             </tr>
                             <tr>
-                                <td><input type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(2)" disabled></td>
-                                <td class = "slider_lvl">lvl 0</td>
+                                <td>
+                                    <select class = "hero_item_gem" onchange = "refreshDataBySelectGeminItemlist(2)">
+                                    </select>
+                                </td>
+                                <td><img class = "gemImage" src="items/unknow_item.png" width="40px"></td>
+                            </tr>
+                            <tr>
+                                <td><input style = "margin-bottom: 30px;" type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(2)" disabled></td>
+                                <td class = "slider_lvl" style="vertical-align: top;">lvl 0</td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <select onchange = "refreshDataBySelectIteminItemlist(3)">
+                                    <select class = "hero_item_select" onchange = "refreshDataBySelectIteminItemlist(3)">
                                     </select>
                                 </td>
                                 <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
                             </tr>
                             <tr>
-                                <td><input type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(3)" disabled></td>
-                                <td class = "slider_lvl">lvl 0</td>
+                                <td>
+                                    <select class = "hero_item_gem" onchange = "refreshDataBySelectGeminItemlist(3)">
+                                    </select>
+                                </td>
+                                <td><img class = "gemImage" src="items/unknow_item.png" width="40px"></td>
+                            </tr>
+                            <tr>
+                                <td><input style = "margin-bottom: 30px;" type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(3)" disabled></td>
+                                <td class = "slider_lvl" style="vertical-align: top;">lvl 0</td>
                             </tr>
 
                             <tr>
                                 <td>
-                                    <select onchange = "refreshDataBySelectIteminItemlist(4)">
+                                    <select class = "hero_item_select" onchange = "refreshDataBySelectIteminItemlist(4)">
                                     </select>
                                 </td>
                                 <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
                             </tr>
                             <tr>
-                                <td><input type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(4)" disabled></td>
+                                <td>
+                                    <select class = "hero_item_gem" onchange = "refreshDataBySelectGeminItemlist(4)">
+                                    </select>
+                                </td>
+                                <td><img class = "gemImage" src="items/unknow_item.png" width="40px"></td>
+                            </tr>
+                            <tr>
+                                <td><input style = "margin-bottom: 30px;" type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(4)" disabled></td>
                                 <td class = "slider_lvl">lvl 0</td>
                             </tr>
                         </table>
@@ -390,7 +425,7 @@
     <script type="text/javascript "src="hero_JS/skill_tree_name.js"></script>
     <script type="text/javascript "src="hero_JS/script.js"></script>
     <script type="text/javascript "src="item_JS/info.js"></script>
-    <script>change_hero(); draw(); open_skill_tree(); change_tree(0); hidden_tree_skill(); createItemListMenu(); refreshStatValuesBySelectItemLevel(0);
+    <script>change_hero(); draw(); open_skill_tree(); change_tree(0); hidden_tree_skill(); createItemListMenu(); createGemListMenu(); refreshStatValuesBySelectItemLevel(0);
     
     function refreshStatValuesBySelectItemLevel(id = 0) { // После ввода слайдера
         document.getElementsByClassName("slider_lvl")[id].innerHTML = "lvl " + document.getElementsByClassName("slider")[id].value;
