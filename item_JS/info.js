@@ -374,7 +374,8 @@ function createFullItemStatList() {
                 continue;
             }
             for(var j = 0; j < elements.length; j++) {
-                flag = false;
+                if(elements[j].innerHTML == gem_bonus_name[(selectedIndex - 1) % 10][i] + ":")
+                    flag = false;
             }
             if(flag)
                 create_stat_list(gem_bonus_name[(selectedIndex - 1) % 10][i], gem_bonus[(selectedIndex - 1) % 10][i])
