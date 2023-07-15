@@ -11,6 +11,10 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
+            select {
+                font-size: 16px;
+                max-width: 180px;
+            }
         </style>
     </head>
     <body>
@@ -30,11 +34,19 @@
                     </table>
                     <table id = "hero_attribute">
                         <tr>
-                            <td colspan="2"><input type="range" min="0" max="0" value="0" class="slider" id="myRange"></td>
+                            <td colspan="2"><input type="range" min="0" max="0" value="0" class="slider" id="myRange" oninput="createFullItemStatList()"></td>
                             <td id = "slider_lvl">lvl 0</td>
                         </tr>
                     </table>
                     <div class = "header">
+                        Установленный самоцвет:
+                    </div>
+                    <div class = "header">
+                        <select class = "hero_item_gem" onchange = "refreshDataBySelectGeminItemlist(0, false); createFullItemStatList();">
+                        </select>
+                        <img class = "gemImage" src="items/unknow_item.png" width="40px">
+                    </div>
+                    <div class = "header" style="margin-top: 20px;">
                         Компоненты:
                     </div>
                     <div class = "header" id = "item_that_need">
@@ -90,5 +102,5 @@
     </body>
     <script type="text/javascript "src="item_JS/info.js"></script>
     <script type="text/javascript "src="item_JS/script.js"></script>
-    <script>create_item_list(); show_item_info();</script>
+    <script>create_item_list(); createGemListMenu(); show_item_info();</script>
 </html>
