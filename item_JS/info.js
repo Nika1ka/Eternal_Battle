@@ -468,6 +468,7 @@ function getSumOfStat(statName, baseStat, roundNumber = 0) { // Даёт сум�
     if(statName == "Защита" || statName == "Сопротивление магии" || statName == "Сопротивление эффектам" || statName == "Уворот")
         armor_helper_additional_stat = 1 - baseStat / 100;
     for(var i = 0; i < 5; i++) { // Проход по всем предметам
+        var additional_lvl_by_gem = 0;
         if(document.getElementsByClassName("hero_item_select")[i].selectedIndex != 0) {
             if(statName == "Защита" || statName == "Сопротивление магии" || statName == "Сопротивление эффектам" || statName == "Уворот")
                 additionalStat = 0;
@@ -479,12 +480,31 @@ function getSumOfStat(statName, baseStat, roundNumber = 0) { // Даёт сум�
                         if(item_bonus_additional[currentItemID][j] == element)
                             helper = index;
                     });
-                        additionalStat += item_bonus_num_additional[currentItemID][j] * document.getElementsByClassName("slider")[i].value * bonus_nums_per_coef[helper];
+
+                    if(Number(document.getElementsByClassName("hero_item_gem")[i].selectedIndex)) {
+                        if(gem_bonus_name[(Number(document.getElementsByClassName("hero_item_gem")[i].selectedIndex) - 1) % gem_bonus_name.length][0] == "Уровень прокачки предмета")
+                            additional_lvl_by_gem = gem_bonus[(Number(document.getElementsByClassName("hero_item_gem")[i].selectedIndex) - 1) % gem_bonus_name.length][0];
+                        if(Number(document.getElementsByClassName("hero_item_gem")[i].selectedIndex) > gem_bonus_name.length)
+                            additional_lvl_by_gem *= 2;
+                        additionalStat += item_bonus_num_additional[currentItemID][j] * (Number(document.getElementsByClassName("slider")[i].value) + additional_lvl_by_gem) * bonus_nums_per_coef[helper];
+                    }
                 }
             }
             for(var j = 0; j < item_bonus[currentItemID].length; j++) { // Базовые параметры предмета
                 if(item_bonus[currentItemID][j] == statName)
                     additionalStat += item_bonus_num[currentItemID][j];
+            }
+            var gem_number = Number(document.getElementsByClassName("hero_item_gem")[i].selectedIndex) - 1; // Параметры самоцвета
+            if(gem_number != -1) {
+                var gem_quality = 1;
+                if(gem_number >= gem_bonus_name.length) {
+                    gem_quality *= 2;
+                    gem_number -= gem_bonus_name.length;
+                }
+                for(var j = 0; j < gem_bonus_name[gem_number].length; j++) {
+                    if(gem_bonus_name[gem_number][j] == statName)
+                        additionalStat += gem_bonus[gem_number][j] * gem_quality;
+                }
             }
             armor_helper_additional_stat *= (1 - additionalStat / 100);
         }
