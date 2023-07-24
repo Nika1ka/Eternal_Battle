@@ -481,13 +481,14 @@ function getSumOfStat(statName, baseStat, roundNumber = 0) { // Даёт сум�
                             helper = index;
                     });
 
-                    if(Number(document.getElementsByClassName("hero_item_gem")[i].selectedIndex)) {
+                    if(Number(document.getElementsByClassName("hero_item_gem")[i].selectedIndex))
                         if(gem_bonus_name[(Number(document.getElementsByClassName("hero_item_gem")[i].selectedIndex) - 1) % gem_bonus_name.length][0] == "Уровень прокачки предмета")
                             additional_lvl_by_gem = gem_bonus[(Number(document.getElementsByClassName("hero_item_gem")[i].selectedIndex) - 1) % gem_bonus_name.length][0];
-                        if(Number(document.getElementsByClassName("hero_item_gem")[i].selectedIndex) > gem_bonus_name.length)
-                            additional_lvl_by_gem *= 2;
-                        additionalStat += item_bonus_num_additional[currentItemID][j] * (Number(document.getElementsByClassName("slider")[i].value) + additional_lvl_by_gem) * bonus_nums_per_coef[helper];
-                    }
+                            
+                    if(Number(document.getElementsByClassName("hero_item_gem")[i].selectedIndex) > gem_bonus_name.length)
+                        additional_lvl_by_gem *= 2;
+                    additionalStat += item_bonus_num_additional[currentItemID][j] * (Number(document.getElementsByClassName("slider")[i].value) + additional_lvl_by_gem) * bonus_nums_per_coef[helper];
+ 
                 }
             }
             for(var j = 0; j < item_bonus[currentItemID].length; j++) { // Базовые параметры предмета

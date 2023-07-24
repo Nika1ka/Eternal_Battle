@@ -458,7 +458,7 @@
             helper2 = 0;
         document.getElementById("table_mana").innerHTML = helper2 + " +" + (helper *(mana_effectiveness/100)).toFixed(2);
 
-        helper = getSumOfStat("Урон", get_base_attribute_total_value("Урон", hero_damage[select_hero]), 1);
+        helper = Number(getSumOfStat("Урон", get_base_attribute_total_value("Урон", hero_damage[select_hero]), 1)) * ((100 + Number(getSumOfStat("Наносимый урон", get_base_attribute_total_value("Наносимый урон", 0))))*0.01);
         if(helper < 0)
             helper = 0;
         document.getElementById("table_damage").innerHTML =  helper + "-" + (Number(helper)+hero_damage_spread[select_hero]).toFixed(1);
@@ -471,13 +471,16 @@
         document.getElementById("table_attack_spead").innerHTML = helper + " (" + (1 / (helper * 0.006)).toFixed(3) + " s.)";
         document.getElementById("table_attack_range").innerHTML = hero_attack_range[select_hero];
 
-        helper = getSumOfStat("Защита", get_base_attribute_total_value("Защита", hero_phis_resist[select_hero]), 2);
+        helper = 100 - (100 - Number(getSumOfStat("Защита", get_base_attribute_total_value("Защита", hero_phis_resist[select_hero])), 2)) * ((100 + Number(getSumOfStat("Получаемый урон", get_base_attribute_total_value("Наносимый урон", 0))))*0.01);
         document.getElementById("table_phis_resist").innerHTML = helper.toFixed(1) + "%";
 
-        helper = getSumOfStat("Сопротивление магии", get_base_attribute_total_value("Сопротивление магии", hero_magic_resist[select_hero]), 2);
+        
+        helper = 100 - (100 - Number(getSumOfStat("Сопротивление магии", get_base_attribute_total_value("Сопротивление магии", hero_magic_resist[select_hero])), 2)) * ((100 + Number(getSumOfStat("Получаемый урон", get_base_attribute_total_value("Наносимый урон", 0))))*0.01);
+        //helper = getSumOfStat("Сопротивление магии", get_base_attribute_total_value("Сопротивление магии", hero_magic_resist[select_hero]), 2);
         document.getElementById("table_magic_resist").innerHTML = helper.toFixed(1) + "%";
         
-        helper = getSumOfStat("Сопротивление эффектам", get_base_attribute_total_value("Сопротивление эффектам", hero_status_resist[select_hero]), 2);
+        helper = 100 - (100 - Number(getSumOfStat("Сопротивление эффектам", get_base_attribute_total_value("Сопротивление эффектам", hero_status_resist[select_hero])), 2)) * ((100 + Number(getSumOfStat("Получаемый урон", get_base_attribute_total_value("Наносимый урон", 0))))*0.01);
+        //helper = getSumOfStat("Сопротивление эффектам", get_base_attribute_total_value("Сопротивление эффектам", hero_status_resist[select_hero]), 2);
         document.getElementById("table_status_resist").innerHTML = helper.toFixed(1) + "%";
 
         helper = getSumOfStat("Скорость", get_base_attribute_total_value("Скорость", hero_speed[select_hero]), 1);
@@ -505,10 +508,10 @@
         // Дополнительные параметры
         document.getElementById("additional").style.display = "none";
 
-        helper = getSumOfStat("Урон заклинаний", get_base_attribute_total_value("Урон заклинаний", 0), 2);
-        if(helper != 0) {
+        helper = (100 + Number(getSumOfStat("Урон заклинаний", get_base_attribute_total_value("Урон заклинаний", 0), 2))) * ((100 + Number(getSumOfStat("Наносимый урон", get_base_attribute_total_value("Наносимый урон", 0))))*0.01);
+        if(helper != 100) {
             document.getElementsByClassName("additionalParametrs")[0].style.display = "table-row";
-            document.getElementById("speel_damage").innerHTML = "" + (100+Number(helper)) + "%";
+            document.getElementById("speel_damage").innerHTML = "" + helper.toFixed(1) + "%";
             document.getElementById("additional").style.display = "table-cell";
         }
         else {
