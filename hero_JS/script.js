@@ -326,13 +326,8 @@ function open_skill_tree () {
         select_tree_helper = skill_tree2;
     for(i = 0; i < 11; i++) {
         for(j = 0; j < 7; j++) {
-            if(select_tree_helper[i][j] == 1) {
+            if(select_tree_helper[i][j]) {
                 table.rows[i].cells[j].style.visibility = "visible";
-            }
-            else if(select_tree_helper[i][j] == 2) {
-                table.rows[i].cells[j].style.visibility = "visible";
-                table.rows[i].cells[j].style.borderRadius = "50%";
-                table.rows[i].cells[j].style.margin = "1px";
             }
             else {
                 table.rows[i].cells[j].style.visibility = "hidden";
@@ -560,7 +555,7 @@ function change_tree(tree_number) {
                         }
                     }
                     if(flag_image)
-                        table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/" + skill_tree_image[select_hero][tree_number][counter] + ")";
+                        table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/empty_slot.png)";
                 }
                 counter++;
             }
@@ -569,7 +564,7 @@ function change_tree(tree_number) {
                     table.rows[i].cells[j].style.backgroundImage = "url(hero_skills/" + hero_name_eng[select_hero] + "_" + tree_number + ".png)";
                 }
                 else {
-                    table.rows[i].cells[j].style.backgroundImage = "url(hero_images/" + hero_name_eng[select_hero] + ".jpg)";
+                    table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/hero_updrade.png)";
                 }
                 counter++;
             }
@@ -604,9 +599,11 @@ function set_active_skill(skill_id) {
             if(counter == skill_id+1) {
                 if(table.rows[i].cells[j].style.borderColor == "red") {
                     table.rows[i].cells[j].style.borderColor = "black";
+                    table.rows[i].cells[j].style.backgroundImage = table.rows[i].cells[j].style.backgroundImage.split(",")[1];
                     return;
                 }
                 table.rows[i].cells[j].style.borderColor = "red";
+                table.rows[i].cells[j].style.backgroundImage = "url(\"skill_tree/selected.png\"), " + table.rows[i].cells[j].style.backgroundImage.split(",")[0];
                 return;
             }
         }
@@ -619,10 +616,14 @@ function select_all_tree_skill() {
     for(i = 0; i < 11; i++) {
         for(j = 0; j < 7; j++) {
             if(table.rows[i].cells[j].style.visibility == "visible") {
-                if(is_all_tree_upgrade_selected)
+                if(is_all_tree_upgrade_selected) {
                     table.rows[i].cells[j].style.borderColor = "black";
-                else
+                    table.rows[i].cells[j].style.backgroundImage = table.rows[i].cells[j].style.backgroundImage.split(",")[1];
+                }
+                else if (table.rows[i].cells[j].style.backgroundImage.split(",").length != 2) {
                     table.rows[i].cells[j].style.borderColor = "red";
+                    table.rows[i].cells[j].style.backgroundImage = "url(\"skill_tree/selected.png\"), " + table.rows[i].cells[j].style.backgroundImage.split(",")[0];
+                }
             }
         }
     }
