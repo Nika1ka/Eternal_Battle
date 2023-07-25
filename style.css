@@ -29,7 +29,7 @@ body {
 }
 
 #left_menu {
-    width: 250px;
+    width: 270px;
     margin-right: 15px;
     height: 500px;
     background-color: rgb(221, 221, 221);
@@ -82,7 +82,7 @@ h1 {
     padding-bottom: 10px;
 }
 #hero_attribute td:last-child {
-    min-width: 85px;
+    min-width: 95px;
 }
 #table_damage, #table_attack_range, #table_status_resist, #table_wision {
     border-bottom: 1px solid rgb(0, 0, 0);
