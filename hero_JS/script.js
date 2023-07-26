@@ -478,8 +478,8 @@ function show_tree_skill(skill_number) {
             return;
     }
     document.getElementById("info_block").style.visibility = "visible";
-    document.getElementById("info_block").style.top = const_height*(position_y[skill_number]+0.5) + padding_height/2 - padding_height + "px";
-    document.getElementById("info_block").style.left = const_width*(position_x[skill_number]+0.5) + padding_width/2 + 220 + "px";
+    document.getElementById("info_block").style.top = const_height*(position_y[skill_number]+0.5) + padding_height/2 - padding_height + 50 + "px";
+    document.getElementById("info_block").style.left = const_width*(position_x[skill_number]+0.5) + padding_width/2 + 240 + "px";
     document.getElementById("skill_tree_cost").innerHTML = "Стоимость изучения: " + skill_tree_cost[skill_number];
 
     if(skill_number == 36 && select_tree == 0) {
@@ -554,17 +554,24 @@ function change_tree(tree_number) {
                             flag_image = false;
                         }
                     }
-                    if(flag_image)
-                        table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/empty_slot.png)";
+                    if(flag_image) {
+                        if (skill_tree_image[select_hero][select_tree][counter] == "")
+                            table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/empty_slot.png)";
+                        else {
+                            table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/" + skill_tree_image[select_hero][select_tree][counter] + ".png)";
+                            console.log("url(skill_tree/" + skill_tree_image[select_hero][select_tree][counter] + ")");
+                            console.log("url(skill_tree/vamp.png)");
+                        }
+                    }
                 }
                 counter++;
             }
             else if(select_tree_helper[i][j] == 2) {
                 if(tree_number) {
-                    table.rows[i].cells[j].style.backgroundImage = "url(hero_skills/" + hero_name_eng[select_hero] + "_" + tree_number + ".png)";
+                    table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/hero_upgrades/" + hero_name_eng[select_hero] + "_" + tree_number + ".png)";
                 }
                 else {
-                    table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/hero_updrade.png)";
+                    table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/hero_upgrades/" + hero_name_eng[select_hero] + ".png)";
                 }
                 counter++;
             }
