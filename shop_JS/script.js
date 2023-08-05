@@ -1,10 +1,9 @@
 var hero_name_eng = ["berserk", "warrior", "necromancer", "assasin", "mage", "druid", "hunter", "demon", "healer", "ghost"];
-var companion_name_eng = ["elemental", "dragon", "fairy", "water_spirit", "crow"];
-var craft_name_eng = ["amethyst", "ruby", "sapphire", "diamond"];
+var companion_name_eng = ["elemental", "flame_keeper", "fairy", "water_spirit", "summoner"];
 
 var shop_name = [
     "Сундук необычного сокровища", "Сундук редкого сокровища", "Сундук эпического сокровища",
-    "Ледяной сундук", "Сундук феи", "Сундук драконида", "Особый ледяной сундук", "Особый сундук феи", "Особый сундук драконида",
+    "Ледяной сундук", "Сундук феи", "Огненный сундук", "Особый ледяной сундук", "Особый сундук феи", "Особый огненный сундук",
     "Проклятый сундук", "Сундук света", "Сундук доблести", "Особый проклятый сундук", "Особый сундук света", "Особый сундук доблести", "Призрачный сундук",
     "Цветочный сундук", "Малый сундук кристаллов", "Большой сундук кристаллов", "Малый сундук самоцветов", "Большой сундук самоцветов",
     "Рекламный сундук"
@@ -110,10 +109,10 @@ function show_shop_item_info(element = document.getElementsByClassName("item")[0
             shop_image.style.backgroundImage = "url(emerald.png)";
         }
         else if (shop_item_type[select][i] == 3){
-            shop_image.style.backgroundImage = "url(craft_gem_images/sapphire.png)";
+            shop_image.style.backgroundImage = "url(craft_gem_images/ruby.png)";
         }
         else if(shop_item_type[select][i] < 10) {
-            shop_image.style.backgroundImage = "url(companion_images/" + companion_name_eng[shop_item_type[select][i]-4] + ".jpg)";
+            shop_image.style.backgroundImage = "url(hero_images/" + companion_name_eng[shop_item_type[select][i]-4] + ".jpg)";
         }
         else if(shop_item_type[select][i] < 20) {
             shop_image.style.backgroundImage = "url(hero_images/" + hero_name_eng[shop_item_type[select][i]-10] + ".jpg)";

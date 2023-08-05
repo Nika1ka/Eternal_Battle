@@ -21,9 +21,6 @@
             .slider_lvl {
                 font-size: 18px;
             }
-            #hero_items {
-                border-spacing: 0 5px;
-            }
             .itemImage {
                 border-radius: 2px;
             }
@@ -60,208 +57,289 @@
         <table id = "main" style = "width: 100%;">
             <tr>
                 <!-- Базовые характеристики персонажа -->
-                <td id = "left_menu" valign = "top">
-                        <div id = "hero_portrait_left_menu" style = "background-image: url(hero_images/hunter.jpg) no-repeat;" onclick="change_tree(0)"></div>
-                        <div align = "center">
-                            <div class = "hero_skill" onmouseover = "show_skill(1);" onmouseout = "hidden_skill()" onclick="change_tree(1)"></div>
-                            <div class = "hero_skill" onmouseover = "show_skill(2);" onmouseout = "hidden_skill()" onclick="change_tree(2)"></div>
-                            <div class = "hero_skill" onmouseover = "show_skill(3);" onmouseout = "hidden_skill()" onclick="change_tree(3)"></div>
-                        </div>
-                        <h1>Охотник</h1>
-                        <p id = "attack_type">Дальний бой</p>
-                        <p id = "damage_type">Тип урона от атак:  физический</p>
-                        <table id = "hero_attribute">
-                            <tr>
-                                <td>Здоровье:</td>
-                                <td id = "table_hp"></td>
-                            </tr>
-                            <tr>
-                                <td>Мана:</td>
-                                <td id = "table_mana"></td>
-                            </tr>
-                            <tr>
-                                <td>Урон:</td>
-                                <td id = "table_damage"></td>
-                            </tr>
-                            <tr>
-                                <td>Скорость атаки:</td>
-                                <td id = "table_attack_spead"></td>
-                            </tr>
-                            <tr>
-                                <td>Дальность атаки:</td>
-                                <td id = "table_attack_range"></td>
-                            </tr>
-                            <tr>
-                                <td>Защита:</td>
-                                <td id = "table_phis_resist"></td>
-                            </tr>
-                            <tr>
-                                <td>Сопротивление магии:</td>
-                                <td id = "table_magic_resist"></td>
-                            </tr>
-                            <tr>
-                                <td>Сопротивление эффектам:</td>
-                                <td id = "table_status_resist"></td>
-                            </tr>
-                            <tr>
-                                <td>Скорость передвижения:</td>
-                                <td id = "table_speed"></td>
-                            </tr>
-                            <tr>
-                                <td>Дальность обзора (день/ночь):</td>
-                                <td id = "table_wision"></td>
-                            </tr>
-                            <tr>
-                                <td>Уворот:</td>
-                                <td id = "table_dodge"></td>
-                            </tr>
-                            <tr>
-                                <td>Крит урон:</td>
-                                <td id = "table_critical_damage"></td>
-                            </tr>
-                            <tr>
-                                <td>Шанс крита:</td>
-                                <td id = "table_critical_chance"></td>
-                            </tr>
+                <td id="left_menu" valign="top">
+                    <div id="hero_portrait_left_menu" style="background-image: url(hero_images/hunter.jpg) no-repeat;"
+                        onclick="change_tree(0)"></div>
+                    <div align="center">
+                        <div class="hero_skill" onmouseover="show_skill(1);" onmouseout="hidden_skill()" onclick="change_tree(1)"></div>
+                        <div class="hero_skill" onmouseover="show_skill(2);" onmouseout="hidden_skill()" onclick="change_tree(2)"></div>
+                        <div class="hero_skill" onmouseover="show_skill(3);" onmouseout="hidden_skill()" onclick="change_tree(3)"></div>
+                    </div>
+                    <h1>Охотник</h1>
+                    <p id="attack_type">Дальний бой</p>
+                    <p id="damage_type">Тип урона от атак: физический</p>
+                    <table id="hero_attribute">
+                        <tr>
+                            <td>Здоровье:</td>
+                            <td id="table_hp"></td>
+                        </tr>
+                        <tr>
+                            <td>Мана:</td>
+                            <td id="table_mana"></td>
+                        </tr>
+                        <tr>
+                            <td>Урон:</td>
+                            <td id="table_damage"></td>
+                        </tr>
+                        <tr>
+                            <td>Скорость атаки:</td>
+                            <td id="table_attack_spead"></td>
+                        </tr>
+                        <tr>
+                            <td>Дальность атаки:</td>
+                            <td id="table_attack_range"></td>
+                        </tr>
+                        <tr>
+                            <td>Защита:</td>
+                            <td id="table_phis_resist"></td>
+                        </tr>
+                        <tr>
+                            <td>Сопротивление магии:</td>
+                            <td id="table_magic_resist"></td>
+                        </tr>
+                        <tr>
+                            <td>Сопротивление эффектам:</td>
+                            <td id="table_status_resist"></td>
+                        </tr>
+                        <tr>
+                            <td>Скорость передвижения:</td>
+                            <td id="table_speed"></td>
+                        </tr>
+                        <tr>
+                            <td>Дальность обзора (день/ночь):</td>
+                            <td id="table_wision"></td>
+                        </tr>
+                        <tr>
+                            <td>Уворот:</td>
+                            <td id="table_dodge"></td>
+                        </tr>
+                        <tr>
+                            <td>Крит урон:</td>
+                            <td id="table_critical_damage"></td>
+                        </tr>
+                        <tr>
+                            <td>Шанс крита:</td>
+                            <td id="table_critical_chance"></td>
+                        </tr>
+                
+                        <tr>
+                            <td colspan="2" id="additional">Дополнительные</td>
+                        </tr>
+                        <tr class="additionalParametrs">
+                            <td>Урон заклинаний:</td>
+                            <td id="speel_damage"></td>
+                        </tr>
+                        <tr class="additionalParametrs">
+                            <td>Вампиризм:</td>
+                            <td id="vampirism"></td>
+                        </tr>
+                        <tr class="additionalParametrs">
+                            <td>Магический вампиризм:</td>
+                            <td id="magic_vampirism"></td>
+                        </tr>
+                        <tr class="additionalParametrs">
+                            <td>Эффективность лечения:</td>
+                            <td id="heal_effectiveness"></td>
+                        </tr>
+                        <tr class="additionalParametrs">
+                            <td>Эффективность восстановления маны:</td>
+                            <td id="mana_effectiveness"></td>
+                        </tr>
+                        <tr class="additionalParametrs">
+                            <td>Манакост способностей:</td>
+                            <td id="spell_manacost"></td>
+                        </tr>
+                        <tr class="additionalParametrs">
+                            <td>Перезарядка способностей:</td>
+                            <td id="spell_cd"></td>
+                        </tr>
+                        <tr class="additionalParametrs">
+                            <td>Урон по постройкам:</td>
+                            <td id="building_damage"></td>
+                        </tr>
+                        <tr class="additionalParametrs">
+                            <td>Наносимый урон:</td>
+                            <td id="deal_damage"></td>
+                        </tr>
+                        <tr class="additionalParametrs">
+                            <td>Получаемый урон:</td>
+                            <td id="take_damage"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td id = "center_menu">
+                    <div class = "hero_item_menu_name">Надетые предметы</div>
+                    <table id = "hero_items" style = "padding: 0px 10px;">
+                        <tr>
+                            <td>
+                                <select class = "hero_item_select" onchange = "refreshDataBySelectIteminItemlist(0)">
+                                </select>
+                            </td>
+                            <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select class = "hero_item_gem" onchange = "refreshDataBySelectGeminItemlist(0)">
+                                </select>
+                            </td>
+                            <td><img class = "gemImage" src="items/unknow_item.png" width="40px"></td>
+                        </tr>
+                        <tr>
+                            <td><input style = "margin-bottom: 30px;" type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(0)" disabled></td>
+                            <td class = "slider_lvl" style="vertical-align: top;">lvl 0</td>
+                        </tr>
 
-                            <tr><td colspan="2" id = "additional">Дополнительные</td></tr>
-                            <tr class = "additionalParametrs">
-                                <td>Урон заклинаний:</td>
-                                <td id = "speel_damage"></td>
-                            </tr>
-                            <tr class = "additionalParametrs">
-                                <td>Вампиризм:</td>
-                                <td id = "vampirism"></td>
-                            </tr>
-                            <tr class = "additionalParametrs">
-                                <td>Магический вампиризм:</td>
-                                <td id = "magic_vampirism"></td>
-                            </tr>
-                            <tr class = "additionalParametrs">
-                                <td>Эффективность лечения:</td>
-                                <td id = "heal_effectiveness"></td>
-                            </tr>
-                            <tr class = "additionalParametrs">
-                                <td>Эффективность восстановления маны:</td>
-                                <td id = "mana_effectiveness"></td>
-                            </tr>
-                            <tr class = "additionalParametrs">
-                                <td>Манакост способностей:</td>
-                                <td id = "spell_manacost"></td>
-                            </tr>
-                            <tr class = "additionalParametrs">
-                                <td>Перезарядка способностей:</td>
-                                <td id = "spell_cd"></td>
-                            </tr>
-                            <tr class = "additionalParametrs">
-                                <td>Урон по постройкам:</td>
-                                <td id = "building_damage"></td>
-                            </tr>
-                            <tr class = "additionalParametrs">
-                                <td>Наносимый урон:</td>
-                                <td id = "deal_damage"></td>
-                            </tr>
-                            <tr class = "additionalParametrs">
-                                <td>Получаемый урон:</td>
-                                <td id = "take_damage"></td>
-                            </tr>
-                        </table>
-                        <table id = "hero_items">
-                            <tr>
-                                <td>
-                                    <select class = "hero_item_select" onchange = "refreshDataBySelectIteminItemlist(0)">
-                                    </select>
-                                </td>
-                                <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <select class = "hero_item_gem" onchange = "refreshDataBySelectGeminItemlist(0)">
-                                    </select>
-                                </td>
-                                <td><img class = "gemImage" src="items/unknow_item.png" width="40px"></td>
-                            </tr>
-                            <tr>
-                                <td><input style = "margin-bottom: 30px;" type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(0)" disabled></td>
-                                <td class = "slider_lvl" style="vertical-align: top;">lvl 0</td>
-                            </tr>
+                        <tr>
+                            <td>
+                                <select class = "hero_item_select" onchange = "refreshDataBySelectIteminItemlist(1)">
+                                </select>
+                            </td>
+                            <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select class = "hero_item_gem" onchange = "refreshDataBySelectGeminItemlist(1)">
+                                </select>
+                            </td>
+                            <td><img class = "gemImage" src="items/unknow_item.png" width="40px"></td>
+                        </tr>
+                        <tr>
+                            <td><input style = "margin-bottom: 30px;" type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(1)" disabled></td>
+                            <td class = "slider_lvl" style="vertical-align: top;">lvl 0</td>
+                        </tr>
 
-                            <tr>
-                                <td>
-                                    <select class = "hero_item_select" onchange = "refreshDataBySelectIteminItemlist(1)">
-                                    </select>
-                                </td>
-                                <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <select class = "hero_item_gem" onchange = "refreshDataBySelectGeminItemlist(1)">
-                                    </select>
-                                </td>
-                                <td><img class = "gemImage" src="items/unknow_item.png" width="40px"></td>
-                            </tr>
-                            <tr>
-                                <td><input style = "margin-bottom: 30px;" type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(1)" disabled></td>
-                                <td class = "slider_lvl" style="vertical-align: top;">lvl 0</td>
-                            </tr>
+                        <tr>
+                            <td>
+                                <select class = "hero_item_select" onchange = "refreshDataBySelectIteminItemlist(2)">
+                                </select>
+                            </td>
+                            <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select class = "hero_item_gem" onchange = "refreshDataBySelectGeminItemlist(2)">
+                                </select>
+                            </td>
+                            <td><img class = "gemImage" src="items/unknow_item.png" width="40px"></td>
+                        </tr>
+                        <tr>
+                            <td><input style = "margin-bottom: 30px;" type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(2)" disabled></td>
+                            <td class = "slider_lvl" style="vertical-align: top;">lvl 0</td>
+                        </tr>
 
-                            <tr>
-                                <td>
-                                    <select class = "hero_item_select" onchange = "refreshDataBySelectIteminItemlist(2)">
-                                    </select>
-                                </td>
-                                <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <select class = "hero_item_gem" onchange = "refreshDataBySelectGeminItemlist(2)">
-                                    </select>
-                                </td>
-                                <td><img class = "gemImage" src="items/unknow_item.png" width="40px"></td>
-                            </tr>
-                            <tr>
-                                <td><input style = "margin-bottom: 30px;" type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(2)" disabled></td>
-                                <td class = "slider_lvl" style="vertical-align: top;">lvl 0</td>
-                            </tr>
+                        <tr>
+                            <td>
+                                <select class = "hero_item_select" onchange = "refreshDataBySelectIteminItemlist(3)">
+                                </select>
+                            </td>
+                            <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select class = "hero_item_gem" onchange = "refreshDataBySelectGeminItemlist(3)">
+                                </select>
+                            </td>
+                            <td><img class = "gemImage" src="items/unknow_item.png" width="40px"></td>
+                        </tr>
+                        <tr>
+                            <td><input style = "margin-bottom: 30px;" type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(3)" disabled></td>
+                            <td class = "slider_lvl" style="vertical-align: top;">lvl 0</td>
+                        </tr>
 
-                            <tr>
-                                <td>
-                                    <select class = "hero_item_select" onchange = "refreshDataBySelectIteminItemlist(3)">
-                                    </select>
-                                </td>
-                                <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <select class = "hero_item_gem" onchange = "refreshDataBySelectGeminItemlist(3)">
-                                    </select>
-                                </td>
-                                <td><img class = "gemImage" src="items/unknow_item.png" width="40px"></td>
-                            </tr>
-                            <tr>
-                                <td><input style = "margin-bottom: 30px;" type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(3)" disabled></td>
-                                <td class = "slider_lvl" style="vertical-align: top;">lvl 0</td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <select class = "hero_item_select" onchange = "refreshDataBySelectIteminItemlist(4)">
-                                    </select>
-                                </td>
-                                <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <select class = "hero_item_gem" onchange = "refreshDataBySelectGeminItemlist(4)">
-                                    </select>
-                                </td>
-                                <td><img class = "gemImage" src="items/unknow_item.png" width="40px"></td>
-                            </tr>
-                            <tr>
-                                <td><input style = "margin-bottom: 30px;" type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(4)" disabled></td>
-                                <td class = "slider_lvl">lvl 0</td>
-                            </tr>
-                        </table>
+                        <tr>
+                            <td>
+                                <select class = "hero_item_select" onchange = "refreshDataBySelectIteminItemlist(4)">
+                                </select>
+                            </td>
+                            <td><img class = "itemImage" src="items/unknow_item.png" width="40px"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select class = "hero_item_gem" onchange = "refreshDataBySelectGeminItemlist(4)">
+                                </select>
+                            </td>
+                            <td><img class = "gemImage" src="items/unknow_item.png" width="40px"></td>
+                        </tr>
+                        <tr>
+                            <td><input style = "margin-bottom: 30px;" type="range" min="0" max="0" value="0" class="slider" oninput = "refreshStatValuesBySelectItemLevel(4)" disabled></td>
+                            <td class = "slider_lvl">lvl 0</td>
+                        </tr>
+                    </table>
+                    <div class = "hero_item_menu_name">Созвездия</div>
+                    <table style = "padding: 0px 20px;">
+                        <tr><td class = "star_name_in_hero_list" colspan="3">Звезда выносливости</td></tr>
+                        <tr>
+                            <td><img class = "stars_item" src="items/unknow_item.png" width="40px"></td>
+                            <td><input type="range" min="0" max="20" value="0" class = "stars_select" oninput = "changeLvlOfStar(0)"></td>
+                            <td class = "slider_star_lvl">lvl 0</td>
+                        </tr>
+                        <tr><td class = "star_name_in_hero_list" colspan="3">Звезда силы</td></tr>
+                        <tr>
+                            <td><img class = "stars_item" src="items/unknow_item.png" width="40px"></td>
+                            <td><input type="range" min="0" max="20" value="0" class = "stars_select" oninput = "changeLvlOfStar(1)"></td>
+                            <td class = "slider_star_lvl">lvl 0</td>
+                        </tr>
+                        <tr><td class = "star_name_in_hero_list" colspan="3">Звезда проворства</td></tr>
+                        <tr>
+                            <td><img class = "stars_item" src="items/unknow_item.png" width="40px"></td>
+                            <td><input type="range" min="0" max="20" value="0" class = "stars_select" oninput = "changeLvlOfStar(2)"></td>
+                            <td class = "slider_star_lvl">lvl 0</td>
+                        </tr>
+                        <tr><td class = "star_name_in_hero_list" colspan="3">Звезда чародейства</td></tr>
+                        <tr>
+                            <td><img class = "stars_item" src="items/unknow_item.png" width="40px"></td>
+                            <td><input type="range" min="0" max="20" value="0" class = "stars_select" oninput = "changeLvlOfStar(3)"></td>
+                            <td class = "slider_star_lvl">lvl 0</td>
+                        </tr>
+                        <tr><td class = "star_name_in_hero_list" colspan="3">Звезда колдовства</td></tr>
+                        <tr>
+                            <td><img class = "stars_item" src="items/unknow_item.png" width="40px"></td>
+                            <td><input type="range" min="0" max="20" value="0" class = "stars_select" oninput = "changeLvlOfStar(4)"></td>
+                            <td class = "slider_star_lvl">lvl 0</td>
+                        </tr>
+                        <tr><td class = "star_name_in_hero_list" colspan="3">Звезда концентрации</td></tr>
+                        <tr>
+                            <td><img class = "stars_item" src="items/unknow_item.png" width="40px"></td>
+                            <td><input type="range" min="0" max="20" value="0" class = "stars_select" oninput = "changeLvlOfStar(5)"></td>
+                            <td class = "slider_star_lvl">lvl 0</td>
+                        </tr>
+                        <tr><td class = "star_name_in_hero_list" colspan="3">Звезда прочности</td></tr>
+                        <tr>
+                            <td><img class = "stars_item" src="items/unknow_item.png" width="40px"></td>
+                            <td><input type="range" min="0" max="20" value="0" class = "stars_select" oninput = "changeLvlOfStar(6)"></td>
+                            <td class = "slider_star_lvl">lvl 0</td>
+                        </tr>
+                        <tr><td class = "star_name_in_hero_list" colspan="3">Звезда постоянства</td></tr>
+                        <tr>
+                            <td><img class = "stars_item" src="items/unknow_item.png" width="40px"></td>
+                            <td><input type="range" min="0" max="20" value="0" class = "stars_select" oninput = "changeLvlOfStar(7)"></td>
+                            <td class = "slider_star_lvl">lvl 0</td>
+                        </tr>
+                        <tr><td class = "star_name_in_hero_list" colspan="3">Звезда воодушевления</td></tr>
+                        <tr>
+                            <td><img class = "stars_item" src="items/unknow_item.png" width="40px"></td>
+                            <td><input type="range" min="0" max="20" value="0" class = "stars_select" oninput = "changeLvlOfStar(8)"></td>
+                            <td class = "slider_star_lvl">lvl 0</td>
+                        </tr>
+                        <tr><td class = "star_name_in_hero_list" colspan="3">Звезда наставничества</td></tr>
+                        <tr>
+                            <td><img class = "stars_item" src="items/unknow_item.png" width="40px"></td>
+                            <td><input type="range" min="0" max="20" value="0" class = "stars_select" oninput = "changeLvlOfStar(9)"></td>
+                            <td class = "slider_star_lvl">lvl 0</td>
+                        </tr>
+                        <tr><td class = "star_name_in_hero_list" colspan="3">Звезда геройства</td></tr>
+                        <tr>
+                            <td><img class = "stars_item" src="items/unknow_item.png" width="40px"></td>
+                            <td><input type="range" min="0" max="20" value="0" class = "stars_select" oninput = "changeLvlOfStar(10)"></td>
+                            <td class = "slider_star_lvl">lvl 0</td>
+                        </tr>
+                        <tr><td class = "star_name_in_hero_list" colspan="3">Звезда удачи</td></tr>
+                        <tr>
+                            <td><img class = "stars_item" src="items/unknow_item.png" width="40px"></td>
+                            <td><input type="range" min="0" max="20" value="0" class = "stars_select" oninput = "changeLvlOfStar(11)"></td>
+                            <td class = "slider_star_lvl">lvl 0</td>
+                        </tr>
+                    </table>
                 </td>
                 <!-- Сетка навыков выбранного персонажа -->
                 <td id = "main_content" valign = "top">
@@ -419,7 +497,6 @@
         </div>
         <a href = "hero.html">Герои</a>
         <a href = "stars.html">Созвездия</a>
-        <a href = "companion.html">Компаньоны</a>
         <a href = "character.html">Противники</a>
         <a href = "item.html">Предметы</a>
         <a href = "shop.html">Магазин</a>

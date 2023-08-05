@@ -697,3 +697,8 @@ function get_base_attribute_total_value(tree_attribute_name, base_value) {
     }
     return base_value + additionalStat;
 }
+
+function changeLvlOfStar(id) {
+    console.log(id);
+    document.getElementsByClassName("slider_star_lvl")[id].innerHTML = "lvl " + document.getElementsByClassName("stars_select")[id].value;
+}
