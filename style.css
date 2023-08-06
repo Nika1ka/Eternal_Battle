@@ -135,7 +135,7 @@ h1 {
 #skill_tree td {
     height: 76.5px;
     border-radius: 25%;
-    background-size: 133%;
+    background-size: 125%;
     visibility: hidden;
     transition: transform .3s;
     background-repeat: no-repeat;
