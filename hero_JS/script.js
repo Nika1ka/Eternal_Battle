@@ -467,7 +467,7 @@ var position_x = [
     1, 2, 3, 5, 6, 7
 ];
 
-function show_tree_skill(skill_number) {
+function show_tree_skill(skill_number, mouse_targer_skill) {
     var skill_helper = skill_number;
     if(hero_rarity[select_hero] == 0 && skill_number > 25) {
         if(skill_helper == 29)
@@ -478,8 +478,6 @@ function show_tree_skill(skill_number) {
             return;
     }
     document.getElementById("info_block").style.visibility = "visible";
-    document.getElementById("info_block").style.top = const_height*(position_y[skill_number]+0.5) + padding_height/2 - padding_height + 50 + "px";
-    document.getElementById("info_block").style.left = const_width*(position_x[skill_number]+0.5) + padding_width/2 + 240 + "px";
     document.getElementById("skill_tree_cost").innerHTML = "Стоимость изучения: " + skill_tree_cost[skill_number];
 
     if(skill_number == 36 && select_tree == 0) {
@@ -509,6 +507,8 @@ function show_tree_skill(skill_number) {
 
             document.getElementById("skill_tree_bonus").innerHTML = help_symbol1 + (skill_tree_attribute_base_value[i] * (position_y[skill_number] + 1)).toFixed(2) + help_symbol2;
             document.getElementById("skill_tree_bonus_about").innerHTML = skill_tree_attribute_bonus[i];
+            document.getElementById("info_block").style.top = mouse_targer_skill.getBoundingClientRect().top + window.scrollY + document.body.scrollTop + "px";
+            document.getElementById("info_block").style.left = mouse_targer_skill.getBoundingClientRect().left + mouse_targer_skill.getBoundingClientRect().width * 0.5 - document.getElementById("info_block").offsetWidth - 50 + "px";
             return;
         }
     }
@@ -522,6 +522,9 @@ function show_tree_skill(skill_number) {
     }
     document.getElementById("skill_tree_bonus").innerHTML = skill_tree_bonus[select_hero][select_tree][skill_helper];
     document.getElementById("skill_tree_bonus_about").innerHTML = skill_tree_bonus_about[select_hero][select_tree][skill_helper];
+
+    document.getElementById("info_block").style.top = mouse_targer_skill.getBoundingClientRect().top + window.scrollY + document.body.scrollTop + "px";
+    document.getElementById("info_block").style.left = mouse_targer_skill.getBoundingClientRect().left + mouse_targer_skill.getBoundingClientRect().width * 0.5 - document.getElementById("info_block").offsetWidth - 50 + "px";
 }
 
     // Здесь нужно поменять метод установки картинки на фон способности

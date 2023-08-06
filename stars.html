@@ -4,6 +4,22 @@
         <title>"Eternal battle" - Предметы</title>
         <meta charset="utf-8">
         <link rel="stylesheet" href="style.css" type="text/css">
+        <style>
+            #left_menu {
+                width: 260px;
+            }
+            .item {
+                width: 150px;
+            }
+            .item_name {
+                font-size: 20px;
+            }
+            .item_image {
+                width: 130px;
+                height: 80px;
+                margin: 5px 10px;
+            }
+        </style>
     </head>
     <body>
         <table id = "main" style = "width: 100%; margin: 0px;">
@@ -17,8 +33,11 @@
                     </table>
                     <table id = "hero_attribute">
                         <tr>
-                            <td colspan="2"><input type="range" min="0" max="20" value="0" class="slider" id="myRange"></td>
-                            <td id = "slider_lvl">lvl 0</td>
+                            <td colspan="2" id = "starName">dada</td>
+                        </tr>
+                        <tr>
+                            <td><input type="range" min="0" max="20" value="0" class="slider" id="starSlider" oninput = "refreshStarValue()"></td>
+                            <td id = "slider_lvl" style="width: 50px;">lvl 0</td>
                         </tr>
                         <tr>
                             <td id = "image_1"><div class = "gold_image" style = "background-image: url(crystal.png)"/></td>
@@ -32,11 +51,24 @@
                             <td id = "image_3"><div class = "gold_image" style = "background-image: url(craft_gem_images/universe_crystal_2.png)"/></td>
                             <td id = "text_3">1</td>
                         </tr>
+
+                        <tr>
+                            <td colspan="2" style = "text-align: center; font-size: 20px; font-weight: bold;">Бонусы</td>
+                        </tr>
+                        <tr class="item_tr">
+                            <td class="item_attribute_td bonus_name">Атрибут:</td>
+                            <td class="item_number_td bonus_value">+0</td>
+                        </tr>
+                        <tr class="item_tr">
+                            <td class="item_attribute_td bonus_name">Атрибут:</td>
+                            <td class="item_number_td bonus_value">+0%</td>
+                        </tr>
+
+
                     </table>
                 </td>
                 <!-- Все возможные предметы -->
-                <td id = "main_content" valign = "top">
-                </td>
+                <td id = "main_content" valign = "top"></td>
             </tr>
         </table>
 
@@ -46,7 +78,6 @@
         <a href = "item.html">Предметы</a>
         <a href = "shop.html">Магазин</a>
     </body>
-    <script type="text/javascript "src="star_JS/info.js"></script>
-    <script type="text/javascript "src="star_JS/script.js"></scrip  t>
-    <script>create_item_list(); show_item_info();</script>
+    <script type="text/javascript "src="star_JS/script.js"></script>
+    <script>create_item_list(); show_star_info();</script>
 </html>
