@@ -8,9 +8,9 @@ var sum_crystal_upgrade = [
 ];
 var sum_gems_upgrade = [
     0, 0, 0, 0, 1,
-    2, 2, 3, 3, 4,
+    3, 3, 5, 5, 8,
     0, 0, 0, 0, 0,
-    3, 3, 3, 3, 3
+    4, 4, 4, 4, 4
 ];
 var sum_galaxy_crystal_upgrade = [
     0, 0, 0, 0, 0,
