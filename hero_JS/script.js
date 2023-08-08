@@ -507,7 +507,7 @@ function show_tree_skill(skill_number, mouse_targer_skill) {
                 help_symbol2 = "%";
 
 
-            document.getElementById("skill_tree_bonus").innerHTML = help_symbol1 + (skill_tree_attribute_base_value[i] * (position_y[skill_number] + 1)).toFixed(2) + help_symbol2;
+            document.getElementById("skill_tree_bonus").innerHTML = help_symbol1 + (((skill_tree_attribute_base_value[i] * (position_y[skill_number] + 1)) * 10).toFixed(1) / 10) + help_symbol2;
             document.getElementById("skill_tree_bonus_about").innerHTML = skill_tree_attribute_bonus[i];
             document.getElementById("info_block").style.top = mouse_targer_skill.getBoundingClientRect().top + window.scrollY + document.body.scrollTop + "px";
             document.getElementById("info_block").style.left = mouse_targer_skill.getBoundingClientRect().left + mouse_targer_skill.getBoundingClientRect().width * 0.5 - document.getElementById("info_block").offsetWidth - 50 + "px";

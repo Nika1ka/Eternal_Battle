@@ -20,8 +20,8 @@ var skill_tree_attribute_name = [
     "Ускоренные чары", "Эффективность", "Вспышка магии", "Долгосрочный договор", "Далёкие поля"
 ];
 var skill_tree_attribute_images = [
-    "hp", "", "", "", "",
-    "", "", "", "", "",
+    "hp", "hp_regeneration", "mana", "mana_regeneration", "damage",
+    "attack_speed", "", "", "", "",
     "", "", "", "", "",
     "", "", "", "", "", "",
     "cd_reduction", "", "", "", ""
