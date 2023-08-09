@@ -22,7 +22,7 @@ var skill_tree_attribute_name = [
 var skill_tree_attribute_images = [
     "hp", "hp_regeneration", "mana", "mana_regeneration", "damage",
     "attack_speed", "defense", "magic_defense", "status_defense", "speed",
-    "vision", "vision", "", "", "",
+    "vision", "vision", "dodge", "", "",
     "", "", "", "", "", "",
     "cd_reduction", "", "", "", ""
 ];
