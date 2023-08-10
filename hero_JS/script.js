@@ -507,7 +507,7 @@ function show_tree_skill(skill_number, mouse_targer_skill) {
                 help_symbol2 = "%";
 
 
-            document.getElementById("skill_tree_bonus").innerHTML = help_symbol1 + (((skill_tree_attribute_base_value[i] * (position_y[skill_number] + 1)) * 10).toFixed(1) / 10) + help_symbol2;
+            document.getElementById("skill_tree_bonus").innerHTML = help_symbol1 + (((skill_tree_attribute_base_value[i] + skill_tree_attribute_bonus_value[i] * (position_y[skill_number])) * 10).toFixed(1) / 10) + help_symbol2;
             document.getElementById("skill_tree_bonus_about").innerHTML = skill_tree_attribute_bonus[i];
             document.getElementById("info_block").style.top = mouse_targer_skill.getBoundingClientRect().top + window.scrollY + document.body.scrollTop + "px";
             document.getElementById("info_block").style.left = mouse_targer_skill.getBoundingClientRect().left + mouse_targer_skill.getBoundingClientRect().width * 0.5 - document.getElementById("info_block").offsetWidth - 50 + "px";
@@ -664,7 +664,7 @@ function get_spell_total_value(stat_attribute_id, tree_attribute_name, base_valu
                 if(table.rows[i].cells[j].style.visibility == "visible") {
                     if(skill_tree_bonus_about[select_hero][select_tree][counter] == tree_attribute_name) {
                         if(table.rows[i].cells[j].style.borderColor == "red")
-                            help_value1 += skill_tree_attribute_base_value[tree_attribute_id] * (position_y[counter] + 1);
+                            help_value1 += skill_tree_attribute_base_value[tree_attribute_id] + skill_tree_attribute_bonus_value[tree_attribute_id] * (position_y[counter]);
                     }
                 }
                 if(select_tree_helper[i][j])
@@ -693,7 +693,7 @@ function get_base_attribute_total_value(tree_attribute_name, base_value) {
             if(table.rows[i].cells[j].style.visibility == "visible") {
                 if(skill_tree_bonus_about[select_hero][select_tree][counter] == tree_attribute_name) {
                     if(table.rows[i].cells[j].style.borderColor == "red") 
-                        additionalStat += skill_tree_attribute_base_value[tree_attribute_id] * (position_y[counter] + 1);
+                        additionalStat += skill_tree_attribute_base_value[tree_attribute_id] + skill_tree_attribute_bonus_value[tree_attribute_id] * (position_y[counter]);
                 }
             }
             if(select_tree_helper[i][j])
