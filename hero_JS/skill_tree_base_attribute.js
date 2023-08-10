@@ -15,14 +15,14 @@ var skill_tree_attribute_base_value = [
 var skill_tree_attribute_name = [
     "Крепкое здоровье", "Регенерация", "Бутыль маны", "Восстановление", "Крепкая рука",
     "Вихрь", "Прочная броня", "Перенаправление", "Магические знания", "Скорость", 
-    "Орлиный взор", "Око ночи", "Проворство", "Мощь", "Скрытый клинок", 
+    "Орлиный взор", "Око ночи", "Проворство", "Мощь", "Точно в цель", 
     "Фолиант знаний", "Клыки вампира", "Поглощение", "Сила жизни", "Фонтан маны", "По кирпичикам", 
     "Ускоренные чары", "Эффективность", "Вспышка магии", "Долгосрочный договор", "Далёкие поля"
 ];
 var skill_tree_attribute_images = [
     "hp", "hp_regeneration", "mana", "mana_regeneration", "damage",
-    "attack_speed", "defense", "magic_defense", "status_defense", "speed",
-    "vision", "vision", "dodge", "", "",
-    "", "", "", "", "", "",
-    "cd_reduction", "", "", "", ""
+    "attack_speed", "phisical_defense", "magic_defense", "status_defense", "speed",
+    "day_vision", "night_vision", "dodge", "critical_damage", "critical_chance",
+    "all_spells_damage", "phisical_vampire", "magic_vampire", "heal_efficiency", "mana_regeneration_efficiency", "building_damage",
+    "cd_reduction", "mana_reduction", "spell_damage", "spell_duration", "cast_range"
 ];
