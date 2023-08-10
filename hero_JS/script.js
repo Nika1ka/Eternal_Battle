@@ -546,7 +546,7 @@ function change_tree(tree_number) {
             document.getElementById("select_all_tree_upgrade").innerHTML = "Выбрать все";
             if(select_tree_helper[i][j] == 1) {
                 if(skill_tree_about[select_hero][tree_number][counter] != "" && skill_tree_image[select_hero][tree_number][counter] == "") {
-                    table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/temp.png)";
+                    table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/spell_upgrade.png)";
                 }
                 else {
                     var flag_image = true;
@@ -555,7 +555,7 @@ function change_tree(tree_number) {
                             if(skill_tree_attribute_images[k] != "")
                                 table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/" + skill_tree_attribute_images[k] + ".png)";
                             else
-                                table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/temp.png)";
+                                table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/spell_upgrade.png)";
                             flag_image = false;
                         }
                     }
