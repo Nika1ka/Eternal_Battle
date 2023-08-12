@@ -3,20 +3,20 @@ var selectStar = 0;
 var sum_crystal_upgrade = [
     20, 40, 60, 80, 100,
     150, 150, 150, 150, 200,
-    300, 300, 300, 300, 500,
-    200, 200, 200, 200, 200
+    200, 200, 200, 200, 400,
+    250, 250, 250, 250, 500
 ];
 var sum_gems_upgrade = [
     0, 0, 0, 0, 1,
     3, 3, 5, 5, 8,
     0, 0, 0, 0, 0,
-    4, 4, 4, 4, 4
+    4, 4, 6, 6, 10
 ];
 var sum_galaxy_crystal_upgrade = [
     0, 0, 0, 0, 0,
     0, 0, 0, 0, 0,
     1, 1, 2, 2, 4,
-    2, 2, 2, 2, 2
+    2, 2, 2, 2, 4
 ];
 
 var star_names = [
@@ -29,11 +29,11 @@ var star_bonus_names = [
 ];
 var star_bonus_value = [
     [15, 0.2], [1.5, 1], [2, 1], [8, 0.1], [0.5, -0.2], [0.25, 0.25],
-    [0.4], [0.4], [0.5], [0.5, -0.5], [2, 2], [4]
+    [0.2], [0.2], [0.3], [0.5, -0.5], [2, 2], [3]
 ];
 var star_additional_5_lvl_bonus = [
-    [[50, 100, 200], [1, 3, 5]], [[5, 10, 15], [0, 10, 25]], [[10, 30, 50], [5, 10, 20]], [[40, 100, 160], [0.5, 1, 2]], [[5, 10, 15], [0, -1, -3]], [[1, 2.5, 5], [1, 2.5, 5]],
-    [[1, 3, 6]], [[1, 3, 6]], [[1.5, 4, 8]], [[1, 2.5, 5], [-1, -2.5, -5]], [[2.5, 6, 10], [2.5, 6, 10]], [[5, 12, 20]]
+    [[50, 100, 200, 400], [1, 3, 5, 8]], [[5, 10, 15, 30], [0, 10, 25, 30]], [[10, 30, 50, 90], [5, 10, 20, 35]], [[40, 100, 160, 240], [0.5, 1, 2, 3]], [[5, 10, 15, 20], [0, -1, -3, -6]], [[1, 2.5, 5, 9], [1, 2.5, 5, 9]],
+    [[0.8, 2, 4, 7]], [[0.8, 2, 4, 7]], [[1, 2.5, 5, 8]], [[1, 3, 6, 10], [-1, -3, -6, -10]], [[2.5, 6, 10, 20], [2.5, 6, 10, 20]], [[6, 12, 24, 40]]
 ];
 
 
@@ -64,12 +64,8 @@ function refreshStarValue() {
         if(star_bonus_names[selectStar].length > i) {
             document.getElementsByClassName("bonus_name")[i].innerHTML = star_bonus_names[selectStar][i];
             var total_bonus = star_bonus_value[selectStar][i] * value;
-            if(value >= 15)
-                total_bonus += star_additional_5_lvl_bonus[selectStar][i][2];
-            else if(value >= 10)
-                total_bonus += star_additional_5_lvl_bonus[selectStar][i][1];
-            else if(value >= 5)
-                total_bonus += star_additional_5_lvl_bonus[selectStar][i][0];
+            if(value >= 5)
+                total_bonus += star_additional_5_lvl_bonus[selectStar][i][Math.trunc(value / 5) - 1];
             document.getElementsByClassName("bonus_value")[i].innerHTML = total_bonus.toFixed(2)
         }
     }

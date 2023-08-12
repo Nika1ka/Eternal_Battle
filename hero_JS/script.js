@@ -604,6 +604,12 @@ function get_rarity_for_hero(rarity) {
 function set_active_skill(skill_id) {
     var table = document.getElementById("skill_tree");
     var counter = 0;
+    if(hero_rarity[select_hero] == 0) {
+        if(skill_id == 29)
+            skill_id = 26;
+        else if(skill_id == 36)
+            skill_id = 27;
+    }
     for(i = 0; i < 11; i++) {
         for(j = 0; j < 7; j++) {
             if(table.rows[i].cells[j].style.visibility == "visible")
