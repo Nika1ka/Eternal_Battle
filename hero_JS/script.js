@@ -296,9 +296,9 @@ var skill_tree = [
     [0, 0, 0, 1, 0, 0, 0],
     [0, 0, 1, 1, 0, 0, 0],
     [0, 0, 1, 1, 1, 1, 0],
-    [0, 0, 0, 1, 0, 1, 0],
-    [0, 0, 1, 0, 1, 1, 1],
-    [0, 1, 1, 2, 0, 1, 1],
+    [0, 0, 1, 1, 0, 1, 0],
+    [0, 1, 1, 0, 1, 1, 1],
+    [0, 0, 0, 2, 2, 1, 1],
     [0, 0, 1, 1, 1, 0, 0],
     [0, 1, 1, 1, 1, 1, 0],
     [1, 2, 1, 1, 1, 2, 1],
@@ -309,9 +309,9 @@ var skill_tree2 = [
     [0, 0, 0, 1, 0, 0, 0],
     [0, 0, 1, 1, 0, 0, 0],
     [0, 0, 1, 1, 1, 1, 0],
-    [0, 0, 0, 1, 0, 1, 0],
-    [0, 0, 1, 0, 1, 1, 1],
-    [0, 1, 1, 2, 0, 1, 1],
+    [0, 0, 1, 1, 0, 1, 0],
+    [0, 1, 1, 0, 1, 1, 1],
+    [0, 0, 0, 2, 0, 1, 1],
     [0, 0, 1, 1, 1, 0, 0],
     [0, 1, 1, 1, 1, 1, 0],
     [0, 0, 0, 1, 0, 0, 0],
@@ -350,9 +350,6 @@ function draw() {
     context.beginPath();
 
     context.moveTo(const_width*3.5 + padding_width/2, const_height*0.5 + padding_height/2);
-    context.lineTo(const_width*3.5 + padding_width/2, const_height*9.5 + padding_height/2);
-
-    context.moveTo(const_width*3.5 + padding_width/2, const_height*0.5 + padding_height/2);
     context.lineTo(const_width*2.5 + padding_width/2, const_height*1.5 + padding_width/2);
 
     context.moveTo(const_width*2.5 + padding_width/2, const_height*1.5 + padding_width/2);
@@ -376,17 +373,13 @@ function draw() {
     context.moveTo(const_width*6.5 + padding_width/2, const_height*4.5 + padding_height/2);
     context.lineTo(const_width*6.5 + padding_width/2, const_height*5.5 + padding_height/2);
 
-    context.moveTo(const_width*3.5 + padding_width/2, const_height*3.5 + padding_height/2);
-    context.lineTo(const_width*1.5 + padding_width/2, const_height*5.5 + padding_height/2);
+    context.moveTo(const_width*3.5 + padding_width/2, const_height*2.5 + padding_height/2);
+    context.lineTo(const_width*1.5 + padding_width/2, const_height*4.5 + padding_height/2);
 
-    context.moveTo(const_width*2.5 + padding_width/2, const_height*4.5 + padding_height/2);
-    context.lineTo(const_width*2.5 + padding_width/2, const_height*5.5 + padding_height/2);
+    context.moveTo(const_width*2.5 + padding_width/2, const_height*3.5 + padding_height/2);
+    context.lineTo(const_width*2.5 + padding_width/2, const_height*4.5 + padding_height/2);
 
-    context.moveTo(const_width*3.5 + padding_width/2, const_height*5.5 + padding_height/2);
-    context.lineTo(const_width*1.5 + padding_width/2, const_height*7.5 + padding_height/2);
 
-    context.moveTo(const_width*3.5 + padding_width/2, const_height*5.5 + padding_height/2);
-    context.lineTo(const_width*5.5 + padding_width/2, const_height*7.5 + padding_height/2);
 
     context.moveTo(const_width*2.5 + padding_width/2, const_height*6.5 + padding_height/2);
     context.lineTo(const_width*2.5 + padding_width/2, const_height*7.5 + padding_height/2);
@@ -396,6 +389,33 @@ function draw() {
     
         // Для редких героев
     if(hero_rarity[select_hero] != 0) {
+        context.moveTo(const_width*3.5 + padding_width/2, const_height*0.5 + padding_height/2);
+        context.lineTo(const_width*3.5 + padding_width/2, const_height*5 + padding_height/2);
+    
+        context.moveTo(const_width*3.5 + padding_width/2, const_height*6 + padding_height/2);
+        context.lineTo(const_width*3.5 + padding_width/2, const_height*9.5 + padding_height/2);
+
+        context.moveTo(const_width*3.5 + padding_width/2, const_height*5 + padding_height/2);
+        context.lineTo(const_width*4 + padding_width/2, const_height*5.5 + padding_height/2);
+        context.moveTo(const_width*3.5 + padding_width/2, const_height*5 + padding_height/2);
+        context.lineTo(const_width*3 + padding_width/2, const_height*5.5 + padding_height/2);
+
+        context.moveTo(const_width*3.5 + padding_width/2, const_height*6 + padding_height/2);
+        context.lineTo(const_width*4 + padding_width/2, const_height*5.5 + padding_height/2);
+        context.moveTo(const_width*3.5 + padding_width/2, const_height*6 + padding_height/2);
+        context.lineTo(const_width*3 + padding_width/2, const_height*5.5 + padding_height/2);
+
+
+        context.moveTo(const_width*3 + padding_width/2, const_height*5.5 + padding_height/2);
+        context.lineTo(const_width*3 + padding_width/2, const_height*6 + padding_height/2);
+        context.moveTo(const_width*4 + padding_width/2, const_height*5.5 + padding_height/2);
+        context.lineTo(const_width*4 + padding_width/2, const_height*6 + padding_height/2);
+    
+        context.moveTo(const_width*3 + padding_width/2, const_height*6 + padding_height/2);
+        context.lineTo(const_width*1.5 + padding_width/2, const_height*7.5 + padding_height/2);
+        context.moveTo(const_width*4 + padding_width/2, const_height*6 + padding_height/2);
+        context.lineTo(const_width*5.5 + padding_width/2, const_height*7.5 + padding_height/2);
+
 
         context.moveTo(const_width*1.5 + padding_width/2, const_height*7.5 + padding_height/2);
         context.lineTo(const_width*0.5 + padding_width/2, const_height*8.5 + padding_height/2);
@@ -428,6 +448,15 @@ function draw() {
         context.moveTo(const_width*4.5 + padding_width/2, const_height*8.5 + padding_height/2);
         context.lineTo(const_width*4.5 + padding_width/2, const_height*10.5 + padding_height/2);
     }
+    else {
+        context.moveTo(const_width*3.5 + padding_width/2, const_height*0.5 + padding_height/2);
+        context.lineTo(const_width*3.5 + padding_width/2, const_height*9.5 + padding_height/2);
+
+        context.moveTo(const_width*3.5 + padding_width/2, const_height*5.5 + padding_height/2);
+        context.lineTo(const_width*1.5 + padding_width/2, const_height*7.5 + padding_height/2);
+        context.moveTo(const_width*3.5 + padding_width/2, const_height*5.5 + padding_height/2);
+        context.lineTo(const_width*5.5 + padding_width/2, const_height*7.5 + padding_height/2);
+    }
 
     context.closePath();
     context.stroke();
@@ -440,39 +469,27 @@ function hidden_tree_skill() {
     document.getElementById("info_block").style.visibility = "hidden";
 }
 
-var position_y = [
+    // Разрядность бонуса к атрибутам в ветке развития
+var tree_stat_coef = [
     1,
-    2, 2,
-    3, 3, 3, 3,
-    4, 4,
-    5, 5, 5, 5,
-    6, 6, 6, 6, 6,
+    3, 2,
+    4, 3, 5, 3,
+    5, 4, 4,
+    6, 6, 6, 5, 5,
+    0, 0, 7, 7,
     7, 7, 7,
-    8, 8, 8, 8, 8,
-    9, 9, 9, 9, 9, 9, 9,
-    10, 10, 10, 10, 10, 10, 10,
-    11, 11, 11, 11, 11, 11
-];
-var position_x = [
-    4,
-    3, 4,
-    3, 4, 5, 6,
-    4, 6,
-    3, 5, 6, 7,
-    2, 3, 4, 6, 7,
-    3, 4, 5,
-    2, 3, 4, 5, 6,
-    1, 2, 3, 4, 5, 6, 7,
-    1, 2, 3, 4, 5, 6, 7,
-    1, 2, 3, 5, 6, 7
+    8, 9, 8, 9, 8,
+    10, 0, 9, 9, 9, 0, 10,
+    10, 10, 11, 0, 11, 10, 10,
+    11, 11, 13, 13, 11, 11
 ];
 
 function show_tree_skill(skill_number, mouse_targer_skill) {
     var skill_helper = skill_number;
-    if(hero_rarity[select_hero] == 0 && skill_number > 25) {
-        if(skill_helper == 29)
+    if(hero_rarity[select_hero] == 0 && skill_number > 26) {
+        if(skill_helper == 30)
             skill_helper = 26;
-        else if(skill_helper == 36)
+        else if(skill_helper == 37)
             skill_helper = 27;
         else
             return;
@@ -480,7 +497,7 @@ function show_tree_skill(skill_number, mouse_targer_skill) {
     document.getElementById("info_block").style.visibility = "visible";
     document.getElementById("skill_tree_cost").innerHTML = "Стоимость изучения: " + skill_tree_cost[skill_number];
 
-    if(skill_number == 36 && select_tree == 0) {
+    if(skill_number == 37 && select_tree == 0) {
         document.getElementById("skill_tree_name").innerHTML = "Широкие карманы";
         document.getElementById("skill_tree_about").innerHTML = "Добавляет герою ещё один слот для предметов";
         document.getElementById("skill_tree_bonus").innerHTML = "";
@@ -507,7 +524,7 @@ function show_tree_skill(skill_number, mouse_targer_skill) {
                 help_symbol2 = "%";
 
 
-            document.getElementById("skill_tree_bonus").innerHTML = help_symbol1 + (((skill_tree_attribute_base_value[i] + skill_tree_attribute_bonus_value[i] * (position_y[skill_number])) * 10).toFixed(1) / 10) + help_symbol2;
+            document.getElementById("skill_tree_bonus").innerHTML = help_symbol1 + (((skill_tree_attribute_base_value[i] + skill_tree_attribute_bonus_value[i] * (tree_stat_coef[skill_number])) * 10).toFixed(1) / 10) + help_symbol2;
             document.getElementById("skill_tree_bonus_about").innerHTML = skill_tree_attribute_bonus[i];
             document.getElementById("info_block").style.top = mouse_targer_skill.getBoundingClientRect().top + window.scrollY + document.body.scrollTop + "px";
             document.getElementById("info_block").style.left = mouse_targer_skill.getBoundingClientRect().left + mouse_targer_skill.getBoundingClientRect().width * 0.5 - document.getElementById("info_block").offsetWidth - 50 + "px";
@@ -519,10 +536,10 @@ function show_tree_skill(skill_number, mouse_targer_skill) {
     document.getElementById("skill_tree_name").innerHTML = skill_tree_name[select_hero][select_tree][skill_helper];
     document.getElementById("skill_tree_about").innerHTML = skill_tree_about[select_hero][select_tree][skill_helper];
 
-    if(skill_number == 15 && hero_rarity[select_hero] != 0) {
+    if((skill_number == 15 || skill_number == 16) && hero_rarity[select_hero] != 0) {
         document.getElementById("skill_tree_about").innerHTML += "<br><br>Примечание: можно выбрать только одну ветвь развития. После выбора вторая ветка будет заблокирована.<br>Смена ветви развития сбросит весь прогресс и вернёт 80% потраченных осколков";
     }
-    document.getElementById("skill_tree_bonus").innerHTML = skill_tree_bonus[select_hero][select_tree][skill_helper];
+    document.getElementById("skill_tree_bonus").innerHTML = "";
     document.getElementById("skill_tree_bonus_about").innerHTML = skill_tree_bonus_about[select_hero][select_tree][skill_helper];
 
     document.getElementById("info_block").style.top = mouse_targer_skill.getBoundingClientRect().top + window.scrollY + document.body.scrollTop + "px";
@@ -536,16 +553,24 @@ function change_tree(tree_number) {
     select_tree = tree_number;
 
     select_tree_helper = skill_tree;
-    if(hero_rarity[select_hero] == 0)
+    if(hero_rarity[select_hero] == 0) {
         select_tree_helper = skill_tree2;
-
+        table.rows[5].cells[3].style.left = "0px";
+    }
+    else {
+        table.rows[5].cells[3].style.position = "relative";
+        table.rows[5].cells[3].style.left = "-55px";
+        table.rows[5].cells[4].style.position = "relative";
+        table.rows[5].cells[4].style.left = "-55px";
+    }
+        
     for(i = 0; i < 11; i++) {
         for(j = 0; j < 7; j++) {
             table.rows[i].cells[j].style.borderColor = "black";
             is_all_tree_upgrade_selected = false;
             document.getElementById("select_all_tree_upgrade").innerHTML = "Выбрать все";
             if(select_tree_helper[i][j] == 1) {
-                if(skill_tree_about[select_hero][tree_number][counter] != "" && skill_tree_image[select_hero][tree_number][counter] == "") {
+                if(skill_tree_about[select_hero][tree_number][counter] != "") {
                     table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/spell_upgrade.png)";
                 }
                 else {
@@ -560,13 +585,7 @@ function change_tree(tree_number) {
                         }
                     }
                     if(flag_image) {
-                        if (skill_tree_image[select_hero][select_tree][counter] == "")
-                            table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/empty_slot.png)";
-                        else {
-                            table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/" + skill_tree_image[select_hero][select_tree][counter] + ".png)";
-                            console.log("url(skill_tree/" + skill_tree_image[select_hero][select_tree][counter] + ")");
-                            console.log("url(skill_tree/vamp.png)");
-                        }
+                        table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/empty_slot.png)";
                     }
                 }
                 counter++;
@@ -604,11 +623,14 @@ function get_rarity_for_hero(rarity) {
 function set_active_skill(skill_id) {
     var table = document.getElementById("skill_tree");
     var counter = 0;
+    console.log(skill_id);
     if(hero_rarity[select_hero] == 0) {
-        if(skill_id == 29)
-            skill_id = 26;
-        else if(skill_id == 36)
+        if(skill_id == 30)
             skill_id = 27;
+        else if(skill_id == 37)
+            skill_id = 28;
+        if(skill_id > 15)
+            --skill_id;
     }
     for(i = 0; i < 11; i++) {
         for(j = 0; j < 7; j++) {
@@ -670,7 +692,7 @@ function get_spell_total_value(stat_attribute_id, tree_attribute_name, base_valu
                 if(table.rows[i].cells[j].style.visibility == "visible") {
                     if(skill_tree_bonus_about[select_hero][select_tree][counter] == tree_attribute_name) {
                         if(table.rows[i].cells[j].style.borderColor == "red")
-                            help_value1 += skill_tree_attribute_base_value[tree_attribute_id] + skill_tree_attribute_bonus_value[tree_attribute_id] * (position_y[counter]);
+                            help_value1 += skill_tree_attribute_base_value[tree_attribute_id] + skill_tree_attribute_bonus_value[tree_attribute_id] * (tree_stat_coef[counter]);
                     }
                 }
                 if(select_tree_helper[i][j])
@@ -699,7 +721,7 @@ function get_base_attribute_total_value(tree_attribute_name, base_value) {
             if(table.rows[i].cells[j].style.visibility == "visible") {
                 if(skill_tree_bonus_about[select_hero][select_tree][counter] == tree_attribute_name) {
                     if(table.rows[i].cells[j].style.borderColor == "red") 
-                        additionalStat += skill_tree_attribute_base_value[tree_attribute_id] + skill_tree_attribute_bonus_value[tree_attribute_id] * (position_y[counter]);
+                        additionalStat += skill_tree_attribute_base_value[tree_attribute_id] + skill_tree_attribute_bonus_value[tree_attribute_id] * (tree_stat_coef[counter]);
                 }
             }
             if(select_tree_helper[i][j])
