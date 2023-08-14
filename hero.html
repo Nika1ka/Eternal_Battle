@@ -546,15 +546,15 @@
         document.getElementById("table_attack_spead").innerHTML = helper + " (" + (1 / (helper * 0.006)).toFixed(3) + " s.)";
         document.getElementById("table_attack_range").innerHTML = hero_attack_range[select_hero];
 
-        helper = 100 - (100 - Number(getSumOfStat("Защита", get_base_attribute_total_value("Защита", hero_phis_resist[select_hero])), 2)) * ((100 + Number(getSumOfStat("Получаемый урон", get_base_attribute_total_value("Наносимый урон", 0))))*0.01);
+        helper = 100 - (100 - Number(getSumOfStat("Защита", get_base_attribute_total_value("Защита", hero_phis_resist[select_hero])), 2)) * ((100 + Number(getSumOfStat("Получаемый урон", get_base_attribute_total_value("Получаемый урон", 0))))*0.01);
         document.getElementById("table_phis_resist").innerHTML = helper.toFixed(1) + "%";
 
         
-        helper = 100 - (100 - Number(getSumOfStat("Сопротивление магии", get_base_attribute_total_value("Сопротивление магии", hero_magic_resist[select_hero])), 2)) * ((100 + Number(getSumOfStat("Получаемый урон", get_base_attribute_total_value("Наносимый урон", 0))))*0.01);
+        helper = 100 - (100 - Number(getSumOfStat("Сопротивление магии", get_base_attribute_total_value("Сопротивление магии", hero_magic_resist[select_hero])), 2)) * ((100 + Number(getSumOfStat("Получаемый урон", get_base_attribute_total_value("Получаемый урон", 0))))*0.01);
         //helper = getSumOfStat("Сопротивление магии", get_base_attribute_total_value("Сопротивление магии", hero_magic_resist[select_hero]), 2);
         document.getElementById("table_magic_resist").innerHTML = helper.toFixed(1) + "%";
         
-        helper = 100 - (100 - Number(getSumOfStat("Сопротивление эффектам", get_base_attribute_total_value("Сопротивление эффектам", hero_status_resist[select_hero])), 2)) * ((100 + Number(getSumOfStat("Получаемый урон", get_base_attribute_total_value("Наносимый урон", 0))))*0.01);
+        helper = 100 - (100 - Number(getSumOfStat("Сопротивление эффектам", get_base_attribute_total_value("Сопротивление эффектам", hero_status_resist[select_hero])), 2)) * ((100 + Number(getSumOfStat("Получаемый урон", get_base_attribute_total_value("Получаемый урон", 0))))*0.01);
         //helper = getSumOfStat("Сопротивление эффектам", get_base_attribute_total_value("Сопротивление эффектам", hero_status_resist[select_hero]), 2);
         document.getElementById("table_status_resist").innerHTML = helper.toFixed(1) + "%";
 
