@@ -158,6 +158,10 @@
                             <td id="building_damage"></td>
                         </tr>
                         <tr class="additionalParametrs">
+                            <td>Эффективность замедления:</td>
+                            <td id="slowdown_defense"></td>
+                        </tr>
+                        <tr class="additionalParametrs">
                             <td>Наносимый урон:</td>
                             <td id="deal_damage"></td>
                         </tr>
@@ -671,26 +675,39 @@
             document.getElementsByClassName("additionalParametrs")[7].style.display = "none";
         }
 
-        helper = getSumOfStat("Наносимый урон", get_base_attribute_total_value("Наносимый урон", 0), 0);
+        //
+        helper = getSumOfStat("Сопротивление замедлению", get_base_attribute_total_value("Сопротивление замедлению", 0), 0);
         if(helper != 0) {
             document.getElementsByClassName("additionalParametrs")[8].style.display = "table-row";
+            document.getElementById("slowdown_defense").innerHTML = (Number(helper) * -1) + "%";
+            document.getElementById("additional").style.display = "table-cell";
+        }
+        else {
+            document.getElementById("slowdown_defense").innerHTML = "";
+            document.getElementsByClassName("additionalParametrs")[8].style.display = "none";
+        }
+        //
+
+        helper = getSumOfStat("Наносимый урон", get_base_attribute_total_value("Наносимый урон", 0), 0);
+        if(helper != 0) {
+            document.getElementsByClassName("additionalParametrs")[9].style.display = "table-row";
             document.getElementById("deal_damage").innerHTML = (100+Number(helper)) + "%";
             document.getElementById("additional").style.display = "table-cell";
         }
         else {
             document.getElementById("deal_damage").innerHTML = "";
-            document.getElementsByClassName("additionalParametrs")[8].style.display = "none";
+            document.getElementsByClassName("additionalParametrs")[9].style.display = "none";
         }
 
         helper = getSumOfStat("Получаемый урон", get_base_attribute_total_value("Получаемый урон", 0), 0);
         if(helper != 0) {
-            document.getElementsByClassName("additionalParametrs")[9].style.display = "table-row";
+            document.getElementsByClassName("additionalParametrs")[10].style.display = "table-row";
             document.getElementById("take_damage").innerHTML = (100+Number(helper)) + "%";
             document.getElementById("additional").style.display = "table-cell";
         }
         else {
             document.getElementById("take_damage").innerHTML = "";
-            document.getElementsByClassName("additionalParametrs")[9].style.display = "none";
+            document.getElementsByClassName("additionalParametrs")[10].style.display = "none";
         }
     }
     </script>

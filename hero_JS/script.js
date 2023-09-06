@@ -520,7 +520,7 @@ function show_tree_skill(skill_number, mouse_targer_skill) {
             if(skill_tree_attribute_bonus[i] == "Защита" || skill_tree_attribute_bonus[i] == "Сопротивление магии" || skill_tree_attribute_bonus[i] == "Сопротивление эффектам" || skill_tree_attribute_bonus[i] == "Уворот" || skill_tree_attribute_bonus[i] == "Крит урон" || 
                 skill_tree_attribute_bonus[i] == "Шанс крита" || skill_tree_attribute_bonus[i] == "Урон заклинаний" || skill_tree_attribute_bonus[i] == "Вампиризм" || skill_tree_attribute_bonus[i] == "Магический вампиризм" || skill_tree_attribute_bonus[i] == "Эффективность лечения" || 
                 skill_tree_attribute_bonus[i] == "Эффективность восстановления маны" || skill_tree_attribute_bonus[i] == "Урон по постройкам" || skill_tree_attribute_bonus[i] == "Манакост способности" || skill_tree_attribute_bonus[i] == "Урон способности" || skill_tree_attribute_bonus[i] == "Дальность применения" ||
-                skill_tree_attribute_bonus[i] == "Перезарядка способности" || skill_tree_attribute_bonus[i] == "Длительность действия" || skill_tree_attribute_bonus[i] == "Получаемый урон" || skill_tree_attribute_bonus[i] == "Наносимый урон")
+                skill_tree_attribute_bonus[i] == "Перезарядка способности" || skill_tree_attribute_bonus[i] == "Длительность действия" || skill_tree_attribute_bonus[i] == "Сопротивление замедлению" || skill_tree_attribute_bonus[i] == "Получаемый урон" || skill_tree_attribute_bonus[i] == "Наносимый урон")
                 help_symbol2 = "%";
 
 
