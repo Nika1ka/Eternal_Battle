@@ -28,7 +28,6 @@
                 font-size: 22px;
                 text-align: center;
                 font-weight: bold;
-                display: none;
             }
             .additionalParametrs {
                 display: none;
@@ -168,6 +167,27 @@
                         <tr class="additionalParametrs">
                             <td>Получаемый урон:</td>
                             <td id="take_damage"></td>
+                        </tr>
+
+                        <tr class="additionalParametrs">
+                            <td>Урон компаньонов:</td>
+                            <td id="companion_deal_damage"></td>
+                        </tr>
+                        <tr class="additionalParametrs">
+                            <td>Получаемый компаньонами урон:</td>
+                            <td id="companion_take_damage"></td>
+                        </tr>
+                        <tr class="additionalParametrs">
+                            <td>Золото за бой:</td>
+                            <td id="gold_for_mission"></td>
+                        </tr>
+                        <tr class="additionalParametrs">
+                            <td>Осколки за бой:</td>
+                            <td id="crystal_for_mission"></td>
+                        </tr>
+                        <tr class="additionalParametrs">
+                            <td>Шанс на двойные награды из сундуков:</td>
+                            <td id="double_reward_chance"></td>
                         </tr>
                     </table>
                 </td>
@@ -505,6 +525,7 @@
         <a href = "item.html">Предметы</a>
         <a href = "shop.html">Магазин</a>
     </body>
+    <script type="text/javascript "src="star_JS/script.js"></script>
     <script type="text/javascript "src="hero_JS/skill_tree_base_attribute.js"></script>
     <script type="text/javascript "src="hero_JS/skill_tree_about.js"></script>
     <script type="text/javascript "src="hero_JS/skill_tree_bonus_about.js"></script>
@@ -514,7 +535,7 @@
     <script type="text/javascript "src="item_JS/info.js"></script>
     <script>change_hero(); draw(); open_skill_tree(); change_tree(0); hidden_tree_skill(); createItemListMenu(); createGemListMenu(); refreshStatValuesBySelectItemLevel(0);
     
-    function refreshStatValuesBySelectItemLevel(id = 0) { // После ввода слайдера
+    function refreshStatValuesBySelectItemLevel(id = 0) { // После ввода ЛЮБОГО слайдера
         document.getElementsByClassName("slider_lvl")[id].innerHTML = "lvl " + document.getElementsByClassName("slider")[id].value;
 
         // Установка спика параметров героя с учётом экипировки
@@ -585,13 +606,11 @@
         document.getElementById("table_critical_chance").innerHTML = helper + "%";
 
         // Дополнительные параметры
-        document.getElementById("additional").style.display = "none";
 
         helper = (100 + Number(getSumOfStat("Урон заклинаний", get_base_attribute_total_value("Урон заклинаний", 0), 2))) * ((100 + Number(getSumOfStat("Наносимый урон", get_base_attribute_total_value("Наносимый урон", 0))))*0.01);
         if(helper != 100) {
             document.getElementsByClassName("additionalParametrs")[0].style.display = "table-row";
             document.getElementById("speel_damage").innerHTML = "" + helper.toFixed(1) + "%";
-            document.getElementById("additional").style.display = "table-cell";
         }
         else {
             document.getElementById("speel_damage").innerHTML = "";
@@ -602,7 +621,6 @@
         if(helper > 0) {
             document.getElementsByClassName("additionalParametrs")[1].style.display = "table-row";
             document.getElementById("vampirism").innerHTML = "+" + (helper *(heal_effectiveness/100)).toFixed(2) + "%";
-            document.getElementById("additional").style.display = "table-cell";
         }
         else {
             document.getElementById("vampirism").innerHTML = "";
@@ -613,7 +631,6 @@
         if(helper > 0) {
             document.getElementsByClassName("additionalParametrs")[2].style.display = "table-row";
             document.getElementById("magic_vampirism").innerHTML = "+" + (helper *(heal_effectiveness/100)).toFixed(2) + "%";
-            document.getElementById("additional").style.display = "table-cell";
         }
         else {
             document.getElementById("magic_vampirism").innerHTML = "";
@@ -624,7 +641,6 @@
         if(helper != 0) {
             document.getElementsByClassName("additionalParametrs")[3].style.display = "table-row";
             document.getElementById("heal_effectiveness").innerHTML = "" + (100+Number(helper)) + "%";
-            document.getElementById("additional").style.display = "table-cell";
         }
         else {
             document.getElementById("heal_effectiveness").innerHTML = "";
@@ -635,7 +651,6 @@
         if(helper != 0) {
             document.getElementsByClassName("additionalParametrs")[4].style.display = "table-row";
             document.getElementById("mana_effectiveness").innerHTML = "" + (100+Number(helper)) + "%";
-            document.getElementById("additional").style.display = "table-cell";
         }
         else {
             document.getElementById("mana_effectiveness").innerHTML = "";
@@ -646,18 +661,16 @@
         if(helper != 0) {
             document.getElementsByClassName("additionalParametrs")[5].style.display = "table-row";
             document.getElementById("spell_manacost").innerHTML = "" + (100+Number(helper)).toFixed(2) + "%";
-            document.getElementById("additional").style.display = "table-cell";
         }
         else {
             document.getElementById("spell_manacost").innerHTML = "";
             document.getElementsByClassName("additionalParametrs")[5].style.display = "none";
         }
 
-        helper = getSumOfStat("Перезарядка способностей", 0, 1);
+        helper = getSumOfStat("Перезарядка способностей", get_base_attribute_total_value("Перезарядка способностей", 0), 1);
         if(helper != 0) {
             document.getElementsByClassName("additionalParametrs")[6].style.display = "table-row";
             document.getElementById("spell_cd").innerHTML = "" + (100+Number(helper)) + "%";
-            document.getElementById("additional").style.display = "table-cell";
         }
         else {
             document.getElementById("spell_cd").innerHTML = "";
@@ -668,7 +681,6 @@
         if(helper != 0) {
             document.getElementsByClassName("additionalParametrs")[7].style.display = "table-row";
             document.getElementById("building_damage").innerHTML = "+" + helper + "%";
-            document.getElementById("additional").style.display = "table-cell";
         }
         else {
             document.getElementById("building_damage").innerHTML = "";
@@ -680,7 +692,6 @@
         if(helper != 0) {
             document.getElementsByClassName("additionalParametrs")[8].style.display = "table-row";
             document.getElementById("slowdown_defense").innerHTML = (Number(helper) * -1) + "%";
-            document.getElementById("additional").style.display = "table-cell";
         }
         else {
             document.getElementById("slowdown_defense").innerHTML = "";
@@ -692,7 +703,6 @@
         if(helper != 0) {
             document.getElementsByClassName("additionalParametrs")[9].style.display = "table-row";
             document.getElementById("deal_damage").innerHTML = (100+Number(helper)) + "%";
-            document.getElementById("additional").style.display = "table-cell";
         }
         else {
             document.getElementById("deal_damage").innerHTML = "";
@@ -703,11 +713,53 @@
         if(helper != 0) {
             document.getElementsByClassName("additionalParametrs")[10].style.display = "table-row";
             document.getElementById("take_damage").innerHTML = (100+Number(helper)) + "%";
-            document.getElementById("additional").style.display = "table-cell";
         }
         else {
             document.getElementById("take_damage").innerHTML = "";
             document.getElementsByClassName("additionalParametrs")[10].style.display = "none";
+        }
+
+
+
+
+
+
+        helper = getSumOfStat("Урон компаньонов", get_base_attribute_total_value("Урон компаньонов", 70), 1);
+        document.getElementsByClassName("additionalParametrs")[11].style.display = "table-row";
+        document.getElementById("companion_deal_damage").innerHTML = helper + "%";
+
+        helper = getSumOfStat("Получаемый компаньонами урон", get_base_attribute_total_value("Получаемый компаньонами урон", 70), 1);
+        document.getElementsByClassName("additionalParametrs")[12].style.display = "table-row";
+        document.getElementById("companion_take_damage").innerHTML = helper + "%";
+
+        helper = getSumOfStat("Золото за бой", get_base_attribute_total_value("Золото за бой", 100), 1);
+        if(helper != 100) {
+            document.getElementsByClassName("additionalParametrs")[13].style.display = "table-row";
+            document.getElementById("gold_for_mission").innerHTML = helper + "%";
+        }
+        else {
+            document.getElementById("gold_for_mission").innerHTML = "";
+            document.getElementsByClassName("additionalParametrs")[13].style.display = "none";
+        }
+
+        helper = getSumOfStat("Осколки за бой", get_base_attribute_total_value("Осколки за бой", 100), 1);
+        if(helper != 100) {
+            document.getElementsByClassName("additionalParametrs")[14].style.display = "table-row";
+            document.getElementById("crystal_for_mission").innerHTML = helper + "%";
+        }
+        else {
+            document.getElementById("crystal_for_mission").innerHTML = "";
+            document.getElementsByClassName("additionalParametrs")[14].style.display = "none";
+        }
+
+        helper = getSumOfStat("Шанс на двойные награды из сундуков", get_base_attribute_total_value("Шанс на двойные награды из сундуков", 0), 0);
+        if(helper != 0) {
+            document.getElementsByClassName("additionalParametrs")[15].style.display = "table-row";
+            document.getElementById("double_reward_chance").innerHTML = helper + "%";
+        }
+        else {
+            document.getElementById("double_reward_chance").innerHTML = "";
+            document.getElementsByClassName("additionalParametrs")[15].style.display = "none";
         }
     }
     </script>

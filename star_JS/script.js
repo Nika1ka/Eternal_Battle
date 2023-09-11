@@ -24,11 +24,11 @@ var star_names = [
     "Звезда прочности", "Звезда постоянства", "Звезда воодушевления", "Звезда наставничества", "Звезда геройства", "Звезда удачи"
 ];
 var star_bonus_names = [
-    ["Здоровье", "Регенерация здоровья"], ["Урон", "Крит урон"], ["Скорость атаки", "Скорость передвижения"], ["Мана", "Регенерация маны"], ["Урон заклинаний", "Перезарядка способностей"], ["Шанс крита", "Уворот"],
-    ["Защита"], ["Сопротивление магии "], ["Сопротивление эффектам"], ["Урон компаньонов", "Получаемый компаньонами урон"], ["Золото за бой", "Осколки за бой"], ["Шанс на двойные награды из сундуков"]
+    ["Здоровье", "Регенерация здоровья"], ["Урон", "Крит урон"], ["Скорость атаки", "Скорость"], ["Мана", "Регенерация маны"], ["Урон заклинаний", "Перезарядка способностей"], ["Шанс крита", "Уворот"],
+    ["Защита"], ["Сопротивление магии"], ["Сопротивление эффектам"], ["Урон компаньонов", "Получаемый компаньонами урон"], ["Золото за бой", "Осколки за бой"], ["Шанс на двойные награды из сундуков"]
 ];
 var star_bonus_value = [
-    [15, 0.2], [1.5, 1], [2, 1], [8, 0.1], [0.5, -0.2], [0.25, 0.25],
+    [15, 0.2], [1, 1], [2, 1], [8, 0.1], [0.5, -0.2], [0.25, 0.25],
     [0.2], [0.2], [0.3], [0.5, -0.5], [2, 2], [3]
 ];
 var star_additional_5_lvl_bonus = [
@@ -42,6 +42,13 @@ function getTotalCost(arr, value) {
     for(var i = 0; i < value; i++)
         total_val += arr[i];
     return total_val;
+}
+
+function getTotalStarValue(select_star, current_ID, star_lvl) {
+    var total_bonus = star_bonus_value[select_star][current_ID] * star_lvl;
+    if(star_lvl >= 5)
+        total_bonus += star_additional_5_lvl_bonus[select_star][current_ID][Math.trunc(star_lvl / 5) - 1];
+    return total_bonus;
 }
 
 function refreshStarValue() {
@@ -63,10 +70,7 @@ function refreshStarValue() {
         document.getElementsByClassName("bonus_value")[i].innerHTML = "";
         if(star_bonus_names[selectStar].length > i) {
             document.getElementsByClassName("bonus_name")[i].innerHTML = star_bonus_names[selectStar][i];
-            var total_bonus = star_bonus_value[selectStar][i] * value;
-            if(value >= 5)
-                total_bonus += star_additional_5_lvl_bonus[selectStar][i][Math.trunc(value / 5) - 1];
-            document.getElementsByClassName("bonus_value")[i].innerHTML = total_bonus.toFixed(2)
+            document.getElementsByClassName("bonus_value")[i].innerHTML = getTotalStarValue(selectStar, i, value).toFixed(2)
         }
     }
 }

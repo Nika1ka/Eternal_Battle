@@ -728,6 +728,14 @@ function get_base_attribute_total_value(tree_attribute_name, base_value) {
                 ++counter;
         }
     }
+    for(i = 0; i < star_bonus_names.length; i++) {
+        for(j = 0; j < star_bonus_names[i].length; j++) {
+            if(star_bonus_names[i][j] == tree_attribute_name) {
+                star_slider_id = document.getElementsByClassName("stars_select")[i].value;
+                additionalStat += getTotalStarValue(i, j, star_slider_id);
+            }
+        }
+    }
     return base_value + additionalStat;
 }
 
