@@ -80,7 +80,7 @@ var skill_types = [
     ["Бафф", "Урон Призыв"]
 ];
 var skills_damage = [ // Урон
-    [0, 110, 0],
+    [0, 110, 50],
     [0, 50, 0],
     [0, 20, 0],
     [0, 0, 0],
@@ -484,6 +484,15 @@ var tree_stat_coef = [
     11, 11, 13, 13, 11, 11
 ];
 
+function get_symbol_of_attribute(attribute) {
+    if(attribute == "Защита" || attribute == "Сопротивление магии" || attribute == "Сопротивление эффектам" || attribute == "Уворот" || attribute == "Крит урон" || 
+        attribute == "Шанс крита" || attribute == "Урон заклинаний" || attribute == "Вампиризм" || attribute == "Магический вампиризм" || attribute == "Эффективность лечения" || 
+        attribute == "Эффективность восстановления маны" || attribute == "Урон по постройкам" || attribute == "Манакост способности" || attribute == "Урон способности" || attribute == "Дальность применения" ||
+        attribute == "Перезарядка способности" || attribute == "Длительность действия" || attribute == "Сопротивление замедлению" || attribute == "Получаемый урон" || attribute == "Наносимый урон")
+        return "%";
+    return " ед.";
+}
+
 function show_tree_skill(skill_number, mouse_targer_skill) {
     var skill_helper = skill_number;
     if(hero_rarity[select_hero] == 0 && skill_number > 26) {
@@ -509,26 +518,48 @@ function show_tree_skill(skill_number, mouse_targer_skill) {
 
 
     for(var i = 0; i < skill_tree_attribute_bonus.length; i++) {
-        if(skill_tree_bonus_about[select_hero][select_tree][skill_helper] == skill_tree_attribute_bonus[i]) {
-            document.getElementById("skill_tree_name").innerHTML = skill_tree_attribute_name[i];
-            document.getElementById("skill_tree_about").innerHTML = "";
+        if(typeof skill_tree_attribute_bonus[i] === "string") {
+            if(skill_tree_bonus_about[select_hero][select_tree][skill_helper] == skill_tree_attribute_bonus[i]) {
+                document.getElementById("skill_tree_name").innerHTML = skill_tree_attribute_name[i];
+                document.getElementById("skill_tree_about").innerHTML = "";
 
-            var help_symbol1 = "", help_symbol2 = " ед.";
-            if(skill_tree_attribute_base_value[i] > 0)
-                help_symbol1 = "+"
-            
-            if(skill_tree_attribute_bonus[i] == "Защита" || skill_tree_attribute_bonus[i] == "Сопротивление магии" || skill_tree_attribute_bonus[i] == "Сопротивление эффектам" || skill_tree_attribute_bonus[i] == "Уворот" || skill_tree_attribute_bonus[i] == "Крит урон" || 
-                skill_tree_attribute_bonus[i] == "Шанс крита" || skill_tree_attribute_bonus[i] == "Урон заклинаний" || skill_tree_attribute_bonus[i] == "Вампиризм" || skill_tree_attribute_bonus[i] == "Магический вампиризм" || skill_tree_attribute_bonus[i] == "Эффективность лечения" || 
-                skill_tree_attribute_bonus[i] == "Эффективность восстановления маны" || skill_tree_attribute_bonus[i] == "Урон по постройкам" || skill_tree_attribute_bonus[i] == "Манакост способности" || skill_tree_attribute_bonus[i] == "Урон способности" || skill_tree_attribute_bonus[i] == "Дальность применения" ||
-                skill_tree_attribute_bonus[i] == "Перезарядка способности" || skill_tree_attribute_bonus[i] == "Длительность действия" || skill_tree_attribute_bonus[i] == "Сопротивление замедлению" || skill_tree_attribute_bonus[i] == "Получаемый урон" || skill_tree_attribute_bonus[i] == "Наносимый урон")
-                help_symbol2 = "%";
+                var help_symbol = "";
+                if(skill_tree_attribute_base_value[i] > 0)
+                    help_symbol = "+"
 
+                document.getElementById("skill_tree_bonus").innerHTML = help_symbol + (((skill_tree_attribute_base_value[i] + skill_tree_attribute_bonus_value[i] * (tree_stat_coef[skill_number])) * 10).toFixed(1) / 10) + get_symbol_of_attribute(skill_tree_attribute_bonus[i]);
+                document.getElementById("skill_tree_bonus_about").innerHTML = skill_tree_attribute_bonus[i];
+                document.getElementById("info_block").style.top = mouse_targer_skill.getBoundingClientRect().top + window.scrollY + document.body.scrollTop + "px";
+                document.getElementById("info_block").style.left = mouse_targer_skill.getBoundingClientRect().left + mouse_targer_skill.getBoundingClientRect().width * 0.5 - document.getElementById("info_block").offsetWidth - 50 + "px";
+                return;
+            }
+        }
+        else {
+            if(skill_tree_bonus_about[select_hero][select_tree][skill_helper] == skill_tree_attribute_bonus[i][0]) {
+                document.getElementById("skill_tree_name").innerHTML = skill_tree_attribute_name[i];
+                document.getElementById("skill_tree_about").innerHTML = "";
+                var total_bonus_text_list = "", total_bonus_number_list = "";
+                for(j = 0; j < skill_tree_attribute_bonus[i].length; j++) {
 
-            document.getElementById("skill_tree_bonus").innerHTML = help_symbol1 + (((skill_tree_attribute_base_value[i] + skill_tree_attribute_bonus_value[i] * (tree_stat_coef[skill_number])) * 10).toFixed(1) / 10) + help_symbol2;
-            document.getElementById("skill_tree_bonus_about").innerHTML = skill_tree_attribute_bonus[i];
-            document.getElementById("info_block").style.top = mouse_targer_skill.getBoundingClientRect().top + window.scrollY + document.body.scrollTop + "px";
-            document.getElementById("info_block").style.left = mouse_targer_skill.getBoundingClientRect().left + mouse_targer_skill.getBoundingClientRect().width * 0.5 - document.getElementById("info_block").offsetWidth - 50 + "px";
-            return;
+                    var help_symbol = "";
+                    if(skill_tree_attribute_base_value[i][j] > 0)
+                        help_symbol = "+"
+
+                    total_bonus_number_list += help_symbol + (((skill_tree_attribute_base_value[i][j] + skill_tree_attribute_bonus_value[i][j] * (tree_stat_coef[skill_number])) * 10).toFixed(1) / 10) + get_symbol_of_attribute(skill_tree_attribute_bonus[i][j].slice(1, skill_tree_attribute_bonus[i][j].length));
+                    total_bonus_text_list += skill_tree_attribute_bonus[i][j].slice(1, skill_tree_attribute_bonus[i][j].length);
+
+                    if(skill_tree_attribute_bonus[i].length != j + 1) {
+                        total_bonus_number_list += "<br>";
+                        total_bonus_text_list += "<br>";
+                    }
+                }
+                
+                document.getElementById("skill_tree_bonus").innerHTML = total_bonus_number_list;
+                document.getElementById("skill_tree_bonus_about").innerHTML = total_bonus_text_list;
+                document.getElementById("info_block").style.top = mouse_targer_skill.getBoundingClientRect().top + window.scrollY + document.body.scrollTop + "px";
+                document.getElementById("info_block").style.left = mouse_targer_skill.getBoundingClientRect().left + mouse_targer_skill.getBoundingClientRect().width * 0.5 - document.getElementById("info_block").offsetWidth - 50 + "px";
+                return;
+            }
         }
     }
 
@@ -576,12 +607,17 @@ function change_tree(tree_number) {
                 else {
                     var flag_image = true;
                     for(var k = 0; k < skill_tree_attribute_bonus.length; k++) {
-                        if(skill_tree_bonus_about[select_hero][select_tree][counter] == skill_tree_attribute_bonus[k]) {
-                            if(skill_tree_attribute_images[k] != "")
+                        if(typeof skill_tree_attribute_bonus[k] === "string") {
+                            if(skill_tree_bonus_about[select_hero][select_tree][counter] == skill_tree_attribute_bonus[k]) {
                                 table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/" + skill_tree_attribute_images[k] + ".png)";
-                            else
-                                table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/spell_upgrade.png)";
-                            flag_image = false;
+                                flag_image = false;
+                            }
+                        }
+                        else {
+                            if(skill_tree_bonus_about[select_hero][select_tree][counter] == skill_tree_attribute_bonus[k][0]) {
+                                table.rows[i].cells[j].style.backgroundImage = "url(skill_tree/" + skill_tree_attribute_images[k] + ".png)";
+                                flag_image = false;
+                            }
                         }
                     }
                     if(flag_image) {
@@ -684,15 +720,37 @@ function get_spell_total_value(stat_attribute_id, tree_attribute_name, base_valu
     help_value1 = 0;
     if(select_tree == selected_skill_tree_id+1) {
         select_tree_helper = skill_tree;
-        tree_attribute_id = skill_tree_attribute_bonus.indexOf(tree_attribute_name);
         if(hero_rarity[select_hero] == 0)
             select_tree_helper = skill_tree2;
         for(i = 0; i < 11; i++) {
             for(j = 0; j < 7; j++) {
                 if(table.rows[i].cells[j].style.visibility == "visible") {
-                    if(skill_tree_bonus_about[select_hero][select_tree][counter] == tree_attribute_name) {
-                        if(table.rows[i].cells[j].style.borderColor == "red")
+                    if(table.rows[i].cells[j].style.borderColor == "red") {
+                            // Для навыков, которые вдияют на несколько параметров способности
+                        if(skill_tree_bonus_about[select_hero][select_tree][counter].slice(0, 1) == "+") {
+                            for(k = 0; k < skill_tree_attribute_bonus.length; k++) {
+                                if(typeof skill_tree_attribute_bonus[k] === "object") {
+                                    is_needed_ability = false;
+                                    for(l = 0; l < skill_tree_attribute_bonus[k].length; l++) {
+                                        if(skill_tree_attribute_bonus[k][l] == skill_tree_bonus_about[select_hero][select_tree][counter]) {
+                                            is_needed_ability = true;
+                                        }
+                                    }
+                                    if(is_needed_ability) {
+                                        for(l = 0; l < skill_tree_attribute_bonus[k].length; l++) {
+                                            if(skill_tree_attribute_bonus[k][l] == "+" + tree_attribute_name) {
+                                                help_value1 += skill_tree_attribute_base_value[k][l] + skill_tree_attribute_bonus_value[k][l] * (tree_stat_coef[counter]);
+                                            }
+                                        } 
+                                    }
+                                }
+                            }
+                        }
+                            //  Все навыки, влияющие на один атрибут способности
+                        else if(skill_tree_bonus_about[select_hero][select_tree][counter] == tree_attribute_name) {
+                            tree_attribute_id = skill_tree_attribute_bonus.indexOf(tree_attribute_name);
                             help_value1 += skill_tree_attribute_base_value[tree_attribute_id] + skill_tree_attribute_bonus_value[tree_attribute_id] * (tree_stat_coef[counter]);
+                        }
                     }
                 }
                 if(select_tree_helper[i][j])
@@ -709,19 +767,41 @@ function get_spell_total_value(stat_attribute_id, tree_attribute_name, base_valu
 }
 
 function get_base_attribute_total_value(tree_attribute_name, base_value) {
-    var additionalStat = 0;
     var table = document.getElementById("skill_tree");
+    var additionalStat = 0;
     counter = 0;
     select_tree_helper = skill_tree;
-    tree_attribute_id = skill_tree_attribute_bonus.indexOf(tree_attribute_name);
     if(hero_rarity[select_hero] == 0)
         select_tree_helper = skill_tree2;
     for(i = 0; i < 11; i++) {
         for(j = 0; j < 7; j++) {
             if(table.rows[i].cells[j].style.visibility == "visible") {
-                if(skill_tree_bonus_about[select_hero][select_tree][counter] == tree_attribute_name) {
-                    if(table.rows[i].cells[j].style.borderColor == "red") 
+                if(table.rows[i].cells[j].style.borderColor == "red") {
+                        // Для навыков, которые вдияют на несколько атрибутов героя
+                        if(skill_tree_bonus_about[select_hero][select_tree][counter].slice(0, 1) == "+") {
+                            for(k = 0; k < skill_tree_attribute_bonus.length; k++) {
+                                if(typeof skill_tree_attribute_bonus[k] === "object") {
+                                    is_needed_ability = false;
+                                    for(l = 0; l < skill_tree_attribute_bonus[k].length; l++) {
+                                        if(skill_tree_attribute_bonus[k][l] == skill_tree_bonus_about[select_hero][select_tree][counter]) {
+                                            is_needed_ability = true;
+                                        }
+                                    }
+                                    if(is_needed_ability) {
+                                        for(l = 0; l < skill_tree_attribute_bonus[k].length; l++) {
+                                            if(skill_tree_attribute_bonus[k][l] == "+" + tree_attribute_name) {
+                                                additionalStat += skill_tree_attribute_base_value[k][l] + skill_tree_attribute_bonus_value[k][l] * (tree_stat_coef[counter]);
+                                            }
+                                        } 
+                                    }
+                                }
+                            }
+                        }
+                        //  Все навыки, влияющие на один атрибут героя
+                    else if(skill_tree_bonus_about[select_hero][select_tree][counter] == tree_attribute_name) {
+                        tree_attribute_id = skill_tree_attribute_bonus.indexOf(tree_attribute_name);
                         additionalStat += skill_tree_attribute_base_value[tree_attribute_id] + skill_tree_attribute_bonus_value[tree_attribute_id] * (tree_stat_coef[counter]);
+                    }
                 }
             }
             if(select_tree_helper[i][j])

@@ -561,7 +561,7 @@
         helper = Number(getSumOfStat("Урон", get_base_attribute_total_value("Урон", hero_damage[select_hero]), 1)) * ((100 + Number(getSumOfStat("Наносимый урон", get_base_attribute_total_value("Наносимый урон", 0))))*0.01);
         if(helper < 0)
             helper = 0;
-        document.getElementById("table_damage").innerHTML =  helper + "-" + (Number(helper)+hero_damage_spread[select_hero]).toFixed(1);
+        document.getElementById("table_damage").innerHTML =  helper.toFixed(1) + "-" + (Number(helper)+hero_damage_spread[select_hero]).toFixed(1);
 
         helper = getSumOfStat("Скорость атаки", get_base_attribute_total_value("Скорость атаки", hero_attack_spead[select_hero]), 1);
         if(helper < 20)
