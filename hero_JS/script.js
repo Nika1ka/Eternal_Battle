@@ -726,7 +726,7 @@ function get_spell_total_value(stat_attribute_id, tree_attribute_name, base_valu
             for(j = 0; j < 7; j++) {
                 if(table.rows[i].cells[j].style.visibility == "visible") {
                     if(table.rows[i].cells[j].style.borderColor == "red") {
-                            // Для навыков, которые вдияют на несколько параметров способности
+                            // Для навыков, которые влияют на несколько параметров способности
                         if(skill_tree_bonus_about[select_hero][select_tree][counter].slice(0, 1) == "+") {
                             for(k = 0; k < skill_tree_attribute_bonus.length; k++) {
                                 if(typeof skill_tree_attribute_bonus[k] === "object") {
