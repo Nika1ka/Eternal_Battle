@@ -236,7 +236,6 @@ function show_skill(skill = 1) {
         spell_total_damage = get_spell_total_value("speel_damage", "Урон способности", skills_damage[select_hero][skill], skill);
         spell_total_duration = get_spell_total_value("-", "Длительность действия", skills_duration[select_hero][skill], skill);
         spell_total_range = get_spell_total_value("-", "Дальность применения", skills_range[select_hero][skill], skill);
-        //stat_attribute_name, tree_attribute_name, base_value
 
     if(skills_damage[select_hero][skill]) {
         document.getElementById("hidden1").style.display = "table-row";
