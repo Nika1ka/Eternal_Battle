@@ -283,7 +283,7 @@ function hidden_skill() {
 
 function show_skill_type(skill) {
     elements = document.getElementsByClassName("ability_type");
-    for(i = 0; i < elements.length; i++) {
+    for(var i = 0; i < elements.length; i++) {
         elements[i].style.display = "none";
         if(skill_types[select_hero][skill].includes(elements[i].innerHTML))
             elements[i].style.display = "flex";
@@ -323,8 +323,8 @@ function open_skill_tree () {
     select_tree_helper = skill_tree;
     if(hero_rarity[select_hero] == 0)
         select_tree_helper = skill_tree2;
-    for(i = 0; i < 11; i++) {
-        for(j = 0; j < 7; j++) {
+    for(var i = 0; i < 11; i++) {
+        for(var j = 0; j < 7; j++) {
             if(select_tree_helper[i][j]) {
                 table.rows[i].cells[j].style.visibility = "visible";
             }
@@ -538,7 +538,7 @@ function show_tree_skill(skill_number, mouse_targer_skill) {
                 document.getElementById("skill_tree_name").innerHTML = skill_tree_attribute_name[i];
                 document.getElementById("skill_tree_about").innerHTML = "";
                 var total_bonus_text_list = "", total_bonus_number_list = "";
-                for(j = 0; j < skill_tree_attribute_bonus[i].length; j++) {
+                for(var j = 0; j < skill_tree_attribute_bonus[i].length; j++) {
 
                     var help_symbol = "";
                     if(skill_tree_attribute_base_value[i][j] > 0)
@@ -594,8 +594,8 @@ function change_tree(tree_number) {
         table.rows[5].cells[4].style.left = "-55px";
     }
         
-    for(i = 0; i < 11; i++) {
-        for(j = 0; j < 7; j++) {
+    for(var i = 0; i < 11; i++) {
+        for(var j = 0; j < 7; j++) {
             table.rows[i].cells[j].style.borderColor = "black";
             is_all_tree_upgrade_selected = false;
             document.getElementById("select_all_tree_upgrade").innerHTML = "Выбрать все";
@@ -655,10 +655,44 @@ function get_rarity_for_hero(rarity) {
     }
 }
 
+var skill_tree_previous_upgrade_needed = [  // Необхожимый предыдущий навык, чтобы прокачать этот. (где несколько - один на выбор. / "-1" не требует прокачки ничего)
+    [[-1],  [-1],   [-1],   [-1],   [-1],   [-1],   [-1]],
+    [[-1],  [-1],   [0],    [0],    [-1],   [-1],   [-1]],
+    [[-1],  [-1],   [1],    [2],    [2],    [2],    [-1]],
+    [[-1],  [-1],   [4],    [4],    [-1],   [6],    [-1]],
+    [[-1],  [7],    [7],    [-1],   [9],    [9],    [9]],
+    [[-1],  [-1],   [-1],   [8],    [8],    [13],   [14]],
+    [[-1],  [-1],   [15], [15, 16], [16],   [-1],   [-1]],
+    [[-1],  [19],   [19],   [20],   [21],   [21],   [-1]],
+    [[22],  [22],   [22],   [24],   [26],   [26],   [26]],
+    [[28],  [28],   [29],   [30],   [31],   [32],   [32]],
+    [[34],  [35],   [36],   [-1],   [38],   [39],   [40]]
+];
+function is_this_skill_lerned(skill_id) { // Улучшена ли способность в ветке героя по нужному id
+    if(skill_id[0] == -1)
+        return true;
+    var table = document.getElementById("skill_tree");
+    counter = 0;
+    for(var i = 0; i < 11; i++) {
+        for(var j = 0; j < 7; j++) {
+            if(table.rows[i].cells[j].style.visibility == "visible")
+                ++counter;
+            for(var k = 0; k < skill_id.length; k++)
+                if(counter == skill_id[k]+1) {
+                    if(table.rows[i].cells[j].style.borderColor == "red") {
+                        return true;
+                    }
+                }
+        }
+    }
+    return false;
+}
+
 function set_active_skill(skill_id) {
     var table = document.getElementById("skill_tree");
-    var counter = 0;
+    counter = 0;
     console.log(skill_id);
+
     if(hero_rarity[select_hero] == 0) {
         if(skill_id == 30)
             skill_id = 27;
@@ -667,18 +701,23 @@ function set_active_skill(skill_id) {
         if(skill_id > 15)
             --skill_id;
     }
-    for(i = 0; i < 11; i++) {
-        for(j = 0; j < 7; j++) {
+    for(var i = 0; i < 11; i++) {
+        for(var j = 0; j < 7; j++) {
             if(table.rows[i].cells[j].style.visibility == "visible")
                 ++counter;
             if(counter == skill_id+1) {
-                if(table.rows[i].cells[j].style.borderColor == "red") {
+                if(is_this_skill_lerned(skill_tree_previous_upgrade_needed[i][j]) && table.rows[i].cells[j].style.borderColor == "black") {
+                    if((i == 5 && j == 3 && table.rows[5].cells[4].style.borderColor == "red") || (i == 5 && j == 4 && table.rows[5].cells[3].style.borderColor == "red"))
+                        return;
+                    table.rows[i].cells[j].style.borderColor = "red";
+                    table.rows[i].cells[j].style.backgroundImage = "url(\"skill_tree/selected.png\"), " + table.rows[i].cells[j].style.backgroundImage.split(",")[0];
+                }
+                else if(table.rows[i].cells[j].style.borderColor == "red") {
                     table.rows[i].cells[j].style.borderColor = "black";
                     table.rows[i].cells[j].style.backgroundImage = table.rows[i].cells[j].style.backgroundImage.split(",")[1];
-                    return;
                 }
-                table.rows[i].cells[j].style.borderColor = "red";
-                table.rows[i].cells[j].style.backgroundImage = "url(\"skill_tree/selected.png\"), " + table.rows[i].cells[j].style.backgroundImage.split(",")[0];
+                else
+                    console.log("can't upgrade");
                 return;
             }
         }
@@ -688,8 +727,8 @@ function set_active_skill(skill_id) {
 var is_all_tree_upgrade_selected = false;
 function select_all_tree_skill() {
     var table = document.getElementById("skill_tree");
-    for(i = 0; i < 11; i++) {
-        for(j = 0; j < 7; j++) {
+    for(var i = 0; i < 11; i++) {
+        for(var j = 0; j < 7; j++) {
             if(table.rows[i].cells[j].style.visibility == "visible") {
                 if(is_all_tree_upgrade_selected) {
                     table.rows[i].cells[j].style.borderColor = "black";
@@ -721,8 +760,8 @@ function get_spell_total_value(stat_attribute_id, tree_attribute_name, base_valu
         select_tree_helper = skill_tree;
         if(hero_rarity[select_hero] == 0)
             select_tree_helper = skill_tree2;
-        for(i = 0; i < 11; i++) {
-            for(j = 0; j < 7; j++) {
+        for(var i = 0; i < 11; i++) {
+            for(var j = 0; j < 7; j++) {
                 if(table.rows[i].cells[j].style.visibility == "visible") {
                     if(table.rows[i].cells[j].style.borderColor == "red") {
                             // Для навыков, которые влияют на несколько параметров способности
@@ -772,8 +811,8 @@ function get_base_attribute_total_value(tree_attribute_name, base_value) {
     select_tree_helper = skill_tree;
     if(hero_rarity[select_hero] == 0)
         select_tree_helper = skill_tree2;
-    for(i = 0; i < 11; i++) {
-        for(j = 0; j < 7; j++) {
+    for(var i = 0; i < 11; i++) {
+        for(var j = 0; j < 7; j++) {
             if(table.rows[i].cells[j].style.visibility == "visible") {
                 if(table.rows[i].cells[j].style.borderColor == "red") {
                         // Для навыков, которые вдияют на несколько атрибутов героя
@@ -807,8 +846,8 @@ function get_base_attribute_total_value(tree_attribute_name, base_value) {
                 ++counter;
         }
     }
-    for(i = 0; i < star_bonus_names.length; i++) {
-        for(j = 0; j < star_bonus_names[i].length; j++) {
+    for(var i = 0; i < star_bonus_names.length; i++) {
+        for(var j = 0; j < star_bonus_names[i].length; j++) {
             if(star_bonus_names[i][j] == tree_attribute_name) {
                 star_slider_id = document.getElementsByClassName("stars_select")[i].value;
                 additionalStat += getTotalStarValue(i, j, star_slider_id);
